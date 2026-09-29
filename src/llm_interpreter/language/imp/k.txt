@@ -1,0 +1,293 @@
+module {name}-SYNTAX
+  imports INT
+  imports BOOL
+  imports LIST
+  imports MAP
+  imports ID
+  imports STRING
+  imports K-LOCATIONS
+
+  syntax AExp  ::= Int | Id
+                 | "{PLUS_OP}" AExp                   [strict]
+                 | "{MINUS_OP}" AExp                   [strict]
+                 > left:
+                   AExp "{DIV_OP}" AExp              [strict]
+                 | AExp "{MUL_OP}" AExp              [strict]
+                 | AExp "{MOD_OP}" AExp              [strict]
+                 > left:
+                   AExp "{PLUS_OP}" AExp              [strict]
+                 | AExp "{MINUS_OP}" AExp              [strict]
+                 > PAExp
+  syntax PAExp ::= "(" AExp ")"                      [klabel(parenthesizedA), symbol]
+  syntax BExp  ::= Bool
+                 > "{NOT_OP}" BExp                   [strict]
+                 > left:
+                   AExp "{LT_OP}" AExp               [seqstrict]
+                 | AExp "{LTEQ_OP}" AExp             [seqstrict]
+                 | AExp "{GT_OP}" AExp               [seqstrict]
+                 | AExp "{GTEQ_OP}" AExp             [seqstrict]
+                 | AExp "{EQ_OP}" AExp               [seqstrict]
+                 | AExp "{NEQ_OP}" AExp              [seqstrict]
+                 > left:
+                   BExp "{AND_OP}" BExp              [seqstrict]
+                 | BExp "{OR_OP}" BExp               [seqstrict]
+                 > PBExp
+  syntax PBExp ::= "(" BExp ")"                      [klabel(parenthesizedB), symbol]
+
+  syntax Block      ::= "{{" "}}"
+                      | "{{" Stmt "}}"
+  syntax ContMark   ::= "continueMarker"
+  syntax WhileStmt  ::= "{WHILE}" "(" BExp ")" Block ";"
+  syntax CompStmt   ::= Id "{ASSIGN_OP}" AExp ";"                     [strict(2)]
+                      | "{IF}" "(" BExp ")" Block "{ELSE}" Block ";"  [strict(1)]
+                      | WhileStmt
+                      | "{WHILE}1" "(" BExp ")" Block
+                      | "{HALT}" ";"
+                      | "{BREAK}" ";"
+                      | "{CONTINUE}" ";"
+                      | "int" Id ";"
+  syntax Stmt       ::= Block
+                      | CompStmt
+                      | ContMark
+                      | "Empty"
+                      > Stmt Stmt                         [left]
+  syntax Log        ::= "printLine" "(" Int ")" ";"
+                      | "printLine2" "(" Int ")" ";"
+                      | "printStmt" "(" CompStmt ")" ";"
+                      | "printState" ";"
+                      | "emptyRules" ";"
+                      | "printStackTop" ";"
+
+  syntax WhileStmt  [locations]
+  syntax CompStmt   [locations]
+
+  syntax Pgm ::= Stmt
+endmodule
+
+module {name}-AUXILIARY
+  imports {name}-SYNTAX
+
+  syntax KResult ::= Int | Bool
+  syntax KItem ::= "breakMarker"
+  syntax KItem ::= "{ERROR}"
+  syntax Bool ::= isContmark(Stmt) [function]
+  rule isContmark(S:ContMark) => true
+  rule isContmark(_) => false [owise]
+  syntax KItem ::= push(Int)
+  syntax KItem ::= "pop"
+  syntax KItem ::= pushStmt(Stmt)
+  syntax KItem ::= "popStmt"
+
+  configuration <T>
+     <k> $PGM:Pgm </k>
+     <state> $STATE:Map </state>
+     <lines> .List </lines>
+     <states> .List </states>
+     <stmts> .List </stmts>
+     <rules> .List </rules>
+     <currentLine> 0 </currentLine>
+     <whileStack> .List </whileStack>
+     <whileStmtStack> .List </whileStmtStack>
+     <whileLine> 0 </whileLine>
+  </T>
+
+  rule <k> push(X:Int) => . ... </k>
+     <whileStack> S:List => ListItem(X) S </whileStack>
+  rule <k> pop => . ... </k>
+     <whileStack> ListItem(X:Int) S:List => S </whileStack>
+  rule <k> pushStmt(S:Stmt) => . ... </k>
+     <whileStmtStack> L:List => ListItem(S) L </whileStmtStack>
+  rule <k> popStmt => . ... </k>
+     <whileStmtStack> ListItem(S:Stmt) L:List => L </whileStmtStack>
+
+  rule #location(S:CompStmt, File, StartLine, _, _, _) => printLine(StartLine); ~> printStmt(S); ~> printState; ~> printStackTop; ~> S
+  rule #location(S:WhileStmt, File, StartLine, _, _, _) => printLine2(StartLine); ~> S
+  rule {{}} => .
+  rule {{S}} => S
+  rule S1:Stmt S2:Stmt => S1 ~> S2
+  rule <k> parenthesizedA(P:AExp) => P ... </k>
+  rule <k> parenthesizedB(P:BExp) => P ... </k>
+  rule <k> {ERROR} ~> _ => .</k>
+
+  rule <k> printStmt(A:CompStmt) ; => . ...</k>
+      <stmts> OUT => OUT  ListItem(A)</stmts>
+  rule <k> printLine(A:Int) ; => . ...</k>
+      <lines> OUT => OUT  ListItem(A)</lines>
+      <currentLine> _ => A </currentLine>
+  rule <k> printLine2(A:Int) ; => . ...</k>
+      <currentLine> _ => A </currentLine>
+  rule <k> printState; => . ...</k>
+      <state> ST </state>
+      <states> OUT => OUT  ListItem(ST)</states>
+      <rules> L => L ListItem("BREAK") </rules>
+  rule <k> printStackTop; => . ...</k>
+     <whileStmtStack> ListItem(S:Stmt) L:List</whileStmtStack>
+  rule <k> printStackTop; => . ...</k>
+     <whileStmtStack> .List</whileStmtStack>
+
+endmodule
+
+module {name}
+  imports {name}-AUXILIARY
+
+  rule [1]:
+    <k> X:Id => I ...</k>
+    <state>... X |-> I ...</state>
+    <rules> L => L ListItem("Rule 1") </rules>
+
+  rule [2]:
+    <k> X:Id => {ERROR} </k>
+    <state> Rho:Map </state>
+    <rules> L => L ListItem("Rule 2") </rules>
+    requires notBool (X in_keys(Rho))
+
+  rule [3]:
+    <k> I1 {PLUS_OP} I2 => I1 +Int I2 ... </k>
+    <rules> L => L ListItem("Rule 3") </rules>
+
+  rule [4]:
+    <k> I1 {MINUS_OP} I2 => I1 -Int I2 ... </k>
+    <rules> L => L ListItem("Rule 4") </rules>
+
+  rule [5]:
+    <k> I1 {MUL_OP} I2 => I1 *Int I2 ... </k>
+    <rules> L => L ListItem("Rule 5") </rules>
+
+  rule [6]:
+    <k> I1 {DIV_OP} I2 => I1 /Int I2 ... </k>
+    <rules> L => L ListItem("Rule 6") </rules>
+    requires I2 =/=Int 0
+
+  rule [7]:
+    <k> I1 {DIV_OP} I2 => {ERROR} ... </k>
+    <rules> L => L ListItem("Rule 7") </rules>
+    requires I2 ==Int 0
+
+  rule [8]:
+    <k> I1 {MOD_OP} I2 => I1 %Int I2 ... </k>
+    <rules> L => L ListItem("Rule 8") </rules>
+    requires I2 =/=Int 0
+
+  rule [9]:
+    <k> I1 {MOD_OP} I2 => {ERROR} ... </k>
+    <rules> L => L ListItem("Rule 9") </rules>
+    requires I2 ==Int 0
+
+  rule [10]:
+    <k> {PLUS_OP} I1 => 0 +Int I1 ... </k>
+    <rules> L => L ListItem("Rule 10") </rules>
+
+  rule [11]:
+    <k> {MINUS_OP} I1 => 0 -Int I1 ... </k>
+    <rules> L => L ListItem("Rule 11") </rules>
+
+  rule [12]:
+    <k> I1 {LT_OP} I2 => I1 <Int I2 ... </k>
+    <rules> L => L ListItem("Rule 12") </rules>
+
+  rule [13]:
+    <k> I1 {LTEQ_OP} I2 => I1 <=Int I2 ... </k>
+    <rules> L => L ListItem("Rule 13") </rules>
+
+  rule [14]:
+    <k> I1 {GT_OP} I2 => I1 >Int I2 ... </k>
+    <rules> L => L ListItem("Rule 14") </rules>
+
+  rule [15]:
+    <k> I1 {GTEQ_OP} I2 => I1 >=Int I2 ... </k>
+    <rules> L => L ListItem("Rule 15") </rules>
+
+  rule [16]:
+    <k> I1 {EQ_OP} I2 => I1 ==Int I2 ... </k>
+    <rules> L => L ListItem("Rule 16") </rules>
+
+  rule [17]:
+    <k> I1 {NEQ_OP} I2 => I1 =/=Int I2 ... </k>
+    <rules> L => L ListItem("Rule 17") </rules>
+
+  rule [18]:
+    <k> {NOT_OP} B1 => notBool B1 ... </k>
+    <rules> L => L ListItem("Rule 18") </rules>
+
+  rule [19]:
+    <k> B1 {AND_OP} B2 => B1 andBool B2 ... </k>
+    <rules> L => L ListItem("Rule 19") </rules>
+
+  rule [20]:
+    <k> B1 {OR_OP} B2 => B1 orBool B2 ... </k>
+    <rules> L => L ListItem("Rule 20") </rules>
+
+  rule [21]:
+    <k> X {ASSIGN_OP} I:Int; => . ...</k>
+    <state>... X |-> (_ => I) ...</state>
+    <rules> L => L ListItem("Rule 21") </rules>
+
+  rule [22]:
+    <k> {IF} (true)  S {ELSE} _ ; => S ... </k>
+    <rules> L => L ListItem("Rule 22") </rules>
+
+  rule [23]:
+    <k> {IF} (false)  _ {ELSE} S ; => S ... </k>
+    <rules> L => L ListItem("Rule 23") </rules>
+
+  rule [24]:
+    <k> ({WHILE} (B) S ;) => push(R) ~> pushStmt(({WHILE} (B) S ;)) ~> ({WHILE}1 (B) S) ~> breakMarker ~> pop ~> popStmt ... </k>
+    <currentLine> R:Int </currentLine>
+    <rules> L => L ListItem("Rule 24") </rules>
+
+  rule [25]:
+    <k> {WHILE}1 (B) S => printLine(X); ~> printStmt(({WHILE} (B) S ;)); ~> printState; ~> printStackTop; ~> {IF} (B) {{S continueMarker ({WHILE}1 (B) S)}} {ELSE} {{}}; ...</k>
+    <whileStack> ListItem(X:Int) S1:List</whileStack>
+    <whileLine> _ => X </whileLine>
+    <rules> L => L ListItem("Rule 25") </rules>
+
+  rule [26]:
+    <k> {HALT}; ~> _ => .</k>
+    <rules> L => L ListItem("Rule 26") </rules>
+
+  rule [27]:
+    <k> breakMarker => . ... </k>
+    <rules> L => L ListItem("Rule 27") </rules>
+
+  rule [28]:
+    <k> S:ContMark => . ... </k>
+    <rules> L => L ListItem("Rule 28") </rules>
+
+  rule [29]:
+    <k> {CONTINUE}; ~> S:ContMark => . ...</k>
+    <rules> L => L ListItem("Rule 29") </rules>
+
+  rule [30]:
+    <k> {CONTINUE}; ~> S:Stmt => {CONTINUE}; ...</k>
+    <rules> L => L ListItem("Rule 30") </rules>
+    <whileStack> ListItem(_) REST:List </whileStack>
+    requires notBool isContmark(S)
+
+  rule [31]:
+    <k> {CONTINUE}; => {ERROR} </k>
+    <rules> L => L ListItem("Rule 31") </rules>
+    <whileStack> .List </whileStack>
+
+  rule [32]:
+    <k> {CONTINUE}; ~> breakMarker => {CONTINUE}; ...</k>
+    <rules> L => L ListItem("Rule 32") </rules>
+
+  rule [33]:
+    <k> {BREAK}; ~> S:Stmt => {BREAK}; ...</k>
+    <rules> L => L ListItem("Rule 33") </rules>
+    <whileStack> ListItem(_) REST:List </whileStack>
+
+  rule [34]:
+    <k> {BREAK}; => {ERROR} </k>
+    <rules> L => L ListItem("Rule 34") </rules>
+    <whileStack> .List </whileStack>
+
+  rule [35]:
+    <k> {BREAK}; ~> breakMarker => . ...</k>
+    <rules> L => L ListItem("Rule 35") </rules>
+
+  rule [36]:
+    <k> int X; => . ... </k>
+    <state> Rho:Map (.Map => X|->0) </state>
+    <rules> L => L ListItem("Rule 36") </rules>
+endmodule

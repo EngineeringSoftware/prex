@@ -1,0 +1,11 @@
+int a;
+int b;
+int ans;
+a = 15;
+b = 4;
+ans = a;
+while(a >= b)
+{
+    ans = (r + (a / b));
+    a = ((a / b) + (a % b));
+};

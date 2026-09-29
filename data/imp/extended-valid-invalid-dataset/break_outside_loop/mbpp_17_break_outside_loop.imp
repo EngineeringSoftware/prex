@@ -1,0 +1,5 @@
+int ans;
+int a;
+a = 10;
+break;
+ans = (4 * a);

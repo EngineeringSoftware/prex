@@ -1,0 +1,68 @@
+int a;
+int b;
+int c;
+int d;
+int e;
+int f;
+int g;
+int h;
+int i;
+int j;
+int k;
+int l;
+int m;
+int n;
+int o;
+int p;
+int q;
+int r;
+int s;
+int t;
+int u;
+int v;
+int w;
+int x;
+int y;
+int z;
+int ans;
+a = 10;
+b = (-9415);
+c = (-3498);
+d = (-11261);
+e = 15954;
+f = (-10085);
+g = (-26270);
+h = 29733;
+i = (-1078);
+j = 27663;
+k = 13005;
+l = (-3208);
+m = (-13203);
+n = (-6400);
+o = (-9893);
+p = 30840;
+continue;
+q = 23910;
+r = (-6143);
+s = 19643;
+t = 2056;
+u = 12845;
+v = (-21287);
+w = 4629;
+x = 22148;
+y = 21790;
+z = 7671;
+ans = 0;
+a = 0;
+while(a < 10)
+{
+    if((a % 2) == 0)
+    {
+        ans = (ans + a);
+    }
+    else
+    {
+
+    };
+    a = (a + 1);
+};

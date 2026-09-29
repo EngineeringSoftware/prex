@@ -1,0 +1,29 @@
+int ans;
+int n;
+int k;
+k = 0;
+n = (4 / k);
+k = 3;
+while(n > 0)
+{
+    ans = 0;
+    if((k / ans) == 0)
+    {
+        halt;
+    }
+    else
+    {
+
+    };
+    k = (k - 1);
+    if((n % 2) != 0)
+    {
+        n = (n + 1);
+        ans = (ans + 1);
+    }
+    else
+    {
+        n = (n / 2);
+        ans = (ans + 2);
+    };
+};

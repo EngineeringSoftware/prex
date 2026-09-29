@@ -1,0 +1,27 @@
+int m;
+int n;
+int q;
+int r;
+int ans;
+ans = (0 % 0);
+m = 10;
+while(!(m <= 2))
+{
+    m = 0;
+    n = (m % m);
+    m = (m + (-1));
+    while(!(n <= 1))
+    {
+        ans = (ans + 1);
+        q = (n / 2);
+        r = ((q + q) + 1);
+        if(r <= n)
+        {
+            n = (((n + n) + n) + 1);
+        }
+        else
+        {
+            n = q;
+        };
+    };
+};

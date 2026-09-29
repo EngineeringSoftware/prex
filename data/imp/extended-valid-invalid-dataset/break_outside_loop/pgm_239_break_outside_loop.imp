@@ -1,0 +1,407 @@
+int t;
+int n;
+int m;
+int x;
+int f;
+int i;
+int j;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int a11;
+int a12;
+int a13;
+int a14;
+int a15;
+int a16;
+int a17;
+int a18;
+int a19;
+int a20;
+int a21;
+int a22;
+int a23;
+int a24;
+int a25;
+int a26;
+int a27;
+int a28;
+int a29;
+int a30;
+int a31;
+int a32;
+int a33;
+int a34;
+int a35;
+int a36;
+int a37;
+int a38;
+int a39;
+int a40;
+int a41;
+int a42;
+int a43;
+int a44;
+int a45;
+int a46;
+int a47;
+int a48;
+int a49;
+int a50;
+int a51;
+int a52;
+int a53;
+int a54;
+int a55;
+int a56;
+int a57;
+int a58;
+int a59;
+int a60;
+int a61;
+int a62;
+int a63;
+int a64;
+int a65;
+int a66;
+int a67;
+int a68;
+int a69;
+int a70;
+int a71;
+int a72;
+int a73;
+int a74;
+int a75;
+int a76;
+int a77;
+int a78;
+int a79;
+int a80;
+int a81;
+int a82;
+int a83;
+int a84;
+int a85;
+int a86;
+int a87;
+int a88;
+int a89;
+int a90;
+int a91;
+int a92;
+int a93;
+int a94;
+int a95;
+int a96;
+int a97;
+int a98;
+int a99;
+int a100;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+int b10;
+int b11;
+int b12;
+int b13;
+int b14;
+int b15;
+int b16;
+int b17;
+int b18;
+int b19;
+int b20;
+int b21;
+int b22;
+int b23;
+int b24;
+int b25;
+int b26;
+int b27;
+int b28;
+int b29;
+int b30;
+int b31;
+int b32;
+int b33;
+int b34;
+int b35;
+int b36;
+int b37;
+int b38;
+int b39;
+int b40;
+int b41;
+int b42;
+int b43;
+int b44;
+int b45;
+int b46;
+int b47;
+int b48;
+int b49;
+int b50;
+int b51;
+int b52;
+int b53;
+int b54;
+int b55;
+int b56;
+int b57;
+int b58;
+int b59;
+int b60;
+int b61;
+int b62;
+int b63;
+int b64;
+int b65;
+int b66;
+int b67;
+int b68;
+int b69;
+int b70;
+int b71;
+int b72;
+int b73;
+int b74;
+int b75;
+int b76;
+int b77;
+int b78;
+int b79;
+int b80;
+int b81;
+int b82;
+int b83;
+int b84;
+int b85;
+int b86;
+int b87;
+int b88;
+int b89;
+int b90;
+int b91;
+int b92;
+int b93;
+int b94;
+int b95;
+int b96;
+int b97;
+int b98;
+int b99;
+int b100;
+int ans;
+t = 1;
+n = 4;
+m = 4;
+a1 = 1;
+a2 = 1;
+a3 = 1;
+break;
+a4 = 1;
+b1 = 1;
+b2 = 2;
+b3 = 3;
+b4 = 4;
+f = 0;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= m)
+    {
+        if((((a1 == b1) && (i == 1))) && (j == 1))
+        {
+            f = 1;
+            x = a1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a1 == b2) && (i == 1))) && (j == 2))
+        {
+            f = 1;
+            x = a1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a1 == b3) && (i == 1))) && (j == 3))
+        {
+            f = 1;
+            x = a1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a1 == b4) && (i == 1))) && (j == 4))
+        {
+            f = 1;
+            x = a1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a2 == b1) && (i == 2))) && (j == 1))
+        {
+            f = 1;
+            x = a2;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a2 == b2) && (i == 2))) && (j == 2))
+        {
+            f = 1;
+            x = a2;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a2 == b3) && (i == 2))) && (j == 3))
+        {
+            f = 1;
+            x = a2;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a2 == b4) && (i == 2))) && (j == 4))
+        {
+            f = 1;
+            x = a2;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a3 == b1) && (i == 3))) && (j == 1))
+        {
+            f = 1;
+            x = a3;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a3 == b2) && (i == 3))) && (j == 2))
+        {
+            f = 1;
+            x = a3;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a3 == b3) && (i == 3))) && (j == 3))
+        {
+            f = 1;
+            x = a3;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a3 == b4) && (i == 3))) && (j == 4))
+        {
+            f = 1;
+            x = a3;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a4 == b1) && (i == 4))) && (j == 1))
+        {
+            f = 1;
+            x = a4;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a4 == b2) && (i == 4))) && (j == 2))
+        {
+            f = 1;
+            x = a4;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a4 == b3) && (i == 4))) && (j == 3))
+        {
+            f = 1;
+            x = a4;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((a4 == b4) && (i == 4))) && (j == 4))
+        {
+            f = 1;
+            x = a4;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(f == 1)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(f == 1)
+{
+    ans = 1;
+}
+else
+{
+    ans = 0;
+};

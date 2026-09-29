@@ -1,0 +1,40 @@
+int i;
+int len;
+int should;
+int ans;
+int c0;
+int c1;
+len = 100;
+break;
+c0 = 98;
+c1 = 97;
+i = 0;
+ans = 0;
+while(i < len)
+{
+    should = 0;
+    if((i + 1) < len)
+    {
+        if((i % 2) == 0)
+        {
+            should = 1;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+        if((i % 2) == 1)
+        {
+            should = 1;
+        }
+        else
+        {
+
+        };
+    };
+    ans = ((ans * 10) + should);
+    i = (i + 1);
+};

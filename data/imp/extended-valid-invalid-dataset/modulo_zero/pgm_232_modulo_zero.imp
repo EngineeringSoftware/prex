@@ -1,0 +1,311 @@
+int n;
+n = 0;
+int i;
+n = 0;
+int j;
+j = 0;
+int a0;
+i = 0;
+int a1;
+a1 = 0;
+int a2;
+n = 0;
+int a3;
+a2 = 0;
+int a4;
+a0 = 0;
+int a5;
+a0 = 0;
+int a6;
+n = 0;
+int a7;
+a1 = 0;
+int a8;
+a5 = 0;
+int a9;
+a0 = 0;
+int a10;
+a6 = 0;
+int a11;
+a3 = 0;
+int a12;
+a8 = 0;
+int a13;
+i = 0;
+int a14;
+a1 = 0;
+int a15;
+a11 = 0;
+int a16;
+a14 = 0;
+int a17;
+a12 = 0;
+int a18;
+a2 = 0;
+int a19;
+a15 = 0;
+int a20;
+a14 = 0;
+int a21;
+a19 = 0;
+int a22;
+a7 = 0;
+int a23;
+a9 = 0;
+int a24;
+a13 = 0;
+int a25;
+a0 = 0;
+int a26;
+a14 = 0;
+int a27;
+a25 = 0;
+int a28;
+a3 = 0;
+int a29;
+a9 = 0;
+int a30;
+a27 = 0;
+int a31;
+a26 = 0;
+int a32;
+a5 = 0;
+int a33;
+a15 = 0;
+int a34;
+a20 = 0;
+int a35;
+a9 = 0;
+int a36;
+a29 = 0;
+int a37;
+a1 = 0;
+int a38;
+a35 = 0;
+int a39;
+a14 = 0;
+int a40;
+a40 = 0;
+int a41;
+a11 = 0;
+int a42;
+a18 = 0;
+int a43;
+a41 = 0;
+int a44;
+a5 = 0;
+int a45;
+a13 = 0;
+int a46;
+a15 = 0;
+int a47;
+a21 = 0;
+int a48;
+a44 = 0;
+int a49;
+a9 = 0;
+int a50;
+a26 = 0;
+int a51;
+a25 = 0;
+int a52;
+a47 = 0;
+int a53;
+a19 = 0;
+int a54;
+a27 = 0;
+int a55;
+a54 = 0;
+int a56;
+a1 = 0;
+int a57;
+a2 = 0;
+int a58;
+a55 = 0;
+int a59;
+a27 = 0;
+int a60;
+i = 0;
+int a61;
+a50 = 0;
+int a62;
+a31 = 0;
+int a63;
+j = 0;
+int a64;
+j = 0;
+int a65;
+a61 = 0;
+int a66;
+a34 = 0;
+int a67;
+a3 = 0;
+int a68;
+i = 0;
+int a69;
+a67 = 0;
+int a70;
+a48 = 0;
+int a71;
+a70 = 0;
+int a72;
+a14 = 0;
+int a73;
+a48 = 0;
+int a74;
+a61 = 0;
+int a75;
+a22 = 0;
+int a76;
+a7 = 0;
+int a77;
+a31 = 0;
+int a78;
+a42 = 0;
+int a79;
+a68 = 0;
+int a80;
+a34 = 0;
+int a81;
+a58 = 0;
+int a82;
+a0 = 0;
+int a83;
+a34 = 0;
+int a84;
+a74 = 0;
+int a85;
+j = 0;
+int a86;
+a63 = 0;
+int a87;
+a86 = 0;
+int a88;
+a79 = 0;
+int a89;
+a68 = 0;
+int a90;
+a42 = 0;
+int a91;
+a47 = 0;
+int a92;
+a59 = 0;
+int a93;
+a86 = 0;
+int a94;
+a26 = 0;
+int a95;
+a86 = 0;
+int a96;
+a39 = 0;
+int a97;
+a74 = 0;
+int a98;
+a12 = 0;
+int a99;
+a80 = 0;
+int ans;
+a79 = 0;
+n = (5 % a79);
+i = 0;
+j = 0;
+a0 = (-2);
+a1 = 4;
+a2 = 3;
+while(i < n)
+{
+    a28 = 0;
+    if(((i % 2) % a28) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 5;
+a0 = 1;
+a1 = 1;
+a2 = 1;
+a3 = 1;
+a4 = 1;
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 5;
+a0 = (-2);
+a1 = 4;
+a2 = 7;
+a3 = (-6);
+a4 = 4;
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 9;
+a0 = 9;
+a1 = 7;
+a2 = (-4);
+a3 = (-2);
+a4 = 1;
+a5 = (-3);
+a6 = 9;
+a7 = (-4);
+a8 = (-5);
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 9;
+a0 = (-4);
+a1 = 1;
+a2 = 9;
+a3 = 4;
+a4 = 8;
+a5 = 9;
+a6 = 5;
+a7 = 1;
+a8 = (-9);
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};

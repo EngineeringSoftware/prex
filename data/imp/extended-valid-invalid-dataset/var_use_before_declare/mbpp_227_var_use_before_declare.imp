@@ -1,0 +1,33 @@
+int ans;
+int a;
+int b;
+int c;
+a = (-snfwwu);
+b = (-20);
+c = (-30);
+if(a < b)
+{
+    if(a < c)
+    {
+        ans = pbmvpu;
+        halt;
+    }
+    else
+    {
+        ans = c;
+        halt;
+    };
+}
+else
+{
+    if(b < c)
+    {
+        ans = b;
+        halt;
+    }
+    else
+    {
+        ans = c;
+        halt;
+    };
+};

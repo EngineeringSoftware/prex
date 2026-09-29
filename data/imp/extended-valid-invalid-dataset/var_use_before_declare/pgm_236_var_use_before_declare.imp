@@ -1,0 +1,75 @@
+int n;
+int q;
+int x;
+int y;
+int area;
+int ans;
+int i;
+int j;
+int lowest;
+int x1;
+int y1;
+int x2;
+int y2;
+int x3;
+int y3;
+int x4;
+int y4;
+int x5;
+int y5;
+int x6;
+int y6;
+int x7;
+int y7;
+int x8;
+int y8;
+int x9;
+int y9;
+int x10;
+int y10;
+int x11;
+int y11;
+int x12;
+int y12;
+int x13;
+int y13;
+int x14;
+int y14;
+int x15;
+int y15;
+int x16;
+int y16;
+int x17;
+int y17;
+int x18;
+int y18;
+int x19;
+int y19;
+int x20;
+int y20;
+n = 4;
+q = 1;
+x1 = 0;
+y1 = 0;
+x2 = 0;
+y2 = 2;
+x3 = 2;
+y3 = 4;
+x4 = 2;
+y4 = 2;
+x = 1;
+area = 0;
+area = (b + ((x1 * y2) - (y1 * x2)));
+area = (area + ((x2 * y3) - (y2 * x3)));
+area = (area + ((x3 * y4) - (y3 * x4)));
+area = (area + ((x4 * y1) - (y4 * x1)));
+if(area < 0)
+{
+    area = (-m);
+}
+else
+{
+
+};
+area = (area / 2);
+ans = (area - x);

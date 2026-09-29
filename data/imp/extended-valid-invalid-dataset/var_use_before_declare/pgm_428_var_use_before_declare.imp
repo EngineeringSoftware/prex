@@ -1,0 +1,48 @@
+int n;
+int t;
+int i;
+int j;
+int isPrime;
+int ans;
+t = 1;
+n = wpcimw;
+i = 2;
+while((i * i) <= 100)
+{
+    if(isPrime == 1)
+    {
+        j = (d * i);
+        while(j <= 100)
+        {
+            isPrime = 0;
+            j = (j + i);
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+i = 2;
+ans = 0;
+while(i <= 100)
+{
+    if(isPrime == 1)
+    {
+        if(isPrime == 0)
+        {
+            ans = i;
+            break;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

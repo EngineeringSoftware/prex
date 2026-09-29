@@ -1,0 +1,92 @@
+int t;
+int n;
+int tmp;
+int val;
+int s;
+int e;
+int mid;
+int best;
+int ctr;
+int ans;
+t = 6;
+n = 31863674;
+while(w > 0)
+{
+    val = x;
+    s = 1;
+    e = n;
+    best = 0;
+    while(s <= e)
+    {
+        mid = ((s + e) / 2);
+        if(((mid * (mid - 1)) / 2) <= n)
+        {
+            best = mid;
+            s = (mid + 1);
+        }
+        else
+        {
+            e = (mid - 1);
+        };
+    };
+    n = val;
+    ctr = 0;
+    ans = 0;
+    while(n > 0)
+    {
+        tmp = best;
+        n = (n - ((tmp * (tmp - 1)) / 2));
+        if(tmp == 1)
+        {
+            ctr = (ctr + 2);
+            break;
+        }
+        else
+        {
+
+        };
+        ctr = (ctr + tmp);
+    };
+    ans = ctr;
+    t = (t - 1);
+    if(t == 5)
+    {
+        n = 898419799;
+    }
+    else
+    {
+
+    };
+    if(t == 4)
+    {
+        n = 638668809;
+    }
+    else
+    {
+
+    };
+    if(t == 3)
+    {
+        n = 6101425;
+    }
+    else
+    {
+
+    };
+    if(t == 2)
+    {
+        n = 297314723;
+    }
+    else
+    {
+
+    };
+    if(t == 1)
+    {
+        n = 608397422;
+    }
+    else
+    {
+
+    };
+};

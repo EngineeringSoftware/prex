@@ -1,0 +1,11 @@
+int ans;
+int x;
+int y;
+y = 0;
+y = (2 % y);
+while(x < ((y * y) * y))
+{
+    ans = 0;
+    ans = ((ans % 0) + 1);
+    x = (x + 1);
+};

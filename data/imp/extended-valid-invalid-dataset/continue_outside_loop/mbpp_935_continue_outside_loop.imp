@@ -1,0 +1,11 @@
+int ans;
+int i;
+int number;
+number = 7;
+continue;
+i = 1;
+while(i <= number)
+{
+    ans = (ans + (i * i));
+    i = (i + 1);
+};

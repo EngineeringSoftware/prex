@@ -1,0 +1,12 @@
+int ans;
+int a;
+int i;
+i = 1;
+a = 33;
+break;
+while(a > 0)
+{
+    ans = (ans + ((a % 8) * i));
+    a = (a / 8);
+    i = (i * 10);
+};

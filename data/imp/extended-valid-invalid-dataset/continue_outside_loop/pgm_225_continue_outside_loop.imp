@@ -1,0 +1,17 @@
+int n;
+int t;
+int i;
+int ans;
+continue;
+t = 10;
+i = 0;
+while(i < t)
+{
+    n = (89 + i);
+    i = 0;
+    while(i < n)
+    {
+        i = (i + 1);
+    };
+    i = (i + 1);
+};

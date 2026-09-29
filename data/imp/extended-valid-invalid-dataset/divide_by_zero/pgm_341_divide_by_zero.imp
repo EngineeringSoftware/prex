@@ -1,0 +1,220 @@
+int n;
+n = 0;
+int t;
+t = 0;
+int i;
+t = 0;
+int maxa;
+t = 0;
+int suma;
+t = 0;
+int a1;
+a1 = 0;
+int a2;
+t = 0;
+int a3;
+n = 0;
+int a4;
+n = 0;
+int a5;
+a5 = 0;
+int a6;
+a2 = 0;
+int a7;
+a2 = 0;
+int a8;
+a4 = 0;
+int a9;
+maxa = 0;
+int a10;
+a6 = 0;
+int ans;
+ans = 0;
+t = (4 / ans);
+a1 = 3;
+a2 = 3;
+a3 = 1;
+a4 = 2;
+a5 = 3;
+a6 = (-7);
+a7 = (-6);
+a8 = (-6);
+a9 = 3;
+a10 = 2;
+n = a1;
+i = 1;
+maxa = (-1000000000000000000);
+suma = 0;
+while(i <= n)
+{
+    a5 = 0;
+    if((i / 0) == 1)
+    {
+        a1 = a2;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        a1 = a3;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        a1 = a4;
+    }
+    else
+    {
+
+    };
+    suma = (suma + a1);
+    if(a1 > maxa)
+    {
+        maxa = a1;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = ((maxa * 100000000) + (((suma - maxa) * 100000000) / (n - 1)));
+n = a5;
+i = 1;
+maxa = (-1000000000000000000);
+suma = 0;
+while(i <= n)
+{
+    if(i == 1)
+    {
+        a1 = a6;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        a1 = a7;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        a1 = a8;
+    }
+    else
+    {
+
+    };
+    suma = (suma + a1);
+    if(a1 > maxa)
+    {
+        maxa = a1;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = ((ans + (maxa * 100000000)) + (((suma - maxa) * 100000000) / (n - 1)));
+n = a9;
+i = 1;
+maxa = (-1000000000000000000);
+suma = 0;
+while(i <= n)
+{
+    if(i == 1)
+    {
+        a1 = a10;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        a1 = a10;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        a1 = a10;
+    }
+    else
+    {
+
+    };
+    suma = (suma + a1);
+    if(a1 > maxa)
+    {
+        maxa = a1;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = ((ans + (maxa * 100000000)) + (((suma - maxa) * 100000000) / (n - 1)));
+n = 4;
+i = 1;
+maxa = (-1000000000000000000);
+suma = 0;
+while(i <= n)
+{
+    if(i == 1)
+    {
+        a1 = 17;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        a1 = 3;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        a1 = 5;
+    }
+    else
+    {
+
+    };
+    if(i == 4)
+    {
+        a1 = (-3);
+    }
+    else
+    {
+
+    };
+    suma = (suma + a1);
+    if(a1 > maxa)
+    {
+        maxa = a1;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = ((ans + (maxa * 100000000)) + (((suma - maxa) * 100000000) / (n - 1)));

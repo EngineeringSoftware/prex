@@ -1,0 +1,17 @@
+int ans;
+int x;
+int y;
+int z;
+x = 5;
+y = 5;
+z = 5;
+if((e == y) && (y == z))
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+ans = 0;

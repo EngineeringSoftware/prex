@@ -1,0 +1,21 @@
+int t;
+int x;
+int y;
+int ans;
+t = 1;
+while(h > 0)
+{
+    t = (d - 1);
+    x = 4;
+    y = 8;
+    if(x > y)
+    {
+        ans = (x + y);
+        continue;
+    }
+    else
+    {
+
+    };
+    ans = ((y + ((y / x) * x)) / 2);
+};

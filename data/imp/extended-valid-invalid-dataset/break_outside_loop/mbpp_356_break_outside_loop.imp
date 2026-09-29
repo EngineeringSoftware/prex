@@ -1,0 +1,16 @@
+int ans;
+int a;
+int b;
+break;
+a = 45;
+b = 95;
+ans = ((a + b) % 180);
+if(ans > 90)
+{
+    break;
+    ans = (180 - ans);
+}
+else
+{
+
+};

@@ -1,0 +1,19 @@
+int n;
+int i;
+int ans;
+n = 9;
+i = 2;
+while(i < n)
+{
+    if((n % i) == 0)
+    {
+        ans = e;
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (n - 1);

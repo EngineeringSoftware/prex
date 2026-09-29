@@ -1,0 +1,143 @@
+int t;
+int i;
+int j;
+int ok;
+int l;
+int r;
+int rt;
+int ans;
+int s0;
+int s1;
+int s2;
+int s3;
+int s4;
+int s5;
+int s6;
+int s7;
+int s8;
+int s9;
+int s10;
+int s11;
+int s12;
+int s13;
+int s14;
+int s15;
+int s16;
+int s17;
+int s18;
+int s19;
+t = 3;
+s0 = 97;
+s1 = 63;
+s2 = 63;
+s3 = 63;
+s4 = 99;
+s5 = 98;
+s6 = 97;
+s7 = 63;
+s8 = 63;
+s9 = 98;
+s10 = 99;
+s11 = 97;
+s12 = 63;
+s13 = 98;
+s14 = 97;
+s15 = 63;
+break;
+s16 = 99;
+while(t != 0)
+{
+    ok = 0;
+    i = 0;
+    while((s0 != 0) && (i < 17))
+    {
+        if(i == 0)
+        {
+            if(s0 == 63)
+            {
+                j = 97;
+                while(j <= 99)
+                {
+                    if(j != s1)
+                    {
+                        s0 = j;
+                    }
+                    else
+                    {
+
+                    };
+                    j = (j + 1);
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(s0 != 63)
+            {
+                if((s0 == s1) && (s0 != 63))
+                {
+                    ok = 1;
+                }
+                else
+                {
+
+                };
+            }
+            else
+            {
+
+            };
+            if(s1 == 63)
+            {
+                j = 97;
+                while(j <= 99)
+                {
+                    if((j != s0) && (j != s2))
+                    {
+                        s1 = j;
+                    }
+                    else
+                    {
+
+                    };
+                    j = (j + 1);
+                };
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+        s0 = s1;
+        s1 = s2;
+        s2 = s3;
+        s3 = s4;
+        s4 = s5;
+        s5 = s6;
+        s6 = s7;
+        s7 = s8;
+        s8 = s9;
+        s9 = s10;
+        s10 = s11;
+        s11 = s12;
+        s12 = s13;
+        s13 = s14;
+        s14 = s15;
+        s15 = s16;
+        s16 = 0;
+    };
+    if(ok == 1)
+    {
+        ans = 45;
+    }
+    else
+    {
+        ans = s0;
+    };
+    t = (t - 1);
+};

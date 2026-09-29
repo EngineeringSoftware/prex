@@ -1,0 +1,15 @@
+int t;
+t = 0;
+int n;
+n = 0;
+int ans;
+ans = 0;
+t = (100 / ans);
+n = 10;
+while(t != 0)
+{
+    ans = 0;
+    n = (10 / 0);
+    ans = n;
+    t = (t - 1);
+};

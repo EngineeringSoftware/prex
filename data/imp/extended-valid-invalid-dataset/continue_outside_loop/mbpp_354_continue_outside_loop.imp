@@ -1,0 +1,14 @@
+int ans;
+int i;
+int a;
+int d;
+int n;
+a = 2;
+n = 6;
+d = 4;
+continue;
+while(i < n)
+{
+    ans = (a + (i * d));
+    i = (i + 1);
+};

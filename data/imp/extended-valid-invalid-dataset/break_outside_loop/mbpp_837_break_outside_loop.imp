@@ -1,0 +1,10 @@
+int ans;
+int i;
+int n;
+break;
+n = 4;
+while(i < n)
+{
+    ans = (ans + ((((2 * i) + 1) * ((2 * i) + 1)) * ((2 * i) + 1)));
+    i = (i + 1);
+};

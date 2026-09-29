@@ -1,0 +1,40 @@
+int ans;
+int x;
+int p;
+x = 383;
+if((x % 2) == 0)
+{
+    ans = 0;
+    halt;
+}
+else
+{
+
+};
+if(x == 1)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+x = (w + 1);
+p = 0;
+while((x % 2) == 0)
+{
+    ans = x;
+    x = (x / 2);
+    p = (p + 1);
+    if(p == x)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+
+    };
+};
+ans = 2;

@@ -1,0 +1,7 @@
+int ans;
+int x;
+int y;
+continue;
+x = 2;
+y = 4;
+ans = (2 * (y + x));

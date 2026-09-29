@@ -1,0 +1,45 @@
+int n;
+int x;
+int left;
+int y;
+int z;
+int t;
+int ans;
+t = 1;
+n = 1;
+while(t > 0)
+{
+    z = 0;
+    x = (0 / z);
+    while(x < 334)
+    {
+        left = (n - (3 * x));
+        y = 0;
+        z = 0;
+        while((left > 0) && ((left % 5) != 0))
+        {
+            z = (z + 1);
+            left = (left - 7);
+        };
+        if((left >= 0) && ((left % 5) == 0))
+        {
+            y = (left / 5);
+        }
+        else
+        {
+
+        };
+        if((((x * 3) + (y * 5)) + (z * 7)) == n)
+        {
+            ans = 1;
+            halt;
+        }
+        else
+        {
+
+        };
+        x = (x + 1);
+    };
+    ans = (-1);
+    halt;
+};

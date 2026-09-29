@@ -1,0 +1,295 @@
+int n;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int a11;
+int a12;
+int a13;
+int a14;
+int a15;
+int a16;
+int a17;
+int a18;
+int a19;
+int a20;
+int a21;
+int a22;
+int a23;
+int a24;
+int a25;
+int a26;
+int a27;
+int a28;
+int evencount;
+int ans;
+n = 28;
+a1 = 838021;
+a2 = 325431;
+a3 = 421593;
+a4 = 288065;
+a5 = 582853;
+a6 = 576633;
+a7 = 860797;
+a8 = 638833;
+a9 = 700519;
+a10 = 977193;
+a11 = 373295;
+a12 = 241043;
+a13 = 202931;
+a14 = 893111;
+a15 = 825521;
+a16 = 382683;
+a17 = 977863;
+a18 = 700613;
+a19 = 845889;
+a20 = 808093;
+break;
+a21 = 478493;
+a22 = 904615;
+a23 = 542879;
+a24 = 70837;
+a25 = 617093;
+a26 = 977285;
+a27 = 259541;
+a28 = 35727;
+evencount = 0;
+ans = 0;
+if((a1 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a2 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a3 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a4 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a5 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a6 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a7 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a8 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a9 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a10 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a11 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a12 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a13 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a14 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a15 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a16 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a17 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a18 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a19 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a20 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a21 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a22 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a23 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a24 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a25 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a26 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a27 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if((a28 % 2) == 0)
+{
+    evencount = (evencount + 1);
+}
+else
+{
+
+};
+if(evencount >= 3)
+{
+    ans = 1;
+}
+else
+{
+    ans = 0;
+};

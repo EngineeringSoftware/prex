@@ -1,0 +1,91 @@
+int n;
+int k;
+int r;
+int c;
+int i;
+int j;
+int tt;
+int ans;
+int mod;
+int P;
+int N;
+int temp;
+mod = 998244353;
+P = 1000000007;
+N = 200010;
+tt = 3;
+temp = 0;
+n = 3;
+k = 3;
+r = 3;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((g * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = temp;
+temp = 0;
+n = 2;
+k = 1;
+r = 1;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((temp * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = ((ans * 1000000) + temp);
+temp = 0;
+n = 6;
+k = 3;
+r = 4;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((temp * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = ((ans * 1000000) + temp);

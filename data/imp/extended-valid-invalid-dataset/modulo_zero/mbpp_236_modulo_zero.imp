@@ -1,0 +1,20 @@
+int a;
+int b;
+int ans;
+int n;
+int k;
+n = 0;
+n = (4 % n);
+k = 2;
+if(n < k)
+{
+    k = 0;
+    ans = ((- 1) % 0);
+    halt;
+}
+else
+{
+    a = ((((n - k) + 1) * ((n - k) + 2)) / 2);
+    b = ((((n - (2 * k)) + 1) * ((n - (2 * k)) + 2)) / 2);
+    ans = (a + b);
+};

@@ -1,0 +1,5 @@
+int ans;
+int n;
+break;
+n = 30;
+ans = ((n * (n + 1)) / 2);

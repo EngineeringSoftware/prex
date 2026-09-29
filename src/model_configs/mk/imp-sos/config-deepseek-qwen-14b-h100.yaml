@@ -1,0 +1,7 @@
+batch_size: 8
+temperature: 0.6
+top_p: 0.95
+attention_head: 64
+gpu_memory_utilization: 0.95
+max_new_tokens: 16000
+max_model_len: 49152  # DeepSeek-R1-Distill native ctx is 131072 (no rope scaling needed); sized to fit long mk prompts + 16k reasoning, matching Qwen-32b effective context.

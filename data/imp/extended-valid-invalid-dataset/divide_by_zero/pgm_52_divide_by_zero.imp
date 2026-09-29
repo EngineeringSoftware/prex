@@ -1,0 +1,39 @@
+int testCase;
+testCase = 0;
+int n;
+n = 0;
+int k;
+k = 0;
+int i;
+n = 0;
+int j;
+k = 0;
+int resSize;
+i = 0;
+int ans;
+j = 0;
+testCase = (3 / j);
+while(testCase > 0)
+{
+    k = 0;
+    testCase = ((testCase / k) - 1);
+    n = 7;
+    k = 3;
+    resSize = 0;
+    i = 1;
+    while(i <= k)
+    {
+        j = 0;
+        while(j < (n / k))
+        {
+            resSize = (resSize + 1);
+            j = (j + 1);
+        };
+        i = (i + 1);
+    };
+    while(resSize < n)
+    {
+        resSize = (resSize + 1);
+    };
+    ans = resSize;
+};

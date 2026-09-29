@@ -1,0 +1,20 @@
+int ans;
+int x;
+int y;
+int m;
+int n;
+m = 0;
+x = (15 / m);
+y = 17;
+m = 1;
+n = 10;
+ans = (x + y);
+if((ans >= m) && (ans <= n))
+{
+    x = 0;
+    ans = (20 / x);
+}
+else
+{
+    ans = 32;
+};

@@ -1,0 +1,113 @@
+int n;
+int k;
+int x;
+int t;
+int ans;
+int i;
+int temp;
+int isEven;
+int isK1;
+int isK2;
+int isN1;
+int isN2;
+int isN3;
+int isN4;
+int isN5;
+int isN6;
+int isN7;
+int isN8;
+int isN9;
+int isN10;
+t = 1;
+n = 25;
+k = 3;
+continue;
+x = 1;
+while(t > 0)
+{
+    isEven = 0;
+    isK1 = 0;
+    isK2 = 0;
+    isN1 = 0;
+    isN2 = 0;
+    isN3 = 0;
+    isN4 = 0;
+    isN5 = 0;
+    isN6 = 0;
+    isN7 = 0;
+    isN8 = 0;
+    isN9 = 0;
+    isN10 = 0;
+    if(x != 1)
+    {
+        ans = 1;
+        temp = n;
+    }
+    else
+    {
+        if(k == 1)
+        {
+            ans = 0;
+        }
+        else
+        {
+            if((n % 2) == 0)
+            {
+                isEven = 1;
+            }
+            else
+            {
+
+            };
+            if(isEven == 1)
+            {
+                ans = 1;
+                temp = (n / 2);
+            }
+            else
+            {
+                if(k == 2)
+                {
+                    ans = 0;
+                }
+                else
+                {
+                    if(n == 1)
+                    {
+                        ans = 0;
+                    }
+                    else
+                    {
+                        ans = 1;
+                        temp = (n / 2);
+                    };
+                };
+            };
+        };
+    };
+    if(ans == 1)
+    {
+        ans = 1;
+        temp = n;
+        if(isEven == 1)
+        {
+            temp = (n / 2);
+        }
+        else
+        {
+            if(n != 1)
+            {
+                temp = ((n / 2) - 1);
+            }
+            else
+            {
+
+            };
+        };
+    }
+    else
+    {
+        ans = 0;
+    };
+    t = (t - 1);
+};

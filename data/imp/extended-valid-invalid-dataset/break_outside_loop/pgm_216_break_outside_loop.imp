@@ -1,0 +1,59 @@
+break;
+int n;
+int i;
+int mx;
+int pos;
+int a1;
+int b1;
+int ans;
+n = 1;
+a1 = 1;
+b1 = 0;
+i = 1;
+mx = 0;
+pos = 1;
+while(i <= n)
+{
+    if(a1 <= mx)
+    {
+        b1 = 1000000;
+    }
+    else
+    {
+        b1 = mx;
+        mx = (mx + 1);
+        while(pos < i)
+        {
+            if(mx == a1)
+            {
+                break;
+            }
+            else
+            {
+
+            };
+            if(b1 == 1000000)
+            {
+                b1 = mx;
+                mx = (mx + 1);
+            }
+            else
+            {
+
+            };
+            pos = (pos + 1);
+        };
+        break;
+        if(mx < a1)
+        {
+            ans = (-1);
+            halt;
+        }
+        else
+        {
+
+        };
+    };
+    i = (i + 1);
+};
+ans = b1;

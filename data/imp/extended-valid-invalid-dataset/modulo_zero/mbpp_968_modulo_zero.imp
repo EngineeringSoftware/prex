@@ -1,0 +1,17 @@
+int n;
+int a;
+int b;
+int ans;
+ans = 0;
+a = (5 % ans);
+b = 7;
+n = 4;
+if(a >= b)
+{
+    b = 0;
+    ans = (n % b);
+}
+else
+{
+    ans = ((n + a) - b);
+};

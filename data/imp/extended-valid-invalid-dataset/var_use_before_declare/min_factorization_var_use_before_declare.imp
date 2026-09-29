@@ -1,0 +1,29 @@
+int n;
+int m;
+int l;
+int i;
+int ans;
+l = 1;
+i = 9;
+n = 48;
+while(i >= 2)
+{
+    if((n % i) == 0)
+    {
+        m = (d + (i * l));
+        l = (l * 10);
+        n = (n / i);
+    }
+    else
+    {
+        i = (i - 1);
+    };
+};
+if(n == 1)
+{
+    ans = m;
+}
+else
+{
+    ans = 0;
+};

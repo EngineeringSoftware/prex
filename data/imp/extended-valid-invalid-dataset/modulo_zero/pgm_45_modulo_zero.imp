@@ -1,0 +1,174 @@
+int n;
+n = 0;
+int m;
+m = 0;
+int h;
+m = 0;
+int a1;
+n = 0;
+int a2;
+n = 0;
+int a3;
+h = 0;
+int a4;
+n = 0;
+int a5;
+h = 0;
+int a6;
+h = 0;
+int a7;
+a6 = 0;
+int a8;
+a6 = 0;
+int a9;
+a4 = 0;
+int a10;
+a10 = 0;
+int sms;
+a8 = 0;
+int n1;
+h = 0;
+int s;
+a7 = 0;
+int ans;
+n = 0;
+int i;
+i = 0;
+int tmp;
+a4 = 0;
+int j;
+n = 0;
+n = (100 % 0);
+m = 10;
+h = 5;
+a1 = 10;
+a2 = 8;
+a3 = 7;
+a4 = 5;
+a5 = 8;
+a6 = 1;
+a7 = 2;
+a8 = 4;
+a9 = 3;
+a10 = 10;
+sms = 0;
+i = 1;
+while(i <= m)
+{
+    a7 = 0;
+    if((i % a7) == 1)
+    {
+        sms = (sms + a1);
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        sms = (sms + a2);
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        sms = (sms + a3);
+    }
+    else
+    {
+
+    };
+    if(i == 4)
+    {
+        sms = (sms + a4);
+    }
+    else
+    {
+
+    };
+    if(i == 5)
+    {
+        sms = (sms + a5);
+    }
+    else
+    {
+
+    };
+    if(i == 6)
+    {
+        sms = (sms + a6);
+    }
+    else
+    {
+
+    };
+    if(i == 7)
+    {
+        sms = (sms + a7);
+    }
+    else
+    {
+
+    };
+    if(i == 8)
+    {
+        sms = (sms + a8);
+    }
+    else
+    {
+
+    };
+    if(i == 9)
+    {
+        sms = (sms + a9);
+    }
+    else
+    {
+
+    };
+    if(i == 10)
+    {
+        sms = (sms + a10);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+n1 = (n - 1);
+s = (sms - a5);
+if(sms < n)
+{
+    ans = (-1);
+    halt;
+}
+else
+{
+
+};
+if(s < n1)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+tmp = 1;
+i = ((s - n1) + 1);
+while(i <= s)
+{
+    tmp = (tmp * i);
+    i = (i + 1);
+};
+j = (sms - n1);
+while(j < sms)
+{
+    tmp = (tmp / j);
+    j = (j + 1);
+};
+ans = (1 - tmp);

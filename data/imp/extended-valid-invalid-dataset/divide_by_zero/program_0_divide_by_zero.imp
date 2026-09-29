@@ -1,0 +1,18 @@
+int n;
+int d;
+int ans;
+int a;
+d = 0;
+n = (28 / 0);
+d = 9;
+ans = 1;
+a = 1;
+while(n > (d * a))
+{
+    ans = 0;
+    n = ((n / 0) - (d * a));
+    a = (a + 1);
+    ans = (ans * 10);
+    d = (d * 10);
+};
+ans = (ans + ((n - 1) / a));

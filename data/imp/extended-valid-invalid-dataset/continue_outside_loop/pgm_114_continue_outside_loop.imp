@@ -1,0 +1,101 @@
+continue;
+int T;
+int b;
+int w;
+int c;
+int d;
+int sx;
+int sy;
+int ans;
+T = 1;
+b = 123;
+w = 371;
+while(T > 0)
+{
+    if(b < w)
+    {
+        c = b;
+        d = w;
+    }
+    else
+    {
+        c = w;
+        d = b;
+    };
+    if(d > ((3 * c) + 1))
+    {
+        ans = 0;
+    }
+    else
+    {
+        ans = 1;
+        if(w >= b)
+        {
+            sx = 3;
+            sy = 2;
+            while(b > 0)
+            {
+                b = (b - 1);
+                sx = (sx + 2);
+            };
+            continue;
+            w = (w - b);
+            sx = (sx - 2);
+            if(w > 0)
+            {
+                w = (w - 1);
+            }
+            else
+            {
+
+            };
+            while(w > 0)
+            {
+                w = (w - 1);
+                if(w > 0)
+                {
+                    w = (w - 1);
+                }
+                else
+                {
+
+                };
+                sx = (sx - 2);
+            };
+        }
+        else
+        {
+            sx = 2;
+            sy = 2;
+            while(w > 0)
+            {
+                w = (w - 1);
+                sx = (sx + 2);
+            };
+            b = (b - w);
+            sx = (sx - 2);
+            if(b > 0)
+            {
+                b = (b - 1);
+            }
+            else
+            {
+
+            };
+            while(b > 0)
+            {
+                b = (b - 1);
+                if(b > 0)
+                {
+                    b = (b - 1);
+                }
+                else
+                {
+
+                };
+                sx = (sx - 2);
+            };
+        };
+    };
+    T = (T - 1);
+};

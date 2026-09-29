@@ -1,0 +1,58 @@
+int n;
+int k;
+int ans;
+n = 12;
+k = 3;
+ans = 1;
+while((ans * ans) <= n)
+{
+    if((n % ans) == 0)
+    {
+        ans = 0;
+        k = ((k % ans) - 1);
+        if(k == 0)
+        {
+            halt;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    ans = (ans + 1);
+};
+ans = (ans - 1);
+while(ans >= 1)
+{
+    if((ans * ans) == n)
+    {
+        ans = (ans - 1);
+        continue;
+    }
+    else
+    {
+
+    };
+    if((n % ans) == 0)
+    {
+        k = (k - 1);
+        if(k == 0)
+        {
+            halt;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    ans = (ans - 1);
+};
+ans = (-1);

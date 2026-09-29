@@ -1,0 +1,17 @@
+int xyz;
+int ans;
+int p;
+int q;
+continue;
+p = 5;
+xyz = 1;
+ans = 1;
+q = 1;
+while(q <= p)
+{
+    xyz = (xyz * q);
+    ans = (ans * xyz);
+    q = (q + 1);
+};
+continue;
+ans = ans;

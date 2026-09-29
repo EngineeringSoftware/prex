@@ -1,0 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class EvalVisitor extends MyLangBaseVisitor<Object> {
+    private final Map<String, Integer> states;
+
+    public EvalVisitor() {
+        this.states = new HashMap<>();
+    }
+
+    public Map<String, Integer> getStates() {
+        return this.states;
+    }
+
+    // ***************************************
+    // * Your custom visitor code goes here
+    // ***************************************
+}

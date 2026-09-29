@@ -1,0 +1,22 @@
+int ans;
+int i;
+int n;
+int x;
+int y;
+i = 1;
+n = 187;
+x = 10;
+y = 5;
+continue;
+while(i <= n)
+{
+    if((i % x) == y)
+    {
+        ans = i;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

@@ -1,0 +1,21 @@
+int a;
+int b;
+int c;
+int d;
+int ans;
+int f;
+ans = 0;
+a = (1 / ans);
+b = 1;
+c = 13;
+d = 19;
+if(c == d)
+{
+    ans = ((a / 0) + b);
+    f = c;
+}
+else
+{
+    ans = ((a * d) + (b * c));
+    f = (c * d);
+};

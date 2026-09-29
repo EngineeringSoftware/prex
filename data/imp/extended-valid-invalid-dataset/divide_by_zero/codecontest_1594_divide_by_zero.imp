@@ -1,0 +1,23 @@
+int T;
+int ans;
+int s;
+int n;
+int k;
+s = 0;
+T = (4 / s);
+s = 100;
+n = 50;
+k = 200;
+while(T > 0)
+{
+    s = 0;
+    T = ((T / s) - 1);
+    if((((k > s) || (((((n / k) * 2) * k) + (n % k)) <= s))) && (k != s))
+    {
+        ans = 0;
+    }
+    else
+    {
+        ans = 1;
+    };
+};

@@ -1,0 +1,12 @@
+int i;
+int ans;
+int n;
+ans = 0;
+n = (6 / 0);
+i = n;
+while(i > 0)
+{
+    ans = 0;
+    ans = ((ans / 0) + i);
+    i = (i - 2);
+};

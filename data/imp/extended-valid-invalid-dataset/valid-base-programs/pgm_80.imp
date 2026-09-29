@@ -1,0 +1,91 @@
+int n;
+int i;
+int z;
+int p;
+int neg;
+int m;
+int ans;
+n = 1;
+i = 0;
+z = 0;
+p = 0;
+neg = 0;
+if(i < n)
+{
+    if(1000 == 0)
+    {
+        z = (z + 1);
+    }
+    else
+    {
+
+    };
+    if(1000 > 0)
+    {
+        p = (p + 1);
+    }
+    else
+    {
+
+    };
+    if(1000 < 0)
+    {
+        neg = (neg + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+}
+else
+{
+
+};
+m = neg;
+if(p > m)
+{
+    m = p;
+}
+else
+{
+
+};
+ans = m;
+if(z > ans)
+{
+    ans = z;
+}
+else
+{
+
+};
+if((neg == z) && (neg == p))
+{
+    ans = 0;
+}
+else
+{
+    if((ans == neg) && (ans >= ((n + 1) / 2)))
+    {
+        ans = (- 1);
+    }
+    else
+    {
+        if((ans == p) && (ans >= ((n + 1) / 2)))
+        {
+            ans = 1;
+        }
+        else
+        {
+            if(ans == z)
+            {
+                ans = 0;
+            }
+            else
+            {
+                ans = 0;
+            };
+        };
+    };
+};

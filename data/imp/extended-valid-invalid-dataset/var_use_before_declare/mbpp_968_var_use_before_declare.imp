@@ -1,0 +1,15 @@
+int n;
+int a;
+int b;
+int ans;
+a = ckrjbv;
+b = 7;
+n = 4;
+if(a >= b)
+{
+    ans = exspso;
+}
+else
+{
+    ans = ((n + a) - b);
+};

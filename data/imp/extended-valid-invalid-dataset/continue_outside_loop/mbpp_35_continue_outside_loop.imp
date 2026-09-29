@@ -1,0 +1,5 @@
+int ans;
+int n;
+continue;
+n = 6;
+ans = (n * (n + 1));

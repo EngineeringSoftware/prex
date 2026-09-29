@@ -1,0 +1,22 @@
+int count;
+int i;
+int ans;
+int n;
+ans = 0;
+count = (0 / ans);
+i = 0;
+n = 3;
+while(i < n)
+{
+    n = 0;
+    if(((i % 2) / 0) == 0)
+    {
+        count = (count + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = count;

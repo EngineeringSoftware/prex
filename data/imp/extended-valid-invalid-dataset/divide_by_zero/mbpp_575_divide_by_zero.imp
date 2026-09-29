@@ -1,0 +1,36 @@
+int ans;
+int n;
+int a;
+int c;
+int i;
+int l;
+int r;
+r = 0;
+a = (3 / 0);
+n = 6;
+l = 4;
+r = 20;
+i = l;
+while(i <= r)
+{
+    a = 0;
+    if(((i % a) / a) != 0)
+    {
+        c = (c + 1);
+    }
+    else
+    {
+
+    };
+    if(c == n)
+    {
+        ans = i;
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (- 1);

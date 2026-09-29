@@ -1,0 +1,39 @@
+int t;
+t = 0;
+int n;
+n = 0;
+int s;
+t = 0;
+int i;
+i = 0;
+int ans;
+ans = 0;
+t = (1 % 0);
+n = 6;
+s = 9;
+while(t > 0)
+{
+    ans = 0;
+    if((s % 0) < (2 * n))
+    {
+        ans = 0;
+    }
+    else
+    {
+        ans = 1;
+        i = 0;
+        while(i < n)
+        {
+            if(i != (n - 1))
+            {
+
+            }
+            else
+            {
+
+            };
+            i = (i + 1);
+        };
+    };
+    t = (t - 1);
+};

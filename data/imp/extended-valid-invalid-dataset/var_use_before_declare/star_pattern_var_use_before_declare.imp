@@ -1,0 +1,18 @@
+int n;
+int i;
+int j;
+int ans;
+n = 5;
+i = 1;
+j = 1;
+ans = 0;
+while(z <= n)
+{
+    j = 1;
+    while(q <= i)
+    {
+        j = (j + 1);
+        ans = (i * j);
+    };
+    i = (i + 1);
+};

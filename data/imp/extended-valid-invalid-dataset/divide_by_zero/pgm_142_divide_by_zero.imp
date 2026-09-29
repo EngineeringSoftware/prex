@@ -1,0 +1,178 @@
+int n;
+n = 0;
+int sum1;
+n = 0;
+int sum2;
+sum2 = 0;
+int ans;
+sum1 = 0;
+int s0;
+sum2 = 0;
+int s1;
+s1 = 0;
+int s2;
+s1 = 0;
+int s3;
+ans = 0;
+int s4;
+n = 0;
+int s5;
+sum1 = 0;
+int s6;
+s2 = 0;
+int s7;
+ans = 0;
+int i;
+s6 = 0;
+int temp;
+s6 = 0;
+n = (8 / 0);
+s0 = 98;
+s1 = 98;
+s2 = 97;
+s3 = 98;
+s4 = 98;
+s5 = 97;
+s6 = 97;
+s7 = 97;
+sum1 = 0;
+sum2 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    s4 = 0;
+    temp = ((i % 2) / 0);
+    if(temp == 0)
+    {
+        if(i == 0)
+        {
+            if(s0 == 97)
+            {
+                if(s1 == 97)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s1 = 98;
+            }
+            else
+            {
+                if(s1 == 98)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s1 = 97;
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            if(s2 == 97)
+            {
+                if(s3 == 97)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s3 = 98;
+            }
+            else
+            {
+                if(s3 == 98)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s3 = 97;
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 4)
+        {
+            if(s4 == 97)
+            {
+                if(s5 == 97)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s5 = 98;
+            }
+            else
+            {
+                if(s5 == 98)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s5 = 97;
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 6)
+        {
+            if(s6 == 97)
+            {
+                if(s7 == 97)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s7 = 98;
+            }
+            else
+            {
+                if(s7 == 98)
+                {
+                    ans = (ans + 1);
+                }
+                else
+                {
+
+                };
+                s7 = 97;
+            };
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 2);
+};

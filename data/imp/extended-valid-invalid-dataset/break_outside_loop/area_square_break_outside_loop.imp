@@ -1,0 +1,5 @@
+int ans;
+int a;
+a = 156;
+break;
+ans = (a * a);

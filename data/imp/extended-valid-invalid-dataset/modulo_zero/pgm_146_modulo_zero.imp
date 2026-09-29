@@ -1,0 +1,41 @@
+int a;
+a = 0;
+int i;
+a = 0;
+int d;
+i = 0;
+int ans;
+i = 0;
+a = (42 % i);
+i = 0;
+d = 0;
+ans = 0;
+while(i < a)
+{
+    a = 0;
+    if(((i % 2) % a) == 0)
+    {
+        d = 0;
+        while(d < a)
+        {
+            d = (d + 1);
+        };
+    }
+    else
+    {
+
+    };
+    if((i % 2) == 1)
+    {
+        d = 0;
+        while(d < a)
+        {
+            d = (d + 1);
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

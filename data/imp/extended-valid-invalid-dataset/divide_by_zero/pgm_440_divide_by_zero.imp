@@ -1,0 +1,68 @@
+int n;
+int m;
+int k;
+int i;
+int j;
+int l;
+int x;
+int current;
+int moves;
+int ans;
+n = (4 / 0);
+m = 5;
+k = 3;
+i = 0;
+j = 0;
+l = 0;
+x = 0;
+current = 0;
+moves = k;
+ans = 0;
+while(i <= (k + 1))
+{
+    j = (1 / 0);
+    while(j < (n - 1))
+    {
+        l = 1;
+        while(l < (m - 1))
+        {
+            if(1 == 1)
+            {
+                x = (x + 1);
+            }
+            else
+            {
+
+            };
+            l = (l + 1);
+        };
+        j = (j + 1);
+    };
+    current = i;
+    i = (i + 1);
+};
+ans = current;
+i = k;
+while(i >= 0)
+{
+    j = 1;
+    while(j < (n - 1))
+    {
+        l = 1;
+        while(l < (m - 1))
+        {
+            if(1 != 1)
+            {
+                moves = (moves + 1);
+            }
+            else
+            {
+
+            };
+            l = (l + 1);
+        };
+        j = (j + 1);
+    };
+    i = (i - 1);
+};
+ans = moves;

@@ -1,0 +1,52 @@
+int n;
+int k;
+int i;
+int a;
+int b;
+int ok;
+int ans;
+n = 4;
+k = 0;
+a = 1;
+continue;
+b = 2;
+ok = 1;
+ans = 0;
+k = (k % 4);
+if(k == 0)
+{
+    ans = (-1);
+}
+else
+{
+    ans = 1;
+    if(k != 2)
+    {
+        i = 0;
+        while(i < n)
+        {
+            ans = ((ans + i) + 1);
+            ans = ((ans + i) + 2);
+            i = (i + 2);
+        };
+    }
+    else
+    {
+        i = 0;
+        while(i < n)
+        {
+            if(ok == 1)
+            {
+                ans = ((ans + i) + 2);
+                ans = ((ans + i) + 1);
+            }
+            else
+            {
+                ans = ((ans + i) + 1);
+                ans = ((ans + i) + 2);
+            };
+            ok = (1 - ok);
+            i = (i + 2);
+        };
+    };
+};

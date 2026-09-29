@@ -1,0 +1,19 @@
+int ans;
+int y;
+int x;
+break;
+x = 16;
+while(x > 0)
+{
+    y = (x % 2);
+    ans = (ans + 1);
+    x = (x / 2);
+    if(y == 1)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+};

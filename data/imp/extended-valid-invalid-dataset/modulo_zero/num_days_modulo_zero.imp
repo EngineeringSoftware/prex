@@ -1,0 +1,51 @@
+int a;
+int b;
+int ans;
+a = 0;
+a = (2000 % a);
+b = 2;
+if(b == 2)
+{
+    ans = 0;
+    if(((a % 100) % 0) == 0)
+    {
+        if((a % 400) == 0)
+        {
+            ans = 29;
+            halt;
+        }
+        else
+        {
+            ans = 28;
+            halt;
+        };
+    }
+    else
+    {
+        if((a % 4) == 0)
+        {
+            ans = 29;
+            halt;
+        }
+        else
+        {
+            ans = 28;
+            halt;
+        };
+    };
+}
+else
+{
+
+};
+b = (b - 1);
+if(((b % 7) % 2) == 0)
+{
+    ans = 31;
+    halt;
+}
+else
+{
+    ans = 30;
+    halt;
+};

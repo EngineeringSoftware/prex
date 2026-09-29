@@ -1,0 +1,33 @@
+program     : stmt_list;
+stmt_list   : (stmt ';')* ;
+stmt        : 'int' ID                                                # DeclStmt
+            | ID '=' aexp                                             # AssignStmt
+            | 'if' bexp '{' stmt_list '}' 'else' '{' stmt_list '}'    # IfElseStmt
+            | 'while' bexp '{' stmt_list '}'                          # WhileStmt
+            | 'halt'                                                  # HaltStmt
+            | 'continue'                                              # ContinueStmt
+            | 'break'                                                 # BreakStmt
+            ;
+
+aexp        : ID                                      # AId
+            | LITERAL                                 # ALit
+            | '(' aexp MATHOP aexp ')'                # ABinary
+            | '(' '+' aexp ')'                        # APlus
+            | '(' '-' aexp ')'                        # AMinus
+            ;
+
+bexp        : '(' BOOL ')'                            # BLit
+            | '(' aexp RELOP aexp ')'                 # BRel
+            | '(' '!' bexp ')'                        # BNot
+            | '(' bexp LOGICALOP bexp ')'             # BBin
+            ;
+
+BOOL        : 'true' | 'false' ;
+MATHOP      : '+' | '-' | '*' | '/' | '%' ;
+RELOP       : '<' | '<=' | '>' | '>=' | '==' | '!=' ;
+LOGICALOP   : '&&' | '||' ;
+ID          : LETTER (LETTER | DIGIT)* ;
+LITERAL     : DIGIT+ ;
+WS          : [ \t\r\n]+ -> skip ;
+fragment LETTER : [a-zA-Z] ;
+fragment DIGIT  : [0-9] ;

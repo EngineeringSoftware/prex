@@ -1,0 +1,32 @@
+int n;
+int ans;
+int a;
+int i;
+n = 8;
+i = (n * 2);
+while(1 > 0)
+{
+    a = 1;
+    while(a < n)
+    {
+        if((i % a) != 0)
+        {
+            i = (i + n);
+            break;
+        }
+        else
+        {
+
+        };
+        if((a == (n - 1)) && ((i % a) == 0))
+        {
+            ans = i;
+            halt;
+        }
+        else
+        {
+
+        };
+        a = (a + 1);
+    };
+};

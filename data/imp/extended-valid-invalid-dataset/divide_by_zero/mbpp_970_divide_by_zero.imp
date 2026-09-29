@@ -1,0 +1,14 @@
+int ans;
+int x;
+int y;
+ans = 0;
+x = (19 / ans);
+y = 15;
+if(x < y)
+{
+    ans = (x / 0);
+}
+else
+{
+    ans = y;
+};

@@ -1,0 +1,50 @@
+int a;
+int b;
+int c;
+int d;
+int e;
+int ans;
+int f;
+f = 10;
+b = 2;
+while(b <= f)
+{
+    c = 0;
+    e = 1;
+    while(e < b)
+    {
+        if((b % e) == 0)
+        {
+            c = (c + e);
+        }
+        else
+        {
+
+        };
+        e = (e + 1);
+    };
+    d = 0;
+    e = 1;
+    while(e < c)
+    {
+        if((c % e) == 0)
+        {
+            d = (d + e);
+        }
+        else
+        {
+
+        };
+        e = (e + 1);
+    };
+    if(((b == d) && (b != c)) && (c != 0))
+    {
+        a = (a + b);
+    }
+    else
+    {
+
+    };
+    b = (b + 1);
+};
+ans = a;

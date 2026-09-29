@@ -1,0 +1,18 @@
+int ans;
+int x;
+int y;
+int m;
+int n;
+x = 15;
+y = 17;
+m = 1;
+n = 10;
+ans = (t + y);
+if((ans >= m) && (ans <= n))
+{
+    ans = 20;
+}
+else
+{
+    ans = 32;
+};

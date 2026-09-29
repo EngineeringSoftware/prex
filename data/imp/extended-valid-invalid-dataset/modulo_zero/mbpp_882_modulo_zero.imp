@@ -1,0 +1,7 @@
+int ans;
+int h;
+int b;
+b = 0;
+h = (8 % b);
+b = 9;
+ans = ((2 * h) * b);

@@ -1,0 +1,5 @@
+int ans;
+int n;
+n = (4 % 0);
+n = 0;
+ans = ((n * n) % n);

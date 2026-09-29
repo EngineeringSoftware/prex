@@ -1,0 +1,33 @@
+int ans;
+int x;
+int y;
+x = 12;
+y = 15;
+if(y < x)
+{
+    ans = (- 1);
+    halt;
+}
+else
+{
+
+};
+if((y == x) && ((y % 2) == 1))
+{
+    ans = (- 1);
+    halt;
+}
+else
+{
+
+};
+if((y % 2) == 1)
+{
+    ans = (y - 1);
+    halt;
+}
+else
+{
+
+};
+ans = y;

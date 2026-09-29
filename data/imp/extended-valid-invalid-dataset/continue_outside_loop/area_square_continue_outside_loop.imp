@@ -1,0 +1,5 @@
+int ans;
+int a;
+continue;
+a = 156;
+ans = (a * a);

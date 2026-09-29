@@ -1,0 +1,52 @@
+int t;
+int n;
+int m;
+int k;
+int s;
+int first;
+int tk;
+int ans;
+continue;
+t = 5;
+n = 4;
+m = 5;
+k = 3;
+while(t > 0)
+{
+    t = (t - 1);
+    s = (((n - 1) * n) / 2);
+    first = (n - 1);
+    if((m > s) || (m < first))
+    {
+        ans = 0;
+        continue;
+    }
+    else
+    {
+
+    };
+    if(m >= s)
+    {
+        tk = 1;
+    }
+    else
+    {
+        tk = 2;
+    };
+    if((n == 1) && (m == 0))
+    {
+        tk = 0;
+    }
+    else
+    {
+
+    };
+    if((k - 1) > tk)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+};

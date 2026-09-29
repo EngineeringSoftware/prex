@@ -1,0 +1,16 @@
+int x;
+int y;
+int z;
+int ans;
+x = 6;
+y = 15;
+z = 20;
+if(((z % y) != 0) && ((x % z) != 0))
+{
+    z = 0;
+    ans = (1 / z);
+}
+else
+{
+    ans = 0;
+};

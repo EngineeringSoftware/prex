@@ -1,0 +1,29 @@
+int a;
+int b;
+int ans;
+int m;
+a = 10;
+b = 15;
+while(true)
+{
+    if(a < b)
+    {
+        m = d;
+        a = b;
+        b = m;
+    }
+    else
+    {
+
+    };
+    a = (a % b);
+    if(a == 0)
+    {
+        ans = b;
+        halt;
+    }
+    else
+    {
+
+    };
+};

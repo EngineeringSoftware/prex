@@ -1,0 +1,86 @@
+int n;
+int m;
+int i;
+int j;
+int fn0;
+int fn1;
+int fn2;
+int fn3;
+int nf0;
+int nf1;
+int nf2;
+int nf3;
+int ans;
+n = 4;
+m = 4;
+fn0 = 1;
+fn1 = 1;
+fn2 = 1;
+fn3 = 1;
+nf0 = 1;
+nf1 = 2;
+nf2 = 3;
+nf3 = 4;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    j = 0;
+    while(j < m)
+    {
+        if((((((((i == 0) && (fn0 == nf0)) || (i == 1)) && (fn1 == nf0)) || (i == 2)) && (fn2 == nf0)) || (i == 3)) && (fn3 == nf0))
+        {
+            ans = 1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((((((i == 0) && (fn0 == nf1)) || (i == 1)) && (fn1 == nf1)) || (i == 2)) && (fn2 == nf1)) || (i == 3)) && (fn3 == nf1))
+        {
+            ans = 1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((((((i == 0) && (fn0 == nf2)) || (i == 1)) && (fn1 == nf2)) || (i == 2)) && (fn2 == nf2)) || (i == 3)) && (fn3 == nf2))
+        {
+            ans = 1;
+            break;
+        }
+        else
+        {
+
+        };
+        if((((((((i == 0) && (fn0 == nf3)) || (i == 1)) && (fn1 == nf3)) || (i == 2)) && (fn2 == nf3)) || (i == 3)) && (fn3 == nf3))
+        {
+            ans = 1;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(ans == 1)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(ans == 1)
+{
+    ans = 1;
+}
+else
+{
+    ans = 0;
+};

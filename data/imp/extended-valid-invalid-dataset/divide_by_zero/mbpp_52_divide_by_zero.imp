@@ -1,0 +1,17 @@
+int xyz;
+int p;
+int ans;
+int q;
+int r;
+xyz = 0;
+xyz = (0 / xyz);
+p = 0;
+q = 15;
+r = 20;
+while(p < r)
+{
+    r = 0;
+    xyz = ((xyz / 0) + q);
+    p = (p + 1);
+};
+ans = xyz;

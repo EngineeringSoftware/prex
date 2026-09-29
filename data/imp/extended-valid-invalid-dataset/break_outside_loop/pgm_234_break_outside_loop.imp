@@ -1,0 +1,186 @@
+int t;
+int n;
+int i;
+int ans;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int a11;
+int a12;
+int a13;
+int a14;
+int a15;
+int a16;
+int a17;
+int a18;
+int a19;
+int a20;
+int a21;
+int a22;
+int a23;
+int a24;
+int a25;
+int a26;
+int a27;
+int a28;
+int a29;
+int b0;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+int b10;
+int b11;
+int b12;
+int b13;
+int b14;
+int b15;
+int b16;
+int b17;
+int b18;
+int b19;
+int b20;
+int b21;
+int b22;
+int b23;
+int b24;
+int b25;
+int b26;
+int b27;
+int b28;
+int b29;
+t = 5;
+n = 2;
+a0 = 0;
+a1 = 1;
+b0 = 1;
+b1 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+break;
+ans = (3 * ans);
+n = 5;
+a0 = 0;
+a1 = 1;
+a2 = 0;
+a3 = 1;
+a4 = 1;
+b0 = 1;
+b1 = 1;
+b2 = 1;
+b3 = 0;
+b4 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 2;
+a0 = 0;
+a1 = 1;
+b0 = 0;
+b1 = 1;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 10;
+a0 = 0;
+a1 = 1;
+a2 = 1;
+a3 = 0;
+a4 = 0;
+a5 = 1;
+a6 = 1;
+a7 = 0;
+a8 = 1;
+a9 = 1;
+b0 = 1;
+b1 = 0;
+b2 = 0;
+b3 = 0;
+b4 = 1;
+b5 = 1;
+b6 = 0;
+b7 = 1;
+b8 = 0;
+b9 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 1;
+a0 = 0;
+b0 = 1;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);

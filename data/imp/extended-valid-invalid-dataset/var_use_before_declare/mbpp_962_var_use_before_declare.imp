@@ -1,0 +1,19 @@
+int ans;
+int i;
+int l;
+int r;
+l = 3;
+r = 8;
+i = l;
+while(i <= r)
+{
+    if((i % 2) == 0)
+    {
+        ans = (k + i);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

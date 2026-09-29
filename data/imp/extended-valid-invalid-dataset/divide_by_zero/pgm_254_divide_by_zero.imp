@@ -1,0 +1,171 @@
+int t;
+t = 0;
+int n;
+n = 0;
+int i;
+t = 0;
+int j;
+t = 0;
+int u;
+n = 0;
+int v;
+n = 0;
+int c;
+t = 0;
+int ans;
+t = 0;
+t = (4 / t);
+n = 1;
+i = 0;
+j = 0;
+u = 0;
+v = n;
+c = 0;
+ans = 0;
+while(t > 0)
+{
+    u = 0;
+    while((i / 0) < n)
+    {
+        c = 0;
+        j = u;
+        while(j < v)
+        {
+            if(j == 0)
+            {
+                c = (c + 1);
+            }
+            else
+            {
+                break;
+            };
+            j = (j + 1);
+        };
+        if(c == n)
+        {
+            ans = ((ans * 10) + 1);
+        }
+        else
+        {
+            ans = ((ans * 10) + 0);
+        };
+        u = (u + 1);
+        v = (v + 1);
+        i = (i + 1);
+    };
+    t = (t - 1);
+};
+n = 3;
+i = 0;
+j = 0;
+u = 0;
+v = n;
+c = 0;
+while(t > 0)
+{
+    while(i < n)
+    {
+        c = 0;
+        j = u;
+        while(j < v)
+        {
+            if(j < 2)
+            {
+                break;
+            }
+            else
+            {
+                c = (c + 1);
+            };
+            j = (j + 1);
+        };
+        if(c == n)
+        {
+            ans = ((ans * 10) + 1);
+        }
+        else
+        {
+            ans = ((ans * 10) + 0);
+        };
+        u = (u + 1);
+        v = (v + 1);
+        i = (i + 1);
+    };
+    t = (t - 1);
+};
+n = 4;
+i = 0;
+j = 0;
+u = 0;
+v = n;
+c = 0;
+while(t > 0)
+{
+    while(i < n)
+    {
+        c = 0;
+        j = u;
+        while(j < v)
+        {
+            if(j < 3)
+            {
+                c = (c + 1);
+            }
+            else
+            {
+                break;
+            };
+            j = (j + 1);
+        };
+        if(c == n)
+        {
+            ans = ((ans * 10) + 1);
+        }
+        else
+        {
+            ans = ((ans * 10) + 0);
+        };
+        u = (u + 1);
+        v = (v + 1);
+        i = (i + 1);
+    };
+    t = (t - 1);
+};
+n = 2;
+i = 0;
+j = 0;
+u = 0;
+v = n;
+c = 0;
+while(t > 0)
+{
+    while(i < n)
+    {
+        c = 0;
+        j = u;
+        while(j < v)
+        {
+            if(j == 1)
+            {
+                break;
+            }
+            else
+            {
+                c = (c + 1);
+            };
+            j = (j + 1);
+        };
+        if(c == n)
+        {
+            ans = ((ans * 10) + 1);
+        }
+        else
+        {
+            ans = ((ans * 10) + 0);
+        };
+        u = (u + 1);
+        v = (v + 1);
+        i = (i + 1);
+    };
+    t = (t - 1);
+};

@@ -1,0 +1,19 @@
+int ans;
+int x;
+int y;
+int z;
+y = 0;
+x = (5 / y);
+y = 5;
+z = 5;
+if((x == y) && (y == z))
+{
+    x = 0;
+    ans = (1 / x);
+    halt;
+}
+else
+{
+
+};
+ans = 0;

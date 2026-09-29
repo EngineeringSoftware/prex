@@ -1,0 +1,18 @@
+break;
+int n;
+int t;
+int i;
+int ans;
+t = 10;
+i = 0;
+while(i < t)
+{
+    n = (89 + i);
+    i = 0;
+    while(i < n)
+    {
+        i = (i + 1);
+    };
+    break;
+    i = (i + 1);
+};

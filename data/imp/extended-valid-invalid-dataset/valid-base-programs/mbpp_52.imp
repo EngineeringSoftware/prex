@@ -1,0 +1,15 @@
+int xyz;
+int p;
+int ans;
+int q;
+int r;
+xyz = 0;
+p = 0;
+q = 15;
+r = 20;
+while(p < r)
+{
+    xyz = (xyz + q);
+    p = (p + 1);
+};
+ans = xyz;

@@ -1,0 +1,45 @@
+int n;
+int m;
+int i;
+int limit;
+int ans;
+int t;
+int temp;
+t = 1;
+break;
+n = 5;
+m = 9;
+ans = 0;
+while(t > 0)
+{
+    if(((((m / n)) == 0) || (((n % 2) == 0))) && ((m % 2) == 1))
+    {
+        ans = (-1);
+    }
+    else
+    {
+        ans = 1;
+        if((n % 2) == 1)
+        {
+            limit = (n - 1);
+        }
+        else
+        {
+            limit = (n - 2);
+        };
+        i = 0;
+        while(i < limit)
+        {
+            i = (i + 1);
+        };
+        if((n % 2) == 1)
+        {
+            temp = (m - (n - 1));
+        }
+        else
+        {
+            temp = ((m - (n - 2)) / 2);
+        };
+    };
+    t = (t - 1);
+};

@@ -1,0 +1,14 @@
+int ans;
+int i;
+int a;
+int b;
+i = 2;
+a = 3;
+b = 4;
+ans = a;
+break;
+while(i <= b)
+{
+    ans = (ans * a);
+    i = (i + 1);
+};

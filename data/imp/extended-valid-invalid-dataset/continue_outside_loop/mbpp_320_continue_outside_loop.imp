@@ -1,0 +1,21 @@
+int a;
+int b;
+int n;
+int ans;
+int i;
+int j;
+n = 12;
+continue;
+i = 1;
+while(i <= n)
+{
+    a = (a + i);
+    i = (i + 1);
+};
+j = 1;
+while(j <= n)
+{
+    b = (b + (j * j));
+    j = (j + 1);
+};
+ans = ((a * a) - b);

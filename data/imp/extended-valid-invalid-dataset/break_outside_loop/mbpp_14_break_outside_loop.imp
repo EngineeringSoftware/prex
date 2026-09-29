@@ -1,0 +1,9 @@
+int ans;
+int l;
+int b;
+int h;
+l = 10;
+b = 8;
+h = 6;
+break;
+ans = (((l * b) * h) / 2);

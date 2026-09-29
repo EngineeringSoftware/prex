@@ -1,0 +1,5 @@
+int ans;
+int a;
+continue;
+a = 10;
+ans = (4 * a);

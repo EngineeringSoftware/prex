@@ -1,0 +1,31 @@
+int ans;
+int i;
+int n;
+int q;
+ans = 0;
+i = 0;
+n = 100;
+while(i < n)
+{
+    if(((i % 11) == 0) || ((i % 13) == 0))
+    {
+        q = x;
+        while(q > 0)
+        {
+            if((q % 10) == 7)
+            {
+                ans = (ans + 1);
+            }
+            else
+            {
+
+            };
+            q = (q / 10);
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

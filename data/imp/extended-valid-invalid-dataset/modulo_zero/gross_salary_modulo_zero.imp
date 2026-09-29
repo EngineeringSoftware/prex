@@ -1,0 +1,9 @@
+int a;
+int b;
+int d;
+int ans;
+ans = 0;
+d = (100 % ans);
+a = 20;
+b = 20;
+ans = ((b + a) * (1 + (d / 100)));

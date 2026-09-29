@@ -1,0 +1,56 @@
+int n;
+int ans;
+ans = 0;
+ans = (10 % 0);
+n = 99;
+if((ans % 2) != 0)
+{
+    n = 0;
+    if(((n % 2) % 0) != 0)
+    {
+        if(((n / 2) % 2) != 0)
+        {
+            ans = ((ans - n) - 1);
+        }
+        else
+        {
+            ans = (ans + n);
+        };
+    }
+    else
+    {
+        if(((n / 2) % 2) != 0)
+        {
+            ans = (ans - 1);
+        }
+        else
+        {
+
+        };
+    };
+}
+else
+{
+    if((n % 2) != 0)
+    {
+        if(((n / 2) % 2) != 0)
+        {
+            ans = ((ans + n) + 1);
+        }
+        else
+        {
+            ans = (ans - n);
+        };
+    }
+    else
+    {
+        if(((n / 2) % 2) != 0)
+        {
+            ans = (ans + 1);
+        }
+        else
+        {
+
+        };
+    };
+};

@@ -1,0 +1,35 @@
+int xyz;
+int ans;
+int p;
+int q;
+int j;
+continue;
+xyz = 1;
+p = 6;
+q = 8;
+if(p == q)
+{
+    continue;
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+if((q - p) >= 5)
+{
+    ans = 0;
+    halt;
+}
+else
+{
+
+};
+j = (p + 1);
+while(j <= q)
+{
+    xyz = ((xyz * (j % 10)) % 10);
+    j = (j + 1);
+};
+ans = (xyz % 10);

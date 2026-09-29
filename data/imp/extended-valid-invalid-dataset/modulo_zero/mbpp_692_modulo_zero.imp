@@ -1,0 +1,12 @@
+int a;
+int n;
+int ans;
+a = (1 % 0);
+n = 7;
+while(n > 0)
+{
+    n = 0;
+    a = ((a * n) % n);
+    n = (n - 1);
+};
+ans = (a % 100);

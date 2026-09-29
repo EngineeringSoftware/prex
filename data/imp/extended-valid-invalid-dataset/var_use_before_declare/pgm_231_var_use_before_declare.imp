@@ -1,0 +1,206 @@
+int n;
+int i;
+int j;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int a11;
+int a12;
+int a13;
+int a14;
+int a15;
+int a16;
+int a17;
+int a18;
+int a19;
+int a20;
+int a21;
+int a22;
+int a23;
+int a24;
+int a25;
+int a26;
+int a27;
+int a28;
+int a29;
+int a30;
+int a31;
+int a32;
+int a33;
+int a34;
+int a35;
+int a36;
+int a37;
+int a38;
+int a39;
+int a40;
+int a41;
+int a42;
+int a43;
+int a44;
+int a45;
+int a46;
+int a47;
+int a48;
+int a49;
+int a50;
+int a51;
+int a52;
+int a53;
+int a54;
+int a55;
+int a56;
+int a57;
+int a58;
+int a59;
+int a60;
+int a61;
+int a62;
+int a63;
+int a64;
+int a65;
+int a66;
+int a67;
+int a68;
+int a69;
+int a70;
+int a71;
+int a72;
+int a73;
+int a74;
+int a75;
+int a76;
+int a77;
+int a78;
+int a79;
+int a80;
+int a81;
+int a82;
+int a83;
+int a84;
+int a85;
+int a86;
+int a87;
+int a88;
+int a89;
+int a90;
+int a91;
+int a92;
+int a93;
+int a94;
+int a95;
+int a96;
+int a97;
+int a98;
+int a99;
+int ans;
+n = 5;
+i = 0;
+j = 0;
+a0 = (-2);
+a1 = 4;
+a2 = 3;
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = z;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 5;
+a0 = 1;
+a1 = 1;
+a2 = 1;
+a3 = 1;
+a4 = 1;
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 5;
+a0 = (-2);
+a1 = 4;
+a2 = 7;
+a3 = (-6);
+a4 = 4;
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 9;
+a0 = 9;
+a1 = 7;
+a2 = (-4);
+a3 = (-2);
+a4 = 1;
+a5 = (-3);
+a6 = 9;
+a7 = (-4);
+a8 = (-5);
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};
+i = 0;
+n = 9;
+a0 = (-4);
+a1 = 1;
+a2 = 9;
+a3 = 4;
+a4 = 8;
+a5 = 9;
+a6 = 5;
+a7 = 1;
+a8 = (-9);
+while(i < n)
+{
+    if((i % 2) != 0)
+    {
+        ans = a0;
+    }
+    else
+    {
+        ans = (-a0);
+    };
+    i = (i + 1);
+};

@@ -1,0 +1,28 @@
+int f;
+int c;
+int x;
+int ans;
+ans = 9;
+c = 1;
+x = ans;
+while(x > 1)
+{
+    if(f == 0)
+    {
+        if((x % 2) == 1)
+        {
+            ans = (ans - c);
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+        ans = (ans - c);
+    };
+    x = (x / 2);
+    c = (c * 2);
+    f = (1 - f);
+};

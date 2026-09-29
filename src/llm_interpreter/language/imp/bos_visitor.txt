@@ -1,0 +1,278 @@
+if "." in __name__:
+    from .{name}Visitor import {name}Visitor
+    from .{name}Parser import {name}Parser
+else:
+    from {name}Visitor import {name}Visitor
+    from {name}Parser import {name}Parser
+
+class {name}BOSRuleVisitor({name}Visitor):
+
+    _rules: list[str] = []
+    _state: dict = {{}}
+    RULE_MAP: dict = {{
+        "LITERAL"              : "1",
+        "ID_LOOKUP"            : "2",
+        "DECLARATION_SINGLE"   : "3",
+        "ASSIGNMENT"           : "4",
+        "{ADD_OP}"                    : "5",
+        "{SUB_OP}"                    : "6",
+        "{MUL_OP}"                    : "7",
+        "{DIV_OP}"                    : "8",
+        "{MOD_OP}"                    : "9",
+        "{LT_OP}_True"                : "10",
+        "{LT_OP}_False"               : "11",
+        "{LTEQ_OP}_True"              : "12",
+        "{LTEQ_OP}_False"             : "13",
+        "{GT_OP}_True"                : "14",
+        "{GT_OP}_False"               : "15",
+        "{GTEQ_OP}_True"              : "16",
+        "{GTEQ_OP}_False"             : "17",
+        "{EQ_OP}_True"                : "18",
+        "{EQ_OP}_False"               : "19",
+        "{NEQ_OP}_True"               : "20",
+        "{NEQ_OP}_False"              : "21",
+        "{AND_OP}_True"               : "22",
+        "{AND_OP}_False"              : "23",
+        "{OR_OP}_True"                : "24",
+        "{OR_OP}_False"               : "25",
+        "{NOT_OP}_False"              : "28",
+        "{NOT_OP}_True"               : "29",
+        "{IF}_False"                  : "30",
+        "{IF}_True"                   : "31",
+        "{IF}_{ELSE}_False"           : "32",
+        "{IF}_{ELSE}_True"            : "33",
+        "{WHILE}_True"                : "34",
+        "{WHILE}_False"               : "35",
+        "DECLARATION_MULTIPLE" : "38",
+        "HALT"                 : "41",
+        "CONTINUE"             : "42",
+        "BREAK"                : "43",
+        "ARITH_LEFT_ASSOC1"    : "45",
+        "ARITH_LEFT_ASSOC2"    : "46",
+        "ARITH_BRACKETS"       : "47",
+        "{SUB_OP}_UNARY"       : "48",
+        "{ADD_OP}_UNARY"       : "49",
+        "LOGICAL_OP_BINDING"   : "50",
+        "LOGICAL_LEFT_ASSOC"   : "51",
+        "LOGICAL_BRACKETS"     : "52"
+    }}
+    def __init__(self, state: dict):
+        super().__init__
+        self._rules = []
+        self._state = state
+    #fed
+
+    def get_rule(self)->list:
+        return self._rules
+    #fed
+
+    def _use_rule(self, rule_name: str)->str:
+        self._rules.append(f"Rule {{{name}BOSRuleVisitor.RULE_MAP[rule_name]}}")
+    #fed
+
+    def visitStmt(self, ctx:{name}Parser.StmtContext):
+        return self.visitChildren(ctx)
+    #fed
+
+    def visitIds(self, ctx:{name}Parser.IdsContext):
+        n: int = len(ctx.ID())
+        if n > 1:
+            self._use_rule("DECLARATION_MULTIPLE")
+        else:
+            self._use_rule("DECLARATION_SINGLE")
+            return
+        #fi
+        for i in range(n):
+            self._use_rule("DECLARATION_SINGLE")
+        #rof
+    #fed
+
+    def visitHaltStmt(self, ctx:{name}Parser.HaltStmtContext):
+        self._use_rule("HALT")
+    #fed
+
+    def visitContinueStmt(self, ctx:{name}Parser.ContinueStmtContext):
+        self._use_rule("CONTINUE")
+    #fed
+
+    def visitBreakStmt(self, ctx:{name}Parser.BreakStmtContext):
+        self._use_rule("BREAK")
+    #fed
+
+    def visitAssignStmt(self, ctx:{name}Parser.AssignStmtContext):
+        self.visit(ctx.aexp())
+        self._use_rule("ASSIGNMENT")
+    #fed
+
+    def visitIfStmt(self, ctx:{name}Parser.IfStmtContext):
+        condition: bool = self.visit(ctx.bexp())
+        self._use_rule(f"{IF}_{{str(condition)}}")
+    #fed
+
+    def visitIfElseStmt(self, ctx:{name}Parser.IfElseStmtContext):
+        condition: bool = self.visit(ctx.bexp())
+        self._use_rule(f"{IF}_{ELSE}_{{str(condition)}}")
+    #fed
+
+    def visitWhileStmt(self, ctx:{name}Parser.WhileStmtContext):
+        condition: bool = self.visit(ctx.bexp())
+        self._use_rule(f"{WHILE}_{{str(condition)}}")
+    #fed
+
+    def _get_value(self, term: str)->int:
+        if term in self._state:
+            return int(self._state[term])
+        else:
+            return int(term)
+        #fi
+    #fed
+
+    def _apply_aop(self, lhs_term: str, aop: str, rhs_term: str = None)->int:
+        match aop:
+              case "{ADD_OP}":
+                  if rhs_term:
+                      return self._get_value(lhs_term) + self._get_value(rhs_term)
+                  else:
+                      return self._get_value(lhs_term)
+                  #fi
+              case "{SUB_OP}":
+                  if rhs_term:
+                      return self._get_value(lhs_term) - self._get_value(rhs_term)
+                  else:
+                      return -self._get_value(lhs_term)
+                  #fi
+              case "{MUL_OP}":
+                  return self._get_value(lhs_term) * self._get_value(rhs_term)
+              case "{DIV_OP}":
+                  return self._get_value(lhs_term) // self._get_value(rhs_term)
+              case "{MOD_OP}":
+                  return self._get_value(lhs_term) % self._get_value(rhs_term)
+        #hctam
+    #fed
+
+
+    def _apply_rop(self, lhs_term: str, rop: str, rhs_term: str)->bool:
+        match rop:
+              case "{LT_OP}":
+                  return self._get_value(lhs_term) < self._get_value(rhs_term)
+              case "{LTEQ_OP}":
+                  return self._get_value(lhs_term) <= self._get_value(rhs_term)
+              case "{GT_OP}":
+                  return self._get_value(lhs_term) > self._get_value(rhs_term)
+              case "{GTEQ_OP}":
+                  return self._get_value(lhs_term) >= self._get_value(rhs_term)
+              case "{EQ_OP}":
+                  return self._get_value(lhs_term) == self._get_value(rhs_term)
+              case "{NEQ_OP}":
+                  return self._get_value(lhs_term) != self._get_value(rhs_term)
+        #hctam
+    #fed
+
+
+    def _apply_lop(self, lhs_term: bool, lop: str, rhs_term: bool = None)->bool:
+        match lop:
+              case "{AND_OP}":
+                  return lhs_term and rhs_term
+              case "{OR_OP}":
+                  return lhs_term or rhs_term
+              case "{NOT_OP}":
+                  return not lhs_term
+        #hctam
+    #fed
+
+
+    def visitAddsubexp(self, ctx:{name}Parser.AddsubexpContext):
+        lhs_term = self.visit(ctx.muldivexp(0))
+        n: int = len(ctx.ADDSUBOP())
+        for i in range(n):
+            addsubop = ctx.ADDSUBOP(i).getText()
+            rhs_term = self.visit(ctx.muldivexp(i + 1))
+            self._use_rule(addsubop)
+            value = self._apply_aop(lhs_term, addsubop, rhs_term)
+            lhs_term = value
+        #rof
+        return lhs_term
+    #fed
+
+    def visitMuldivexp(self, ctx:{name}Parser.MuldivexpContext):
+        lhs_term = self.visit(ctx.unaryexp(0))
+        n: int = len(ctx.MULDIVOP())
+        for i in range(n):
+            muldivop = ctx.MULDIVOP(i).getText()
+            rhs_term = self.visit(ctx.unaryexp(i + 1))
+            self._use_rule(muldivop)
+            value = self._apply_aop(lhs_term, muldivop, rhs_term)
+            lhs_term = value
+        #rof
+        return lhs_term
+    #fed
+
+    def visitUnaryexp(self, ctx:{name}Parser.UnaryexpContext):
+        lhs_term = self.visit(ctx.atomexp())
+        if ctx.ADDSUBOP():
+            lhs_term = self._apply_aop(lhs_term, ctx.ADDSUBOP().getText())
+            self._use_rule(f"{{ctx.ADDSUBOP()}}_UNARY")
+        #fi
+        return lhs_term
+    #fed
+
+    def visitAtomexp(self, ctx:{name}Parser.AtomexpContext):
+        if ctx.LITERAL():
+            self._use_rule("LITERAL")
+            return ctx.LITERAL().getText()
+        elif ctx.ID():
+            self._use_rule("ID_LOOKUP")
+            return ctx.ID().getText()
+        else:
+            return self.visit(ctx.aexp())
+        #fi
+    #fed
+
+
+    def visitLogicalexp(self, ctx:{name}Parser.LogicalexpContext):
+        lhs_term = self.visit(ctx.notexp(0))
+        n: int = len(ctx.LOGICALOP())
+        for i in range(n):
+            logicalop = ctx.LOGICALOP(i).getText()
+            rhs_term = self.visit(ctx.notexp(i + 1))
+            value = self._apply_lop(lhs_term, logicalop, rhs_term)
+            self._use_rule(f"{{logicalop}}_{{str(value)}}")
+            lhs_term = value
+        #rof
+        return lhs_term
+    #fed
+
+
+    def visitNotexp(self, ctx:{name}Parser.NotexpContext):
+        lhs_term = self.visit(ctx.relexp())
+        if ctx.LOGNOT():
+            lhs_term = self._apply_lop(lhs_term, "{NOT_OP}")
+            self._use_rule(f"{NOT_OP}_{{str(lhs_term)}}")
+        #fi
+        return lhs_term
+    #fed
+
+    def visitRelexp(self, ctx:{name}Parser.RelexpContext):
+        lhs_term = self.visit(ctx.boolatomexp(0))
+        n: int = len(ctx.RELOP())
+        for i in range(n):
+            relop = ctx.RELOP(i).getText()
+            rhs_term = self.visit(ctx.boolatomexp(i + 1))
+            value = self._apply_rop(lhs_term, relop, rhs_term)
+            self._use_rule(f"{{relop}}_{{str(value)}}")
+            lhs_term = value
+        #rof
+        return lhs_term
+    #fed
+
+    def visitBoolatomexp(self, ctx:{name}Parser.BoolatomexpContext):
+        if ctx.aexp():
+            return self.visit(ctx.aexp())
+        elif ctx.bexp():
+            return self.visit(ctx.bexp())
+        else:
+            return True if ctx.BOOL().getText() == 'true' else False
+        #fi
+    #fed
+
+#ssalc

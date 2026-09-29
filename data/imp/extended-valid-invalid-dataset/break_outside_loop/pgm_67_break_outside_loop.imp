@@ -1,0 +1,40 @@
+break;
+int t;
+int a;
+int b;
+int c;
+int d;
+int i;
+int j;
+int ans;
+t = 1;
+a = 233;
+b = 233333;
+c = 123;
+d = 456;
+ans = 0;
+while(t != 0)
+{
+    i = a;
+    while(i <= b)
+    {
+        j = c;
+        while(j <= d)
+        {
+            if(i != j)
+            {
+                ans = 1;
+                j = d;
+                i = b;
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        break;
+        i = (i + 1);
+    };
+    t = (t - 1);
+};

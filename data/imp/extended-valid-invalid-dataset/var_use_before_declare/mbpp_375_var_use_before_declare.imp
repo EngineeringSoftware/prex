@@ -1,0 +1,11 @@
+int i;
+int ans;
+int n;
+int m;
+n = 1111;
+m = 5;
+while(i < m)
+{
+    ans = (t + (n / m));
+    i = (i + 1);
+};

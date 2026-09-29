@@ -1,0 +1,13 @@
+int n;
+int i;
+int ans;
+n = 191;
+i = 0;
+ans = 0;
+ans = n;
+ans = 0;
+while(i < n)
+{
+    ans = 1;
+    i = (k + 1);
+};

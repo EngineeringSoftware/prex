@@ -1,0 +1,371 @@
+int n;
+int i;
+int j;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int d10;
+int d11;
+int d12;
+int d13;
+int d14;
+int d15;
+int d16;
+int d17;
+int d18;
+int d19;
+int d20;
+int d21;
+int d22;
+int d23;
+int d24;
+int d25;
+int d26;
+int d27;
+int d28;
+int d29;
+int ans;
+n = 10;
+a0 = 2;
+a1 = 3;
+a2 = 4;
+a3 = 5;
+a4 = 6;
+a5 = 7;
+a6 = 8;
+a7 = 9;
+a8 = 10;
+a9 = 24;
+d10 = (-1);
+d11 = (-1);
+d12 = (-1);
+d13 = (-1);
+d14 = (-1);
+d15 = (-1);
+d16 = (-1);
+d17 = (-1);
+d18 = (-1);
+d19 = (-1);
+d20 = (-1);
+d21 = (-1);
+d22 = (-1);
+d23 = (-1);
+d24 = (-1);
+d25 = (-1);
+d26 = (-1);
+break;
+d27 = (-1);
+d28 = (-1);
+d29 = (-1);
+i = 0;
+while(i < n)
+{
+    j = 2;
+    while((j * j) <= a0)
+    {
+        if((a0 % j) == 0)
+        {
+            d10 = j;
+            while((a0 % j) == 0)
+            {
+                a0 = (a0 / j);
+            };
+            d20 = a0;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d10 == (-1))
+    {
+        d10 = a0;
+        d20 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a1)
+    {
+        if((a1 % j) == 0)
+        {
+            d11 = j;
+            while((a1 % j) == 0)
+            {
+                a1 = (a1 / j);
+            };
+            d21 = a1;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d11 == (-1))
+    {
+        d11 = a1;
+        d21 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a2)
+    {
+        if((a2 % j) == 0)
+        {
+            d12 = j;
+            while((a2 % j) == 0)
+            {
+                a2 = (a2 / j);
+            };
+            d22 = a2;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d12 == (-1))
+    {
+        d12 = a2;
+        d22 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a3)
+    {
+        if((a3 % j) == 0)
+        {
+            d13 = j;
+            while((a3 % j) == 0)
+            {
+                a3 = (a3 / j);
+            };
+            d23 = a3;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d13 == (-1))
+    {
+        d13 = a3;
+        d23 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a4)
+    {
+        if((a4 % j) == 0)
+        {
+            d14 = j;
+            while((a4 % j) == 0)
+            {
+                a4 = (a4 / j);
+            };
+            d24 = a4;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d14 == (-1))
+    {
+        d14 = a4;
+        d24 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a5)
+    {
+        if((a5 % j) == 0)
+        {
+            d15 = j;
+            while((a5 % j) == 0)
+            {
+                a5 = (a5 / j);
+            };
+            d25 = a5;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d15 == (-1))
+    {
+        d15 = a5;
+        d25 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a6)
+    {
+        if((a6 % j) == 0)
+        {
+            d16 = j;
+            while((a6 % j) == 0)
+            {
+                a6 = (a6 / j);
+            };
+            d26 = a6;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d16 == (-1))
+    {
+        d16 = a6;
+        d26 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a7)
+    {
+        if((a7 % j) == 0)
+        {
+            d17 = j;
+            while((a7 % j) == 0)
+            {
+                a7 = (a7 / j);
+            };
+            d27 = a7;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d17 == (-1))
+    {
+        d17 = a7;
+        d27 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a8)
+    {
+        if((a8 % j) == 0)
+        {
+            d18 = j;
+            while((a8 % j) == 0)
+            {
+                a8 = (a8 / j);
+            };
+            d28 = a8;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d18 == (-1))
+    {
+        d18 = a8;
+        d28 = 1;
+    }
+    else
+    {
+
+    };
+    j = 2;
+    while((j * j) <= a9)
+    {
+        if((a9 % j) == 0)
+        {
+            d19 = j;
+            while((a9 % j) == 0)
+            {
+                a9 = (a9 / j);
+            };
+            d29 = a9;
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    if(d19 == (-1))
+    {
+        d19 = a9;
+        d29 = 1;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = d10;
+ans = d11;
+ans = d12;
+ans = d13;
+ans = d14;
+ans = d15;
+ans = d16;
+ans = d17;
+ans = d18;
+ans = d19;
+ans = d20;
+ans = d21;
+ans = d22;
+ans = d23;
+ans = d24;
+ans = d25;
+ans = d26;
+ans = d27;
+ans = d28;
+ans = d29;

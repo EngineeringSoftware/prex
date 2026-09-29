@@ -1,0 +1,39 @@
+int a;
+int b;
+int c;
+int p;
+int q;
+int ans;
+q = 0;
+a = (55 / 0);
+b = 47;
+c = 39;
+if(a > b)
+{
+    ans = 0;
+    p = (a / 0);
+    q = b;
+}
+else
+{
+    p = b;
+    q = a;
+};
+if(p > c)
+{
+    ans = p;
+    halt;
+}
+else
+{
+
+};
+if(q > c)
+{
+    ans = q;
+    halt;
+}
+else
+{
+
+};

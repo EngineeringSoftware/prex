@@ -1,0 +1,46 @@
+int n;
+int m;
+int t;
+int ans;
+int i;
+int temp;
+t = 1;
+n = 5;
+m = 9;
+while(t > 0)
+{
+    ans = 0;
+    if(m < n)
+    {
+        ans = 0;
+    }
+    else
+    {
+        if((n % 2) == 1)
+        {
+            ans = 1;
+            i = 0;
+            while(i < (n - 1))
+            {
+                i = (i + 1);
+            };
+        }
+        else
+        {
+            if((m % 2) == 0)
+            {
+                ans = 1;
+                i = 0;
+                while(i < (n - 2))
+                {
+                    i = (i + 1);
+                };
+            }
+            else
+            {
+                ans = 0;
+            };
+        };
+    };
+    t = (t - 1);
+};

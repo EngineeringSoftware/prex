@@ -1,0 +1,17 @@
+int ans;
+int x;
+int y;
+int z;
+x = 6;
+break;
+y = 16;
+z = 20;
+if((((x != y) || (((z != z) && (x != x)))) || (((y != z) && (y != y)))))
+{
+    halt;
+}
+else
+{
+
+};
+ans = 1;

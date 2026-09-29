@@ -1,0 +1,162 @@
+int a;
+int b;
+int c;
+int d;
+int ans;
+int i;
+int bminusa;
+int cminusd;
+break;
+a = 0;
+b = 1;
+c = 0;
+d = 0;
+ans = 0;
+if((((a + b) + c) + d) == 0)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+if((a > (b + 1)) || ((c + 1) < d))
+{
+    ans = 2;
+    halt;
+}
+else
+{
+
+};
+if((a <= b) && (c >= d))
+{
+    bminusa = (b - a);
+    cminusd = (c - d);
+    if(bminusa == cminusd)
+    {
+        ans = 1;
+        i = 0;
+        while(i < a)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < bminusa)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < d)
+        {
+            i = (i + 1);
+        };
+        halt;
+    }
+    else
+    {
+
+    };
+    if(bminusa == (cminusd + 1))
+    {
+        ans = 1;
+        i = 0;
+        while(i < a)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < d)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < cminusd)
+        {
+            i = (i + 1);
+        };
+        halt;
+    }
+    else
+    {
+
+    };
+    if((bminusa + 1) == cminusd)
+    {
+        ans = 1;
+        i = 0;
+        while(i < d)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < a)
+        {
+            i = (i + 1);
+        };
+        i = 0;
+        while(i < bminusa)
+        {
+            i = (i + 1);
+        };
+        halt;
+    }
+    else
+    {
+
+    };
+    ans = 2;
+    halt;
+}
+else
+{
+
+};
+if(a == (b + 1))
+{
+    if((c + d) == 0)
+    {
+        ans = 1;
+        i = 1;
+        while(i < a)
+        {
+            i = (i + 1);
+        };
+        halt;
+    }
+    else
+    {
+
+    };
+    ans = 2;
+    halt;
+}
+else
+{
+
+};
+if((c + 1) == d)
+{
+    if((a + b) == 0)
+    {
+        ans = 1;
+        i = 1;
+        while(i < d)
+        {
+            i = (i + 1);
+        };
+        halt;
+    }
+    else
+    {
+
+    };
+    ans = 2;
+    halt;
+}
+else
+{
+
+};
+ans = 2;

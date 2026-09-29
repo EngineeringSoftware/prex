@@ -1,0 +1,14 @@
+int ans;
+int n;
+ans = 0;
+n = (8 / ans);
+if(((n % 2) == 0) && (n >= 8))
+{
+    ans = (1 / 0);
+    halt;
+}
+else
+{
+
+};
+ans = 0;

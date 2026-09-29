@@ -1,0 +1,42 @@
+continue;
+int n;
+int i;
+int div;
+int q;
+int ans;
+int j;
+n = 191;
+i = 9;
+while(i > 0)
+{
+    if((n % i) == 0)
+    {
+        q = (n / i);
+        div = i;
+        break;
+    }
+    else
+    {
+
+    };
+    i = (i - 1);
+};
+continue;
+if(i == 1)
+{
+    ans = n;
+    j = 0;
+    while(j < n)
+    {
+        j = (j + 1);
+    };
+}
+else
+{
+    ans = q;
+    j = 0;
+    while(j < q)
+    {
+        j = (j + 1);
+    };
+};

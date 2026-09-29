@@ -1,0 +1,597 @@
+int t;
+int n;
+int i;
+int j;
+int ans;
+int s0;
+int s1;
+int s2;
+int s3;
+int s4;
+int s5;
+int s6;
+int s7;
+int s8;
+int s9;
+int qcount;
+int prev;
+int next;
+t = 5;
+n = 7;
+s0 = 63;
+s1 = 82;
+s2 = 63;
+s3 = 63;
+s4 = 63;
+s5 = 66;
+s6 = 82;
+s7 = 63;
+s8 = 0;
+s9 = 0;
+while(t != 0)
+{
+    qcount = 0;
+    i = 0;
+    while(i < n)
+    {
+        if(i == 0)
+        {
+            if(s0 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 1)
+        {
+            if(s1 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            if(s2 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 3)
+        {
+            if(s3 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 4)
+        {
+            if(s4 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 5)
+        {
+            if(s5 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 6)
+        {
+            if(s6 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 7)
+        {
+            if(s7 == 63)
+            {
+                qcount = (qcount + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    if(qcount == n)
+    {
+        s0 = 66;
+        i = 1;
+        while(i < n)
+        {
+            if(i == 1)
+            {
+                if(s0 == 66)
+                {
+                    s1 = 82;
+                }
+                else
+                {
+                    s1 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 2)
+            {
+                if(s1 == 66)
+                {
+                    s2 = 82;
+                }
+                else
+                {
+                    s2 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 3)
+            {
+                if(s2 == 66)
+                {
+                    s3 = 82;
+                }
+                else
+                {
+                    s3 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 4)
+            {
+                if(s3 == 66)
+                {
+                    s4 = 82;
+                }
+                else
+                {
+                    s4 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 5)
+            {
+                if(s4 == 66)
+                {
+                    s5 = 82;
+                }
+                else
+                {
+                    s5 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 6)
+            {
+                if(s5 == 66)
+                {
+                    s6 = 82;
+                }
+                else
+                {
+                    s6 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            if(i == 7)
+            {
+                if(s6 == 66)
+                {
+                    s7 = 82;
+                }
+                else
+                {
+                    s7 = 66;
+                };
+            }
+            else
+            {
+
+            };
+            i = (i + 1);
+        };
+    }
+    else
+    {
+
+    };
+    i = 1;
+    while(i < n)
+    {
+        if(i == 1)
+        {
+            if(s1 == 63)
+            {
+                if(s0 == 82)
+                {
+                    s1 = 66;
+                }
+                else
+                {
+                    s1 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            if(s2 == 63)
+            {
+                if(s1 == 82)
+                {
+                    s2 = 66;
+                }
+                else
+                {
+                    s2 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 3)
+        {
+            if(s3 == 63)
+            {
+                if(s2 == 82)
+                {
+                    s3 = 66;
+                }
+                else
+                {
+                    s3 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 4)
+        {
+            if(s4 == 63)
+            {
+                if(s3 == 82)
+                {
+                    s4 = 66;
+                }
+                else
+                {
+                    s4 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 5)
+        {
+            if(s5 == 63)
+            {
+                if(s4 == 82)
+                {
+                    s5 = 66;
+                }
+                else
+                {
+                    s5 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 6)
+        {
+            if(s6 == 63)
+            {
+                if(s5 == 82)
+                {
+                    s6 = 66;
+                }
+                else
+                {
+                    s6 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 7)
+        {
+            if(s7 == 63)
+            {
+                if(s6 == 82)
+                {
+                    s7 = 66;
+                }
+                else
+                {
+                    s7 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = (n - 1);
+    while(i >= 0)
+    {
+        if(i == 0)
+        {
+            if(s0 == 63)
+            {
+                if(s1 == 82)
+                {
+                    s0 = 66;
+                }
+                else
+                {
+                    s0 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 1)
+        {
+            if(s1 == 63)
+            {
+                if(s2 == 82)
+                {
+                    s1 = 66;
+                }
+                else
+                {
+                    s1 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            if(s2 == 63)
+            {
+                if(s3 == 82)
+                {
+                    s2 = 66;
+                }
+                else
+                {
+                    s2 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 3)
+        {
+            if(s3 == 63)
+            {
+                if(s4 == 82)
+                {
+                    s3 = 66;
+                }
+                else
+                {
+                    s3 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 4)
+        {
+            if(s4 == 63)
+            {
+                if(s5 == 82)
+                {
+                    s4 = 66;
+                }
+                else
+                {
+                    s4 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 5)
+        {
+            if(s5 == 63)
+            {
+                if(s6 == 82)
+                {
+                    s5 = 66;
+                }
+                else
+                {
+                    s5 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(i == 6)
+        {
+            if(s6 == 63)
+            {
+                if(s7 == 82)
+                {
+                    s6 = 66;
+                }
+                else
+                {
+                    s6 = 82;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        i = (i - 1);
+    };
+    ans = s0;
+    t = (t - 1);
+};

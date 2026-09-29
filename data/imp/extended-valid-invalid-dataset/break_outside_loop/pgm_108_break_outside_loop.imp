@@ -1,0 +1,143 @@
+break;
+int n;
+int m;
+int i;
+int j;
+int k;
+int x;
+int y;
+int ans;
+int ax;
+int ay;
+int az;
+int vx;
+int vy;
+int vz;
+int bx;
+int by;
+int bz;
+int ox;
+int oy;
+int oz;
+int tmp;
+int len;
+int l;
+int R;
+int t1;
+int t2;
+n = 2;
+m = 1;
+ax = 0;
+ay = 0;
+az = 0;
+vx = 0;
+vy = 1;
+vz = 0;
+bx = 0;
+by = 0;
+bz = 1;
+i = 1;
+while(i <= m)
+{
+    len = (((vx * vx) + (vy * vy)) + (vz * vz));
+    if(len != 0)
+    {
+        len = 1;
+    }
+    else
+    {
+
+    };
+    j = 1;
+    while(j <= n)
+    {
+        l = (((((ax * vx) + (ay * vy)) + (az * vz)) * len) * len);
+        bx = (ax - (vx * l));
+        by = (ay - (vy * l));
+        bz = (az - (vz * l));
+        tmp = (((bx * bx) + (by * by)) + (bz * bz));
+        j = (j + 1);
+    };
+    break;
+    if(vz < 1)
+    {
+        if(vx > 1)
+        {
+            t1 = bz;
+            bz = bx;
+            bx = t1;
+            t1 = vz;
+            vz = vx;
+            vx = t1;
+        }
+        else
+        {
+            t1 = bz;
+            bz = by;
+            by = t1;
+            t1 = vz;
+            vz = vy;
+            vy = t1;
+        };
+    }
+    else
+    {
+
+    };
+    R = 0;
+    j = 2;
+    while(j <= n)
+    {
+        l = ((((ox - bx) * (ox - bx)) + ((oy - by) * (oy - by))) + ((oz - bz) * (oz - bz)));
+        if(l > (R + 1))
+        {
+            ox = bx;
+            oy = by;
+            oz = bz;
+            R = 0;
+            x = 1;
+            while(x < j)
+            {
+                l = ((((ox - ax) * (ox - ax)) + ((oy - ay) * (oy - ay))) + ((oz - az) * (oz - az)));
+                if(l > (R + 1))
+                {
+                    ox = ((bx + ax) / 2);
+                    oy = ((by + ay) / 2);
+                    oz = ((bz + az) / 2);
+                    R = l;
+                    y = 1;
+                    while(y < x)
+                    {
+                        l = ((((ox - ax) * (ox - ax)) + ((oy - ay) * (oy - ay))) + ((oz - az) * (oz - az)));
+                        if(l > (R + 1))
+                        {
+                            t1 = ((-vx) / vz);
+                            t2 = ((-vy) / vz);
+                            ox = ((bx + ax) / 2);
+                            oy = ((by + ay) / 2);
+                            oz = ((t1 * ox) + (t2 * oy));
+                            R = l;
+                        }
+                        else
+                        {
+
+                        };
+                        y = (y + 1);
+                    };
+                }
+                else
+                {
+
+                };
+                x = (x + 1);
+            };
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    ans = R;
+    i = (i + 1);
+};

@@ -1,0 +1,5 @@
+int ans;
+int n;
+n = 4;
+break;
+ans = (n * n);

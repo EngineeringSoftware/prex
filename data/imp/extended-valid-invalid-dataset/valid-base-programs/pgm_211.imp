@@ -1,0 +1,10 @@
+int t;
+int n;
+int ans;
+t = 99;
+while(t != 0)
+{
+    n = 29;
+    ans = 0;
+    t = (t - 1);
+};

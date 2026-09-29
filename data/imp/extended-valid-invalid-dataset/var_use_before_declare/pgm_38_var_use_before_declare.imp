@@ -1,0 +1,76 @@
+int n;
+int m;
+int x;
+int i;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int b0;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int r;
+int res;
+int ans;
+int temp;
+int l;
+int d;
+int s;
+int p;
+int c;
+n = 8;
+m = 4;
+x = 6328;
+a0 = 1268;
+b0 = 5;
+a1 = 6348;
+b1 = 8;
+a2 = 2406;
+b2 = 2;
+a3 = 8214;
+b3 = 0;
+a4 = 9308;
+b4 = 9;
+a5 = 7027;
+b5 = 1;
+a6 = 8132;
+b6 = 2;
+a7 = 300;
+b7 = 1;
+r = 0;
+res = 0;
+l = 0;
+d = 0;
+s = 0;
+p = 1;
+c = m;
+while(l < n)
+{
+    if(b0 > 0)
+    {
+        r = (u + ((p * b0) / 10));
+    }
+    else
+    {
+
+    };
+    if(b0 < 10)
+    {
+        r = (r + ((p * (10 - b0)) / 10));
+    }
+    else
+    {
+
+    };
+    l = (l + 1);
+};
+ans = r;

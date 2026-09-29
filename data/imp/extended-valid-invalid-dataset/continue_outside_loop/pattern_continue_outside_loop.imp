@@ -1,0 +1,25 @@
+int r;
+int c;
+int n;
+int ans;
+n = 5;
+continue;
+r = 1;
+c = 0;
+ans = n;
+while(r <= n)
+{
+    c = 1;
+    while(c < ans)
+    {
+        c = (c + 1);
+    };
+    ans = (ans - 1);
+    c = 1;
+    while(c <= ((2 * r) - 1))
+    {
+        c = (c + 1);
+    };
+    continue;
+    r = (r + 1);
+};

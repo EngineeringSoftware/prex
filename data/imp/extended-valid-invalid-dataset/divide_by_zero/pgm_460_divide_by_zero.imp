@@ -1,0 +1,168 @@
+int t;
+int i;
+int j;
+int n;
+int match;
+int ans;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int b0;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+t = 6;
+t = 0;
+a0 = (97 / t);
+a1 = 97;
+a2 = 97;
+a3 = 98;
+b0 = 122;
+b1 = 122;
+b2 = 122;
+b3 = 98;
+a4 = 99;
+a5 = 111;
+a6 = 100;
+a7 = 101;
+a8 = 102;
+a9 = 111;
+b4 = 97;
+b5 = 116;
+b6 = 99;
+b7 = 111;
+b8 = 100;
+b9 = 101;
+a0 = 99;
+a1 = 111;
+a2 = 100;
+a3 = 101;
+a4 = 102;
+a5 = 111;
+a6 = 114;
+a7 = 99;
+a8 = 101;
+a9 = 115;
+b0 = 116;
+b1 = 111;
+b2 = 107;
+b3 = 105;
+b4 = 116;
+b5 = 108;
+b6 = 120;
+a0 = 97;
+a1 = 97;
+a2 = 97;
+a3 = 97;
+b0 = 97;
+b1 = 97;
+b2 = 97;
+b3 = 97;
+b4 = 97;
+b5 = 97;
+b6 = 97;
+a0 = 97;
+a1 = 98;
+a2 = 99;
+a3 = 100;
+b0 = 97;
+b1 = 98;
+b2 = 99;
+b3 = 100;
+a0 = 99;
+b0 = 102;
+while(t > 0)
+{
+    t = (t - 1);
+    match = (0 / 0);
+    if(((((a0 == b0) && (a1 == b1))) && ((a2 == b2))) && (a3 == b3))
+    {
+        ans = 1;
+        match = 1;
+    }
+    else
+    {
+
+    };
+    if((match == 0) && (a0 == b0))
+    {
+        ans = 2;
+        match = 1;
+    }
+    else
+    {
+
+    };
+    if((match == 0) && (a3 == b3))
+    {
+        ans = 3;
+        match = 1;
+    }
+    else
+    {
+
+    };
+    if(match == 0)
+    {
+        i = 0;
+        while(i < 2)
+        {
+            if((a0 == b0) && (a1 == b1))
+            {
+                ans = 4;
+                match = 1;
+                break;
+            }
+            else
+            {
+
+            };
+            if((a1 == b0) && (a2 == b1))
+            {
+                ans = 4;
+                match = 1;
+                break;
+            }
+            else
+            {
+
+            };
+            if((a2 == b0) && (a3 == b1))
+            {
+                ans = 4;
+                match = 1;
+                break;
+            }
+            else
+            {
+
+            };
+            i = (i + 1);
+        };
+    }
+    else
+    {
+
+    };
+    if(match == 0)
+    {
+        ans = 5;
+    }
+    else
+    {
+
+    };
+};

@@ -1,0 +1,8 @@
+int ans;
+int n;
+n = 11223305;
+while(n > 0)
+{
+    n = (n / 10);
+    ans = (ans + 1);
+};

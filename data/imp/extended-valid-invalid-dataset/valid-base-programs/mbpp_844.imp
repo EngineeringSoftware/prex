@@ -1,0 +1,46 @@
+int n;
+int k;
+int m;
+int i;
+int j;
+int ans;
+int p;
+int q;
+n = 8;
+k = 5;
+m = (n % k);
+i = (n / k);
+j = ((i + 1) / k);
+p = 1;
+q = 2;
+while((p < m) && (q < k))
+{
+    if(((p * j) % 2) == 0)
+    {
+        ans = 2;
+        halt;
+    }
+    else
+    {
+
+    };
+    p = (p + 2);
+    q = (q + 2);
+};
+p = 1;
+q = ((i - 1) / k);
+while((p >= 1) && (q >= 1))
+{
+    if((((p * j) - 1) % 2) == 0)
+    {
+        ans = 3;
+        halt;
+    }
+    else
+    {
+
+    };
+    p = (p - 2);
+    q = (q - 2);
+};
+ans = 3;

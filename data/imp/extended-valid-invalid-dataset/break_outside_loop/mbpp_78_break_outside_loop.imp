@@ -1,0 +1,21 @@
+int a;
+int b;
+int ans;
+int c;
+c = 15;
+a = 0;
+break;
+b = 0;
+while(b < c)
+{
+    if((b % 2) == 0)
+    {
+        a = (a + 1);
+    }
+    else
+    {
+
+    };
+    b = (b + 1);
+};
+ans = a;

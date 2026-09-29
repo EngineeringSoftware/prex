@@ -1,0 +1,80 @@
+int a;
+int b;
+int c;
+int x;
+int y;
+int ans;
+int z;
+int q;
+int r;
+a = (1 % 0);
+b = 10;
+c = 1;
+x = 12;
+y = 1;
+while(y <= x)
+{
+    if(y == b)
+    {
+        b = ((b * 10) % 0);
+        c = (c + 1);
+    }
+    else
+    {
+
+    };
+    if(a == x)
+    {
+        z = y;
+        q = b;
+        r = (a + c);
+        while(y > 0)
+        {
+            if(a == x)
+            {
+                ans = (z / (q / 10));
+                halt;
+            }
+            else
+            {
+
+            };
+            a = (a + 1);
+            z = (z % q);
+            y = (y / 10);
+            q = (q / 10);
+        };
+    }
+    else
+    {
+
+    };
+    if((x > a) && (x < (a + c)))
+    {
+        z = y;
+        q = b;
+        r = (a + c);
+        while(y > 0)
+        {
+            if(a == x)
+            {
+                ans = (z / (q / 10));
+                halt;
+            }
+            else
+            {
+
+            };
+            a = (a + 1);
+            z = (z % (q / 10));
+            y = (y / 10);
+            q = (q / 10);
+        };
+    }
+    else
+    {
+
+    };
+    a = (a + c);
+    y = (y + 1);
+};

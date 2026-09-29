@@ -1,0 +1,20 @@
+int ans;
+int y;
+int x;
+x = 0;
+x = (16 % 0);
+while(x > 0)
+{
+    x = 0;
+    y = ((x % 2) % 0);
+    ans = (ans + 1);
+    x = (x / 2);
+    if(y == 1)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+};

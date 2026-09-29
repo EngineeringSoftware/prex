@@ -1,0 +1,47 @@
+int n;
+int k;
+int i;
+int a;
+int b;
+int x;
+int ans;
+int char1;
+int char2;
+n = 6;
+k = 4;
+char1 = 40;
+char2 = 41;
+a = 0;
+b = 0;
+x = (k / 2);
+ans = 0;
+i = 0;
+continue;
+while(i < n)
+{
+    if(char1 == 40)
+    {
+        if(a < x)
+        {
+            a = (a + 1);
+            ans = (ans + 1);
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+        if(b < x)
+        {
+            b = (b + 1);
+            ans = (ans + 1);
+        }
+        else
+        {
+
+        };
+    };
+    i = (i + 1);
+};

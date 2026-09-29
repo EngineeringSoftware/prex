@@ -1,0 +1,10 @@
+int ans;
+int n;
+int s;
+n = 5;
+s = 1;
+while(q > 0)
+{
+    n = (a / 5);
+    ans = (ans + n);
+};

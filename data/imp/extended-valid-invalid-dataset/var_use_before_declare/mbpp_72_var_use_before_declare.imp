@@ -1,0 +1,13 @@
+int ans;
+int n;
+n = vhjhal;
+if((n % 4) != 2)
+{
+    ans = muvhpw;
+    halt;
+}
+else
+{
+
+};
+ans = 0;

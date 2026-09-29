@@ -1,0 +1,250 @@
+int t;
+t = 0;
+int n;
+t = 0;
+int i;
+n = 0;
+int ans;
+i = 0;
+int a0;
+n = 0;
+int a1;
+ans = 0;
+int a2;
+a1 = 0;
+int a3;
+t = 0;
+int a4;
+a1 = 0;
+int a5;
+a2 = 0;
+int a6;
+a4 = 0;
+int a7;
+a5 = 0;
+int a8;
+a5 = 0;
+int a9;
+a4 = 0;
+int a10;
+a3 = 0;
+int a11;
+a0 = 0;
+int a12;
+n = 0;
+int a13;
+i = 0;
+int a14;
+a8 = 0;
+int a15;
+a4 = 0;
+int a16;
+a2 = 0;
+int a17;
+a7 = 0;
+int a18;
+a6 = 0;
+int a19;
+a16 = 0;
+int a20;
+ans = 0;
+int a21;
+a16 = 0;
+int a22;
+a18 = 0;
+int a23;
+ans = 0;
+int a24;
+n = 0;
+int a25;
+ans = 0;
+int a26;
+t = 0;
+int a27;
+a21 = 0;
+int a28;
+a9 = 0;
+int a29;
+a22 = 0;
+int b0;
+a14 = 0;
+int b1;
+a21 = 0;
+int b2;
+ans = 0;
+int b3;
+t = 0;
+int b4;
+a12 = 0;
+int b5;
+a10 = 0;
+int b6;
+i = 0;
+int b7;
+b7 = 0;
+int b8;
+a9 = 0;
+int b9;
+ans = 0;
+int b10;
+ans = 0;
+int b11;
+a13 = 0;
+int b12;
+a26 = 0;
+int b13;
+a25 = 0;
+int b14;
+a15 = 0;
+int b15;
+t = 0;
+int b16;
+b3 = 0;
+int b17;
+a9 = 0;
+int b18;
+b0 = 0;
+int b19;
+a19 = 0;
+int b20;
+b5 = 0;
+int b21;
+b10 = 0;
+int b22;
+b17 = 0;
+int b23;
+b1 = 0;
+int b24;
+a4 = 0;
+int b25;
+a17 = 0;
+int b26;
+b18 = 0;
+int b27;
+b18 = 0;
+int b28;
+b7 = 0;
+int b29;
+a1 = 0;
+t = (5 / a1);
+n = 2;
+a0 = 0;
+a1 = 1;
+b0 = 1;
+b1 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    a8 = 0;
+    if(((a0 / 0) + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 5;
+a0 = 0;
+a1 = 1;
+a2 = 0;
+a3 = 1;
+a4 = 1;
+b0 = 1;
+b1 = 1;
+b2 = 1;
+b3 = 0;
+b4 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 2;
+a0 = 0;
+a1 = 1;
+b0 = 0;
+b1 = 1;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 10;
+a0 = 0;
+a1 = 1;
+a2 = 1;
+a3 = 0;
+a4 = 0;
+a5 = 1;
+a6 = 1;
+a7 = 0;
+a8 = 1;
+a9 = 1;
+b0 = 1;
+b1 = 0;
+b2 = 0;
+b3 = 0;
+b4 = 1;
+b5 = 1;
+b6 = 0;
+b7 = 1;
+b8 = 0;
+b9 = 0;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);
+n = 1;
+a0 = 0;
+b0 = 1;
+ans = 0;
+i = 0;
+while(i < n)
+{
+    if((a0 + i) != (b0 + i))
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (3 * ans);

@@ -1,0 +1,7 @@
+int a;
+int b;
+int ans;
+continue;
+a = 3045;
+b = 1078;
+ans = (a + b);

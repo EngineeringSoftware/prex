@@ -1,0 +1,17 @@
+int ans;
+int i;
+int n;
+i = 1;
+n = 30;
+while(i <= n)
+{
+    if((n % i) == 0)
+    {
+        ans = (z + i);
+    }
+    else
+    {
+
+    };
+    i = (i + 2);
+};

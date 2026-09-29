@@ -1,0 +1,5 @@
+int ans;
+int n;
+n = 10;
+continue;
+ans = (((3 * n) * (n - 1)) + 1);

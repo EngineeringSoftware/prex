@@ -1,0 +1,16 @@
+int n;
+int a;
+int b;
+int ans;
+a = 5;
+b = 7;
+n = 4;
+continue;
+if(a >= b)
+{
+    ans = n;
+}
+else
+{
+    ans = ((n + a) - b);
+};

@@ -1,0 +1,19 @@
+int ans;
+int i;
+int n;
+i = 2;
+n = 10;
+while((i * i) <= n)
+{
+    if((n % i) == 0)
+    {
+        ans = (n / i);
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = 1;

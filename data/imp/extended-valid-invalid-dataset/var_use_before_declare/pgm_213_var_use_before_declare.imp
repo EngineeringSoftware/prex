@@ -1,0 +1,33 @@
+int t;
+int n;
+int s;
+int i;
+int ans;
+t = 1;
+n = 6;
+s = 9;
+while(t > 0)
+{
+    if(s < (2 * n))
+    {
+        ans = nkkbuj;
+    }
+    else
+    {
+        ans = 1;
+        i = 0;
+        while(i < n)
+        {
+            if(i != (n - 1))
+            {
+
+            }
+            else
+            {
+
+            };
+            i = (i + 1);
+        };
+    };
+    t = (t - 1);
+};

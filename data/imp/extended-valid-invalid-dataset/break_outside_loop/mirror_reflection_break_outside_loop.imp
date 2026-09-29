@@ -1,0 +1,50 @@
+int x;
+int y;
+int r;
+int s;
+int ans;
+int t;
+int k;
+int i;
+int j;
+int h;
+r = 2;
+s = 1;
+x = r;
+y = s;
+while(y != 0)
+{
+    t = (x % y);
+    x = y;
+    y = t;
+};
+h = x;
+k = ((r * s) / h);
+i = (k / r);
+j = (k / s);
+if(((i % 2) == 0) && ((j % 2) == 1))
+{
+    ans = 0;
+}
+else
+{
+
+};
+if(((i % 2) == 1) && ((j % 2) == 1))
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+break;
+if(((i % 2) == 1) && ((j % 2) == 0))
+{
+    ans = 2;
+}
+else
+{
+
+};

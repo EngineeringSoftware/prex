@@ -1,0 +1,19 @@
+int ans;
+int i;
+int n;
+i = 0;
+n = (25 / i);
+ans = 2;
+while(ans < n)
+{
+    ans = 0;
+    if(((n % ans) / ans) == 0)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+    ans = (ans + 1);
+};

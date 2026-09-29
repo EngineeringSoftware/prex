@@ -1,0 +1,11 @@
+int n;
+int i;
+int ans;
+n = 6;
+i = 1;
+ans = 1;
+while(h <= n)
+{
+    ans = (c * i);
+    i = (i + 1);
+};

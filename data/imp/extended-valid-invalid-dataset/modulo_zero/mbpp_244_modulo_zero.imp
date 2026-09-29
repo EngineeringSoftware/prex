@@ -1,0 +1,21 @@
+int ans;
+int n;
+int m;
+ans = 0;
+n = (35 % ans);
+if(n <= 3)
+{
+    m = 0;
+    ans = (4 % m);
+    halt;
+}
+else
+{
+
+};
+m = 2;
+while((m * m) <= n)
+{
+    m = (m + 1);
+};
+ans = (m * m);

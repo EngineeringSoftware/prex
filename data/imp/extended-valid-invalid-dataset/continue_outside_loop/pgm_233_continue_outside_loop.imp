@@ -1,0 +1,44 @@
+int l;
+int r;
+int m;
+int k;
+int i;
+int x;
+int y;
+int ans;
+l = 10;
+r = 12;
+continue;
+m = 43;
+k = ((m + r) - l);
+i = l;
+while(i <= r)
+{
+    if((k / i) > 0)
+    {
+        if(((i * (k / i)) >= (m - (r - l))) && ((i * (k / i)) <= (m + (r - l))))
+        {
+            x = (i * ((m + (r - l)) / i));
+            y = (x - m);
+            if(y < 0)
+            {
+                y = (m - x);
+                ans = (((i * 1000000) + ((l + y) * 1000)) + l);
+            }
+            else
+            {
+                ans = (((i * 1000000) + (l * 1000)) + (l + y));
+            };
+            halt;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

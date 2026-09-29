@@ -1,0 +1,16 @@
+int ans;
+int s;
+continue;
+ans = 23;
+s = 0;
+while(ans > 9)
+{
+    while(ans != 0)
+    {
+        s = (s + (ans % 10));
+        ans = (ans / 10);
+    };
+    continue;
+    ans = s;
+    s = 0;
+};

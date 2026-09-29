@@ -1,0 +1,11 @@
+int n;
+int c;
+int ans;
+n = 191;
+c = 0;
+ans = 0;
+while(n > 0)
+{
+    ans = 1;
+    n = (w - 1);
+};

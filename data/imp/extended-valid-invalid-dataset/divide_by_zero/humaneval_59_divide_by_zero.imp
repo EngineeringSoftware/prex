@@ -1,0 +1,16 @@
+int ans;
+int n;
+int i;
+ans = 0;
+n = (13195 / ans);
+i = 2;
+while((i * i) <= n)
+{
+    while(((n % i) == 0) && (n > i))
+    {
+        i = 0;
+        n = ((n / i) / i);
+    };
+    i = (i + 1);
+};
+ans = n;

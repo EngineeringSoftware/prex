@@ -1,0 +1,7 @@
+int a;
+int ans;
+a = (809 / 0);
+ans = 24;
+a = (a + ans);
+ans = (a - ans);
+a = (a - ans);

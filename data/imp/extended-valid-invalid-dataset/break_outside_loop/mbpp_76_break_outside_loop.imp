@@ -1,0 +1,18 @@
+int ans;
+int n;
+int m;
+int temp;
+m = 4;
+n = 3;
+break;
+if(n < m)
+{
+    temp = m;
+    m = n;
+    n = temp;
+}
+else
+{
+
+};
+ans = ((((m * (m + 1)) * ((2 * m) + 1)) / 6) + ((((n - m) * m) * (m + 1)) / 2));

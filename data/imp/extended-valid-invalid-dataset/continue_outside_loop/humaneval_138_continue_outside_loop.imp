@@ -1,0 +1,14 @@
+int ans;
+int n;
+n = 8;
+continue;
+if(((n % 2) == 0) && (n >= 8))
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+ans = 0;

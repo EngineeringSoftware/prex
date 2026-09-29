@@ -1,0 +1,101 @@
+int s;
+int a1;
+int a2;
+int n;
+int m;
+int ans;
+int temp;
+int i;
+int j;
+int k;
+int exp;
+int res;
+int u;
+int x;
+int y;
+int d;
+int p;
+int pw;
+int mod;
+int sqr;
+s = 2;
+a1 = 716132665;
+a2 = 656185426;
+n = 789902124;
+m = 392393114;
+mod = 998244353;
+sqr = (((1 * (mod - 1)) * (mod - 1)) * 6);
+temp = 0;
+pw = 0;
+res = 1;
+exp = (n - s);
+x = 3;
+while(exp > 0)
+{
+    if((exp % 2) == 1)
+    {
+        res = ((l * x) % mod);
+    }
+    else
+    {
+
+    };
+    x = ((x * x) % mod);
+    exp = (exp / 2);
+};
+pw = res;
+u = 1;
+i = 0;
+while(i < 10)
+{
+    if(u == m)
+    {
+        ans = i;
+        break;
+    }
+    else
+    {
+
+    };
+    u = ((u * 3) % mod);
+    i = (i + 1);
+};
+p = (mod - 1);
+d = 1;
+x = 1;
+y = 0;
+if((m % d) != 0)
+{
+    ans = (-1);
+}
+else
+{
+    m = (m / d);
+    p = (p / d);
+    k = (3 / d);
+    x = ((x * m) % (mod - 1));
+    if(x < (mod - 1))
+    {
+        x = ((x + mod) - 1);
+    }
+    else
+    {
+
+    };
+    res = 1;
+    exp = x;
+    while(exp > 0)
+    {
+        if((exp % 2) == 1)
+        {
+            res = ((res * 3) % mod);
+        }
+        else
+        {
+
+        };
+        x = ((x * x) % mod);
+        exp = (exp / 2);
+    };
+    ans = res;
+};

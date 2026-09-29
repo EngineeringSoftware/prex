@@ -1,0 +1,49 @@
+int n;
+int x;
+int y;
+int min;
+int div;
+int i;
+int j;
+int nper;
+int ans;
+n = 8;
+x = ((n / 2) + 1);
+y = 1;
+min = 1000000007;
+div = (-1);
+i = 1;
+while(i <= n)
+{
+    j = 0;
+    nper = ((((n / j) + i) - 1) / i);
+    if((nper + i) <= min)
+    {
+        min = (nper + i);
+        div = i;
+    }
+    else
+    {
+        break;
+    };
+    i = (i + 1);
+};
+nper = (((n + div) - 1) / div);
+i = 1;
+while(i <= div)
+{
+    j = 0;
+    while(j < nper)
+    {
+        if(((((div - i) * nper) + j) + 1) <= n)
+        {
+            ans = ((((div - i) * nper) + j) + 1);
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};

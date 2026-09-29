@@ -1,0 +1,171 @@
+int T;
+int n;
+int k;
+int i;
+int j;
+int len;
+int ans;
+int pos1;
+int pos2;
+int change;
+int s1;
+int s2;
+int s3;
+int s4;
+int s5;
+int s6;
+int s7;
+int s8;
+int s9;
+int s10;
+int s11;
+int s12;
+int s13;
+int s14;
+int s15;
+int s16;
+int s17;
+int s18;
+int s19;
+int s20;
+T = 4;
+n = 8;
+k = 2;
+s1 = 40;
+s2 = 41;
+s3 = 40;
+s4 = 41;
+s5 = 40;
+s6 = 41;
+s7 = 40;
+s8 = 41;
+k = ((n / 2) - k);
+i = 1;
+change = 0;
+while(i <= k)
+{
+    if(s1 == 40)
+    {
+        s2 = 0;
+        i = ((i % s2) + 1);
+        continue;
+    }
+    else
+    {
+
+    };
+    j = (i + 1);
+    while(j <= n)
+    {
+        if(s1 == 40)
+        {
+            s1 = 41;
+            pos1 = i;
+            pos2 = j;
+            change = (change + 1);
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};
+i = (k + 1);
+while(i <= (2 * k))
+{
+    if(s1 == 41)
+    {
+        i = (i + 1);
+        continue;
+    }
+    else
+    {
+
+    };
+    j = (i + 1);
+    while(j <= n)
+    {
+        if(s1 == 41)
+        {
+            s1 = 40;
+            pos1 = i;
+            pos2 = j;
+            change = (change + 1);
+            break;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};
+i = ((2 * k) + 1);
+while(i <= n)
+{
+    if((i % 2) == 1)
+    {
+        if(s1 == 40)
+        {
+            i = (i + 1);
+            continue;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+        if(s1 == 41)
+        {
+            i = (i + 1);
+            continue;
+        }
+        else
+        {
+
+        };
+    };
+    j = (i + 1);
+    while(j <= n)
+    {
+        if((i % 2) == 1)
+        {
+            if(s1 == 40)
+            {
+                s1 = 41;
+                pos1 = i;
+                pos2 = j;
+                change = (change + 1);
+                break;
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(s1 == 41)
+            {
+                s1 = 40;
+                pos1 = i;
+                pos2 = j;
+                change = (change + 1);
+                break;
+            }
+            else
+            {
+
+            };
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};
+ans = change;

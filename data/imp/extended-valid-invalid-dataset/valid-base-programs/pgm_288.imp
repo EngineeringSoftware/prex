@@ -1,0 +1,91 @@
+int t;
+int n;
+int m;
+int sa;
+int sb;
+int a1;
+int a2;
+int b1;
+int b2;
+int ans;
+t = 2;
+n = 2;
+a1 = 1;
+a2 = 1;
+m = 2;
+b1 = 1;
+b2 = 1;
+if(n != m)
+{
+    ans = 0;
+}
+else
+{
+    sa = (a1 + a2);
+    sb = (b1 + b2);
+    if(((sb % 2) == 1) || ((sa % 2) == 1))
+    {
+        ans = 0;
+    }
+    else
+    {
+        sa = (sa / 2);
+        sb = (sb / 2);
+        if(((((sa == sb) && (a1 == b1)) || (a1 == b2)) && (a2 == b1)) || (a2 == b2))
+        {
+            ans = 1;
+        }
+        else
+        {
+            ans = 0;
+        };
+    };
+};
+if(ans == 1)
+{
+
+}
+else
+{
+
+};
+n = 2;
+a1 = 1;
+a2 = 2;
+m = 2;
+b1 = 3;
+b2 = 3;
+if(n != m)
+{
+    ans = 0;
+}
+else
+{
+    sa = (a1 + a2);
+    sb = (b1 + b2);
+    if(((sb % 2) == 1) || ((sa % 2) == 1))
+    {
+        ans = 0;
+    }
+    else
+    {
+        sa = (sa / 2);
+        sb = (sb / 2);
+        if(((((sa == sb) && (a1 == b1)) || (a1 == b2)) && (a2 == b1)) || (a2 == b2))
+        {
+            ans = 1;
+        }
+        else
+        {
+            ans = 0;
+        };
+    };
+};
+if(ans == 1)
+{
+
+}
+else
+{
+
+};

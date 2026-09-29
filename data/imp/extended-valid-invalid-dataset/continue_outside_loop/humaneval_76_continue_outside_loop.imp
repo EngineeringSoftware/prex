@@ -1,0 +1,25 @@
+int a;
+int b;
+int ans;
+int c;
+int d;
+continue;
+a = 1;
+b = 0;
+c = 8;
+d = 2;
+while((a <= c) && (b < 100))
+{
+    if(a == c)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+
+    };
+    a = (a * d);
+    b = (b + 1);
+};
+ans = 0;

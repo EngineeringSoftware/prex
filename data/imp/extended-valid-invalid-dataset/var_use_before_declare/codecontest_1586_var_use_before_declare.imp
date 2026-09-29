@@ -1,0 +1,33 @@
+int n;
+int k;
+int ans;
+int x;
+int y;
+int i;
+int j;
+n = 5;
+k = 3;
+x = (n - 1);
+while(x > 0)
+{
+    x = (v / k);
+    ans = (ans + 1);
+};
+i = 1;
+while(i < n)
+{
+    j = (i + 1);
+    while(j <= n)
+    {
+        x = (i - 1);
+        y = (j - 1);
+        while(x != y)
+        {
+            x = (x / k);
+            y = (y / k);
+            ans = (ans + 1);
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};

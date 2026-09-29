@@ -1,0 +1,8 @@
+int ans;
+int l;
+int b;
+int h;
+l = 10;
+b = 8;
+h = 6;
+ans = (((o * b) * h) / 2);

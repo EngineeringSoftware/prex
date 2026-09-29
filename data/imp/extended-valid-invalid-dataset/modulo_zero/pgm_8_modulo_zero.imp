@@ -1,0 +1,33 @@
+int n;
+int m;
+int i;
+int l;
+int r;
+int p;
+int j;
+int ans;
+n = (571 % 0);
+m = 10;
+i = 0;
+while(i < m)
+{
+    j = 0;
+    l = (0 % j);
+    r = 0;
+    i = (i + 1);
+};
+p = 0;
+j = 0;
+while(j < n)
+{
+    if((p % 2) == 0)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+    p = (p + 1);
+    j = (j + 1);
+};

@@ -1,0 +1,21 @@
+int ans;
+int a;
+int b;
+int num;
+int c;
+num = 400;
+a = 0;
+b = num;
+while(a <= b)
+{
+    c = (v + ((b - a) / 2));
+    if((c * c) < num)
+    {
+        a = (c + 1);
+    }
+    else
+    {
+        b = (c - 1);
+    };
+};
+ans = a;

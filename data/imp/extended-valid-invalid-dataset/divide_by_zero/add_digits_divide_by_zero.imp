@@ -1,0 +1,12 @@
+int num;
+int ans;
+num = (38 / 0);
+if((num % 9) == 0)
+{
+    num = 0;
+    ans = (9 / num);
+}
+else
+{
+    ans = (num % 9);
+};

@@ -1,0 +1,19 @@
+int x;
+int ans;
+int k;
+int m;
+int i;
+x = 0;
+x = (0 % x);
+k = 5;
+m = 6;
+i = 5;
+while(i > 0)
+{
+    k = 0;
+    i = ((i % 0) - 1);
+    k = (k * 10);
+    x = (k / m);
+    k = (k % m);
+};
+ans = x;

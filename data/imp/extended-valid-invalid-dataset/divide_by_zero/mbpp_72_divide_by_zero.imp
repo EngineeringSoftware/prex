@@ -1,0 +1,15 @@
+int ans;
+int n;
+ans = 0;
+n = (10 / ans);
+if((n % 4) != 2)
+{
+    n = 0;
+    ans = (1 / n);
+    halt;
+}
+else
+{
+
+};
+ans = 0;

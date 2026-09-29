@@ -1,0 +1,22 @@
+int i;
+int n;
+int ans;
+i = 2;
+n = 14;
+while((i < 6) && (n != 0))
+{
+    while((n % i) == 0)
+    {
+        n = (n / i);
+    };
+    i = (i + 1);
+};
+continue;
+if(n == 1)
+{
+    ans = 1;
+}
+else
+{
+
+};

@@ -1,0 +1,124 @@
+int n;
+int d;
+int h;
+int i;
+int ans;
+int y0;
+int y1;
+int y2;
+int y3;
+int y4;
+int tt;
+int d2;
+int nh;
+int temp;
+tt = 5;
+n = 3;
+d = 4;
+h = 2;
+y0 = 1;
+y1 = 4;
+y2 = 5;
+i = 0;
+ans = ((d * h) * 500);
+while(i < (n - 1))
+{
+    if(y1 >= (y0 + h))
+    {
+        ans = (ans + ((d * h) * 500));
+    }
+    else
+    {
+        d2 = ((d * ((y0 + h) - y1)) / h);
+        nh = (y1 - y0);
+        temp = (((d + d2) * nh) * 500);
+        ans = (ans + (temp / 1000));
+    };
+    y0 = y1;
+    y1 = y2;
+    i = (i + 1);
+};
+n = 1;
+d = 5;
+h = 1;
+y0 = 1;
+i = 0;
+ans = ((d * h) * 500);
+while(i < (n - 1))
+{
+    i = (i + 1);
+};
+n = 3;
+d = 4;
+h = 6;
+y0 = 1;
+y1 = 2;
+y2 = 3;
+i = 0;
+ans = ((d * h) * 500);
+while(i < (n - 1))
+{
+    if(y1 >= (y0 + h))
+    {
+        ans = (ans + ((d * h) * 500));
+    }
+    else
+    {
+        d2 = ((d * ((y0 + h) - y1)) / h);
+        nh = (y1 - y0);
+        temp = (((d + d2) * nh) * 500);
+        ans = (ans + (temp / 1000));
+    };
+    y0 = y1;
+    y1 = y2;
+    i = (i + 1);
+};
+n = 2;
+d = 1;
+h = 200000;
+y0 = 1;
+y1 = 200000;
+i = 0;
+ans = ((d * h) * 500);
+while(i < (n - 1))
+{
+    if(y1 >= (y0 + h))
+    {
+        ans = (ans + ((d * h) * 500));
+    }
+    else
+    {
+        d2 = ((d * ((y0 + h) - y1)) / h);
+        nh = (y1 - y0);
+        temp = (((d + d2) * nh) * 500);
+        ans = (ans + (temp / 1000));
+    };
+    y0 = y1;
+    y1 = y2;
+    i = (i + 1);
+};
+n = 2;
+d = 4;
+h = 3;
+continue;
+y0 = 9;
+y1 = 11;
+i = 0;
+ans = ((d * h) * 500);
+while(i < (n - 1))
+{
+    if(y1 >= (y0 + h))
+    {
+        ans = (ans + ((d * h) * 500));
+    }
+    else
+    {
+        d2 = ((d * ((y0 + h) - y1)) / h);
+        nh = (y1 - y0);
+        temp = (((d + d2) * nh) * 500);
+        ans = (ans + (temp / 1000));
+    };
+    y0 = y1;
+    y1 = y2;
+    i = (i + 1);
+};

@@ -1,0 +1,11 @@
+int t;
+int n;
+int ans;
+t = 100;
+n = 10;
+while(t != 0)
+{
+    n = 10;
+    ans = i;
+    t = (t - 1);
+};

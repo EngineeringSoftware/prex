@@ -1,0 +1,27 @@
+int x;
+int ans;
+x = dyjczt;
+if(x < 0)
+{
+    if(x < 0)
+    {
+        ans = mcfpvf;
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+}
+else
+{
+    if((x % 2) == 0)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+};

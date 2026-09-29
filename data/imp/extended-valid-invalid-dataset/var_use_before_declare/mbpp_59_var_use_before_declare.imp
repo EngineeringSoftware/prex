@@ -1,0 +1,4 @@
+int ans;
+int n;
+n = 10;
+ans = (((3 * i) * n) - (2 * n));

@@ -1,0 +1,42 @@
+int a;
+int b;
+int c;
+int t;
+int ans;
+t = 1;
+a = 1;
+b = 499999999;
+c = 499999998;
+while(t > 0)
+{
+    if((a * b) <= c)
+    {
+        if((a == c) && (b == 1))
+        {
+            ans = (- 1);
+            halt;
+        }
+        else
+        {
+
+        };
+        ans = 1;
+        halt;
+    }
+    else
+    {
+
+    };
+    if(a >= c)
+    {
+        ans = (- 1);
+        halt;
+    }
+    else
+    {
+
+    };
+    ans = 1;
+    halt;
+    t = (t - 1);
+};

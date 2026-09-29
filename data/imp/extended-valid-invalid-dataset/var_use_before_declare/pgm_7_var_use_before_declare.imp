@@ -1,0 +1,14 @@
+int n;
+int k;
+int a;
+int ans;
+n = 571;
+k = 10;
+a = 1;
+ans = 0;
+while(n != 0)
+{
+    ans = b;
+    a = (1 - a);
+    n = (n - 1);
+};

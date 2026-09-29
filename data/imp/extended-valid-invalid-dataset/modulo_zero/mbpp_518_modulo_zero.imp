@@ -1,0 +1,23 @@
+int ans;
+int a;
+int b;
+int num;
+int c;
+b = 0;
+num = (400 % b);
+a = 0;
+b = num;
+while(a <= b)
+{
+    ans = 0;
+    c = ((a % ans) + ((b - a) / 2));
+    if((c * c) < num)
+    {
+        a = (c + 1);
+    }
+    else
+    {
+        b = (c - 1);
+    };
+};
+ans = a;

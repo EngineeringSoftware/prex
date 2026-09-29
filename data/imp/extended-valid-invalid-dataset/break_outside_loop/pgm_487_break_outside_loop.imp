@@ -1,0 +1,169 @@
+int n;
+int t;
+int i;
+int j;
+int temp;
+int a1val;
+int a1id;
+int a2val;
+int a2id;
+int a3val;
+int a3id;
+int ans;
+t = 3;
+n = 1;
+a1val = 100000;
+a1id = 1;
+n = 2;
+a1val = 1;
+a1id = 1;
+a2val = 1;
+a2id = 2;
+break;
+n = 3;
+a1val = 10;
+a1id = 1;
+a2val = 3;
+a2id = 2;
+a3val = 3;
+a3id = 3;
+while(t > 0)
+{
+    if(n >= 2)
+    {
+        if(a1val < a2val)
+        {
+            temp = a1val;
+            a1val = a2val;
+            a2val = temp;
+            temp = a1id;
+            a1id = a2id;
+            a2id = temp;
+        }
+        else
+        {
+
+        };
+        if(n == 3)
+        {
+            if(a2val < a3val)
+            {
+                temp = a2val;
+                a2val = a3val;
+                a3val = temp;
+                temp = a2id;
+                a2id = a3id;
+                a3id = temp;
+            }
+            else
+            {
+
+            };
+            if(a1val < a2val)
+            {
+                temp = a1val;
+                a1val = a2val;
+                a2val = temp;
+                temp = a1id;
+                a1id = a2id;
+                a2id = temp;
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    a1val = 1;
+    a2val = 2;
+    a3val = 3;
+    if(n >= 2)
+    {
+        if(a1id > a2id)
+        {
+            temp = a1val;
+            a1val = a2val;
+            a2val = temp;
+            temp = a1id;
+            a1id = a2id;
+            a2id = temp;
+        }
+        else
+        {
+
+        };
+        if(n == 3)
+        {
+            if(a2id > a3id)
+            {
+                temp = a2val;
+                a2val = a3val;
+                a3val = temp;
+                temp = a2id;
+                a2id = a3id;
+                a3id = temp;
+            }
+            else
+            {
+
+            };
+            if(a1id > a2id)
+            {
+                temp = a1val;
+                a1val = a2val;
+                a2val = temp;
+                temp = a1id;
+                a1id = a2id;
+                a2id = temp;
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    if(n >= 1)
+    {
+        ans = a1val;
+        halt;
+    }
+    else
+    {
+
+    };
+    if(n >= 2)
+    {
+        ans = a2val;
+        halt;
+    }
+    else
+    {
+
+    };
+    if(n == 3)
+    {
+        ans = a3val;
+        halt;
+    }
+    else
+    {
+
+    };
+    t = (t - 1);
+};

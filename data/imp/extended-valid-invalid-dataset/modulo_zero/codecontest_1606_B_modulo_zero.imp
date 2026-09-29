@@ -1,0 +1,21 @@
+int a;
+int b;
+int ans;
+int c;
+a = (8 % 0);
+b = 3;
+c = 1;
+while(c < b)
+{
+    ans = 0;
+    c = ((c * 2) % ans);
+    ans = (ans + 1);
+};
+if(c < a)
+{
+    ans = ((((a - c) + b) - 1) / b);
+}
+else
+{
+
+};

@@ -1,0 +1,11 @@
+int i;
+int ans;
+int n;
+break;
+n = 6;
+i = n;
+while(i > 0)
+{
+    ans = (ans + i);
+    i = (i - 2);
+};

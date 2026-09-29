@@ -1,0 +1,92 @@
+int t;
+int n;
+int i;
+int j;
+int ans;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int b0;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+int opcount;
+int op1;
+int op2;
+int op3;
+int op4;
+int op5;
+int op6;
+int op7;
+int op8;
+int op9;
+int op10;
+int op11;
+int op12;
+int op13;
+int op14;
+int op15;
+int op16;
+int op17;
+int op18;
+int op19;
+t = 5;
+n = 2;
+a0 = 0;
+a1 = 1;
+b0 = 1;
+b1 = 0;
+continue;
+opcount = 0;
+i = 1;
+while(i >= 0)
+{
+    if((((a0 != b0) || (a1 != b1))) && (i >= 0))
+    {
+        if(a0 == b1)
+        {
+            op1 = 1;
+            a0 = (1 - a0);
+            opcount = (opcount + 1);
+        }
+        else
+        {
+
+        };
+        j = 0;
+        while(j <= i)
+        {
+            a0 = (a0 + a1);
+            a1 = (a0 - a1);
+            a0 = (a0 - a1);
+            j = (j + 1);
+        };
+        j = 0;
+        while(j <= i)
+        {
+            a0 = (1 - a0);
+            j = (j + 1);
+        };
+        op2 = (i + 1);
+        opcount = (opcount + 1);
+    }
+    else
+    {
+
+    };
+    i = (i - 1);
+};
+ans = opcount;

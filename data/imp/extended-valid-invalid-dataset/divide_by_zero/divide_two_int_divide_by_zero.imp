@@ -1,0 +1,47 @@
+int a;
+int b;
+int aa;
+int bb;
+int tmp;
+int m;
+int ans;
+b = 0;
+a = (10 / b);
+b = 3;
+if(a < 0)
+{
+    b = 0;
+    aa = (((-1) / b) * a);
+}
+else
+{
+    aa = a;
+};
+if(b < 0)
+{
+    bb = ((-1) * b);
+}
+else
+{
+    bb = b;
+};
+while(bb <= aa)
+{
+    m = bb;
+    tmp = 1;
+    while(m <= (aa - m))
+    {
+        m = (m + m);
+        tmp = (tmp + tmp);
+    };
+    ans = (ans + tmp);
+    aa = (aa - m);
+};
+if(((((a < 0) && (b > 0))) || ((a > 0))) && (b < 0))
+{
+    ans = (ans * (-1));
+}
+else
+{
+
+};

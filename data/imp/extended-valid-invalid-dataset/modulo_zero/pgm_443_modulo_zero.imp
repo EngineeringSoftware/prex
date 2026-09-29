@@ -1,0 +1,166 @@
+int t;
+int i;
+int j;
+int len;
+int p;
+int foundb;
+int founda;
+int ans;
+t = 5;
+while(t != 0)
+{
+    len = (4 % 0);
+    i = 0;
+    while(i < len)
+    {
+        if(i == 0)
+        {
+            j = 2;
+        }
+        else
+        {
+
+        };
+        if(i == 1)
+        {
+            j = 2;
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            j = 2;
+        }
+        else
+        {
+
+        };
+        if(i == 3)
+        {
+            j = 1;
+        }
+        else
+        {
+
+        };
+        if(i == 0)
+        {
+            ans = j;
+        }
+        else
+        {
+
+        };
+        if(i == 1)
+        {
+            p = j;
+        }
+        else
+        {
+
+        };
+        if(i == 2)
+        {
+            i = j;
+        }
+        else
+        {
+
+        };
+        if(i == 3)
+        {
+            j = j;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    foundb = 0;
+    p = 1;
+    while(p < (len - 1))
+    {
+        if(p == 1)
+        {
+            j = 2;
+        }
+        else
+        {
+
+        };
+        if(p == 2)
+        {
+            j = 2;
+        }
+        else
+        {
+
+        };
+        if(j == 2)
+        {
+            foundb = 1;
+            break;
+        }
+        else
+        {
+
+        };
+        p = (p + 1);
+    };
+    if((foundb == 1) && ((len - p) >= (p + 1)))
+    {
+        p = (p + 1);
+        ans = 1;
+        ans = 2;
+        ans = 1;
+    }
+    else
+    {
+        founda = 0;
+        p = 1;
+        while(p < (len - 1))
+        {
+            if(p == 1)
+            {
+                j = 2;
+            }
+            else
+            {
+
+            };
+            if(p == 2)
+            {
+                j = 2;
+            }
+            else
+            {
+
+            };
+            if(j == 1)
+            {
+                founda = 1;
+                break;
+            }
+            else
+            {
+
+            };
+            p = (p + 1);
+        };
+        if(founda == 1)
+        {
+            p = (p + 1);
+            ans = 1;
+            ans = 1;
+            ans = 1;
+        }
+        else
+        {
+
+        };
+    };
+    t = (t - 1);
+};

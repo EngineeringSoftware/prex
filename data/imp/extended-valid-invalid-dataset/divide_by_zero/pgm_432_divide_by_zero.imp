@@ -1,0 +1,253 @@
+int a;
+int b;
+int c;
+int d;
+int i;
+int j;
+int x;
+int y;
+int k1;
+int k2;
+int ans;
+int t;
+int count;
+y = 0;
+ans = (0 / y);
+t = 4;
+a = 4243;
+b = 1019;
+c = 26812;
+d = 3260;
+count = 0;
+i = 1;
+while((i * i) <= a)
+{
+    if((a % i) == 0)
+    {
+        ans = 0;
+        x = (i / ans);
+        y = (a / i);
+        j = 1;
+        while((j * j) <= b)
+        {
+            if((b % j) == 0)
+            {
+                k1 = ((a / x) + 1);
+                k2 = ((b / j) + 1);
+                if(((k1 * x) <= c) && ((k2 * j) <= d))
+                {
+                    ans = 1;
+                    count = 1;
+                    break;
+                }
+                else
+                {
+
+                };
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        if(count == 1)
+        {
+            break;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(count == 0)
+{
+    ans = (-1);
+}
+else
+{
+
+};
+a = 6131;
+b = 1973;
+c = 25403;
+d = 4730;
+count = 0;
+i = 1;
+while((i * i) <= a)
+{
+    if((a % i) == 0)
+    {
+        x = i;
+        y = (a / i);
+        j = 1;
+        while((j * j) <= b)
+        {
+            if((b % j) == 0)
+            {
+                k1 = ((a / x) + 1);
+                k2 = ((b / j) + 1);
+                if(((k1 * x) <= c) && ((k2 * j) <= d))
+                {
+                    ans = 1;
+                    count = 1;
+                    break;
+                }
+                else
+                {
+
+                };
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        if(count == 1)
+        {
+            break;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(count == 0)
+{
+    ans = (-1);
+}
+else
+{
+
+};
+a = 8543;
+b = 1711;
+c = 18582;
+d = 8077;
+count = 0;
+i = 1;
+while((i * i) <= a)
+{
+    if((a % i) == 0)
+    {
+        x = i;
+        y = (a / i);
+        j = 1;
+        while((j * j) <= b)
+        {
+            if((b % j) == 0)
+            {
+                k1 = ((a / x) + 1);
+                k2 = ((b / j) + 1);
+                if(((k1 * x) <= c) && ((k2 * j) <= d))
+                {
+                    ans = 1;
+                    count = 1;
+                    break;
+                }
+                else
+                {
+
+                };
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        if(count == 1)
+        {
+            break;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(count == 0)
+{
+    ans = (-1);
+}
+else
+{
+
+};
+a = 1339;
+b = 12163;
+c = 2844;
+d = 29232;
+count = 0;
+i = 1;
+while((i * i) <= a)
+{
+    if((a % i) == 0)
+    {
+        x = i;
+        y = (a / i);
+        j = 1;
+        while((j * j) <= b)
+        {
+            if((b % j) == 0)
+            {
+                k1 = ((a / x) + 1);
+                k2 = ((b / j) + 1);
+                if(((k1 * x) <= c) && ((k2 * j) <= d))
+                {
+                    ans = 1;
+                    count = 1;
+                    break;
+                }
+                else
+                {
+
+                };
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        if(count == 1)
+        {
+            break;
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(count == 0)
+{
+    ans = (-1);
+}
+else
+{
+
+};

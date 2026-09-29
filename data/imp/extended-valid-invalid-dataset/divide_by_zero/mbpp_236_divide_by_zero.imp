@@ -1,0 +1,19 @@
+int a;
+int b;
+int ans;
+int n;
+int k;
+n = (4 / 0);
+k = 2;
+if(n < k)
+{
+    b = 0;
+    ans = ((-1) / b);
+    halt;
+}
+else
+{
+    a = ((((n - k) + 1) * ((n - k) + 2)) / 2);
+    b = ((((n - (2 * k)) + 1) * ((n - (2 * k)) + 2)) / 2);
+    ans = (a + b);
+};

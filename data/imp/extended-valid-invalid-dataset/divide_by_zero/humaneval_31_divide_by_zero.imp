@@ -1,0 +1,28 @@
+int ans;
+int n;
+int i;
+n = (61 / 0);
+if(n < 2)
+{
+    ans = (0 / 0);
+    halt;
+}
+else
+{
+
+};
+i = 2;
+while((i * i) <= n)
+{
+    if((n % i) == 0)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = 1;

@@ -1,0 +1,18 @@
+int ans;
+int i;
+int n;
+i = 1;
+n = 30;
+while(i <= n)
+{
+    if((n % i) == 0)
+    {
+        n = 0;
+        ans = ((ans / n) + i);
+    }
+    else
+    {
+
+    };
+    i = (i + 2);
+};

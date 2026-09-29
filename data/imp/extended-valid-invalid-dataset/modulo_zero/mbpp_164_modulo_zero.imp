@@ -1,0 +1,35 @@
+int a;
+int b;
+int c;
+int d;
+int ans;
+int e;
+int f;
+a = 0;
+e = (36 % 0);
+f = 57;
+a = e;
+b = f;
+c = 2;
+d = 0;
+while(c <= ((a + b) / 2))
+{
+    ans = 0;
+    if((((a % c) % ans) == 0) && ((b % c) == 0))
+    {
+        d = (d + 1);
+    }
+    else
+    {
+
+    };
+    c = (c + 1);
+};
+if(d == 0)
+{
+    ans = 1;
+}
+else
+{
+    ans = 0;
+};

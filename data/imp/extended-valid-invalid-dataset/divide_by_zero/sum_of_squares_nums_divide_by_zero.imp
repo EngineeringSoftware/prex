@@ -1,0 +1,41 @@
+int a;
+int ans;
+int x;
+int b;
+x = (5 / 0);
+a = 2;
+while((a * a) <= x)
+{
+    if((x % a) != 0)
+    {
+        b = 0;
+        a = ((a / b) + 1);
+        continue;
+    }
+    else
+    {
+
+    };
+    while((x % a) == 0)
+    {
+        b = (b + 1);
+        x = (x / a);
+    };
+    if(((a % 4) == 3) && ((b % 2) == 1))
+    {
+        halt;
+    }
+    else
+    {
+
+    };
+    a = (a + 1);
+};
+if((x % 4) != 3)
+{
+    ans = 1;
+}
+else
+{
+
+};

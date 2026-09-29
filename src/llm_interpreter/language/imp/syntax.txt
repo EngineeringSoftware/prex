@@ -1,0 +1,33 @@
+<program>   ::= <stmt_list>
+<stmt_list> ::= ε | <stmt> ';' <stmt_list>
+<stmt>      ::= 'int' <id>
+            | <id> '{ASSIGN_OP}' <aexp>
+            | '{IF}' '(' <bexp> ')' '{{' <stmt_list> '}}' '{ELSE}' '{{' <stmt_list> '}}'
+            | '{WHILE}' '(' <bexp> ')' '{{' <stmt_list> '}}'
+            | '{LOOP}' '(' <bexp> ')' '{{' <stmt_list> '}}'
+            | '{HALT}'
+            | '{CONTINUE}'
+            | '{BREAK}'
+	        | '{LE}'
+<aexp>      ::= <id>
+	        | <literal>
+            | '(' <aexp> <mathop> <aexp> ')'
+            | '(' '{PLUS_OP}' <aexp> ')'
+            | '(' '{MINUS_OP}' <aexp> ')' 
+<bexp>      ::= <bool>
+            | '(' <aexp> <relop> <aexp> ')'
+            | '(' '{NOT_OP}' <bexp> ')'
+            | '(' <bexp> <logop> <bexp> ')'
+<bool>      ::= 'true' | 'false'
+<mathop>    ::= '{PLUS_OP}' | '{MINUS_OP}' | '{MUL_OP}' | '{DIV_OP}' | '{MOD_OP}'
+<relop>     ::= '{LT_OP}' | '{LTEQ_OP}' | '{GT_OP}' | '{GTEQ_OP}' | '{EQ_OP}' | '{NEQ_OP}'
+<logop>     ::= '{AND_OP}' | '{OR_OP}'
+<id>        ::= <letter>+
+<literal>   ::= <digit>+
+<letter>    ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j'
+            | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't'
+            | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+            | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J'
+            | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T'
+            | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+<digit>     ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'

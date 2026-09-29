@@ -1,0 +1,96 @@
+int T;
+int n;
+int i;
+int u;
+int index;
+int ans105105;
+T = 1;
+break;
+n = 10;
+while(T > 0)
+{
+    if((n % 2) == 1)
+    {
+        i = 1;
+        while(i <= n)
+        {
+            u = 1;
+            while(u <= n)
+            {
+                index = (((i - 1) * 105) + u);
+                ans105105 = (-1);
+                u = (u + 1);
+            };
+            i = (i + 1);
+        };
+        i = 1;
+        while(i <= (n / 2))
+        {
+            u = 1;
+            while(u <= (n - i))
+            {
+                index = (((u - 1) * 105) + (u + i));
+                ans105105 = 1;
+                u = (u + 1);
+            };
+            i = (i + 1);
+        };
+    }
+    else
+    {
+        i = 1;
+        while(i <= n)
+        {
+            u = 1;
+            while(u <= n)
+            {
+                index = (((i - 1) * 105) + u);
+                if((i + u) == (n + 1))
+                {
+                    ans105105 = 0;
+                }
+                else
+                {
+                    ans105105 = (-1);
+                };
+                u = (u + 1);
+            };
+            i = (i + 1);
+        };
+        i = 1;
+        while(i <= (n / 2))
+        {
+            u = (i + 1);
+            while(u <= (n / 2))
+            {
+                index = (((i - 1) * 105) + u);
+                ans105105 = 1;
+                u = (u + 1);
+            };
+            i = (i + 1);
+        };
+        i = 1;
+        while(i <= (n / 2))
+        {
+            u = ((n - i) + 2);
+            while(u <= n)
+            {
+                index = (((i - 1) * 105) + u);
+                ans105105 = 1;
+                u = (u + 1);
+            };
+            i = (i + 1);
+        };
+    };
+    i = 1;
+    while(i <= n)
+    {
+        u = (i + 1);
+        while(u <= n)
+        {
+            u = (u + 1);
+        };
+        i = (i + 1);
+    };
+    T = (T - 1);
+};

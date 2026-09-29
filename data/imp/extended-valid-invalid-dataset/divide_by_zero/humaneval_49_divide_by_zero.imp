@@ -1,0 +1,15 @@
+int ans;
+int n;
+int p;
+int i;
+n = 3;
+p = 11;
+ans = 1;
+i = 0;
+while(i < n)
+{
+    p = 0;
+    ans = ((ans * 2) / p);
+    ans = (ans % p);
+    i = (i + 1);
+};

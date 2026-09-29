@@ -1,0 +1,52 @@
+int N;
+int K;
+int c;
+int q;
+int r;
+int i;
+int tc;
+int ans;
+N = 3;
+K = 1;
+continue;
+tc = 1;
+while(tc > 0)
+{
+    if(N == K)
+    {
+        ans = 0;
+        tc = 0;
+    }
+    else
+    {
+        c = 2;
+        while(c <= N)
+        {
+            q = (N / c);
+            r = (N % c);
+            if(((((q >= 2) && (((((q - 2) * c) + r) + 2) == K))) || ((q == 1))) && (K == (r + 1)))
+            {
+                i = 0;
+                while(i < N)
+                {
+                    if((i % c) == 0)
+                    {
+                        ans = 0;
+                    }
+                    else
+                    {
+                        ans = 1;
+                    };
+                    i = (i + 1);
+                };
+                ans = 2;
+                tc = 0;
+            }
+            else
+            {
+
+            };
+            c = (c + 1);
+        };
+    };
+};

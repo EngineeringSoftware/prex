@@ -1,0 +1,148 @@
+int n;
+int m;
+int i;
+int j;
+int x;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+int b10;
+int on1;
+int on2;
+int on3;
+int on4;
+int on5;
+int on6;
+int on7;
+int on8;
+int on9;
+int on10;
+int ans;
+int flag;
+n = 100000;
+m = 1;
+x = 12345;
+flag = 1;
+a1 = 0;
+a2 = 0;
+a3 = 0;
+a4 = 0;
+a5 = 0;
+a6 = 0;
+a7 = 0;
+a8 = 0;
+a9 = 0;
+a10 = 0;
+b1 = 0;
+b2 = 0;
+b3 = 0;
+b4 = 0;
+b5 = 0;
+b6 = 0;
+b7 = 0;
+b8 = 0;
+b9 = 0;
+b10 = 0;
+on1 = 0;
+on2 = 0;
+on3 = 0;
+on4 = 0;
+on5 = 0;
+on6 = 0;
+on7 = 0;
+on8 = 0;
+on9 = 0;
+on10 = 0;
+i = 2;
+while(i <= 10)
+{
+    if(a1 == 0)
+    {
+        j = i;
+        while(j <= 10)
+        {
+            a1 = i;
+            j = (j + i);
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+i = 0;
+while(i < m)
+{
+    if(flag == 1)
+    {
+        if(on1 == 1)
+        {
+
+        }
+        else
+        {
+            j = x;
+            while(j > 1)
+            {
+                if(b1 != 0)
+                {
+                    break;
+                }
+                else
+                {
+
+                };
+                j = (j / a1);
+            };
+            if(j == 1)
+            {
+                on1 = 1;
+                j = x;
+                while(j > 1)
+                {
+                    b1 = x;
+                    j = (j / a1);
+                };
+            }
+            else
+            {
+
+            };
+        };
+    }
+    else
+    {
+        if(on1 == 1)
+        {
+            on1 = 0;
+            j = x;
+            while(j > 1)
+            {
+                b1 = 0;
+                j = (j / a1);
+            };
+        }
+        else
+        {
+
+        };
+    };
+    i = (i + 1);
+};

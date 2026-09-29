@@ -1,0 +1,11 @@
+batch_size: 8
+temperature: 0
+top_p: 1
+attention_head: 32
+max_new_tokens: 16000
+max_model_len: 65536  # headroom for long mk prompts (~43k tokens) + generation; native Ministral context is 256k
+gpu_memory_utilization: 0.95
+trust_remote_code: true
+tokenizer_mode: mistral
+config_format: auto
+load_format: auto

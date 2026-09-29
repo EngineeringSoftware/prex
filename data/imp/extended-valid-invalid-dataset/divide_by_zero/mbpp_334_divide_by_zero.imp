@@ -1,0 +1,16 @@
+int ans;
+int a;
+int b;
+int c;
+a = 7;
+b = 10;
+c = 5;
+if(((((a + b)) > c) && (((b + c) > a))) && ((a + c) > b))
+{
+    a = 0;
+    ans = (1 / a);
+}
+else
+{
+
+};

@@ -1,0 +1,7 @@
+int a;
+int b;
+int ans;
+ans = 0;
+a = (3045 % ans);
+b = 1078;
+ans = (a + b);

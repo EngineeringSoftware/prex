@@ -1,0 +1,349 @@
+int n;
+int m;
+int answer;
+int p;
+int ans1;
+int ans2;
+int ans3;
+int ans4;
+int ans5;
+int ans6;
+int ans7;
+int ans8;
+int ans9;
+int ans10;
+int L1;
+int L2;
+int L3;
+int L4;
+int L5;
+int L6;
+int L7;
+int L8;
+int L9;
+int L10;
+int e1f;
+int e1t;
+int e2f;
+int e2t;
+int e3f;
+int e3t;
+int e4f;
+int e4t;
+int e5f;
+int e5t;
+int e6f;
+int e6t;
+int e7f;
+int e7t;
+int e8f;
+int e8t;
+int e9f;
+int e9t;
+int e10f;
+int e10t;
+int d1;
+int d2;
+int d3;
+int d4;
+int d5;
+int d6;
+int d7;
+int d8;
+int d9;
+int d10;
+int v1;
+int v2;
+int v3;
+int v4;
+int v5;
+int v6;
+int v7;
+int v8;
+int v9;
+int v10;
+n = 10;
+m = 10;
+e1f = 9;
+e1t = 1;
+e2f = 3;
+e2t = 7;
+e3f = 4;
+e3t = 9;
+e4f = 1;
+e4t = 10;
+e5f = 3;
+e5t = 1;
+e6f = 9;
+e6t = 7;
+e7f = 3;
+e7t = 4;
+e8f = 7;
+e8t = 4;
+e9f = 5;
+e9t = 8;
+e10f = 6;
+e10t = 2;
+d1 = 0;
+d2 = 0;
+d3 = 0;
+d4 = 0;
+d5 = 0;
+d6 = 0;
+d7 = 0;
+d8 = 0;
+d9 = 0;
+d10 = 0;
+v1 = 0;
+v2 = 0;
+v3 = 0;
+v4 = 0;
+v5 = 0;
+v6 = 0;
+v7 = 0;
+v8 = 0;
+v9 = 0;
+continue;
+v10 = 0;
+d1 = (d1 + 1);
+d9 = (d9 + 1);
+d3 = (d3 + 1);
+d7 = (d7 + 1);
+d4 = (d4 + 1);
+d9 = (d9 + 1);
+d1 = (d1 + 1);
+d10 = (d10 + 1);
+d3 = (d3 + 1);
+d1 = (d1 + 1);
+d9 = (d9 + 1);
+d7 = (d7 + 1);
+d3 = (d3 + 1);
+d4 = (d4 + 1);
+d7 = (d7 + 1);
+d4 = (d4 + 1);
+d5 = (d5 + 1);
+d8 = (d8 + 1);
+d6 = (d6 + 1);
+d2 = (d2 + 1);
+d1 = ((d1 + 1) / 2);
+d2 = ((d2 + 1) / 2);
+d3 = ((d3 + 1) / 2);
+d4 = ((d4 + 1) / 2);
+d5 = ((d5 + 1) / 2);
+d6 = ((d6 + 1) / 2);
+d7 = ((d7 + 1) / 2);
+d8 = ((d8 + 1) / 2);
+d9 = ((d9 + 1) / 2);
+d10 = ((d10 + 1) / 2);
+answer = 0;
+if((v1 < d1) || (v9 < d9))
+{
+    answer = (answer + 1);
+    ans1 = 1;
+    v1 = (v1 + 1);
+    v9 = (v9 + 1);
+}
+else
+{
+
+};
+if((v3 < d3) || (v7 < d7))
+{
+    answer = (answer + 1);
+    ans2 = 2;
+    v3 = (v3 + 1);
+    v7 = (v7 + 1);
+}
+else
+{
+
+};
+if((v4 < d4) || (v9 < d9))
+{
+    answer = (answer + 1);
+    ans3 = 3;
+    v4 = (v4 + 1);
+    v9 = (v9 + 1);
+}
+else
+{
+
+};
+if((v1 < d1) || (v10 < d10))
+{
+    answer = (answer + 1);
+    ans4 = 4;
+    v1 = (v1 + 1);
+    v10 = (v10 + 1);
+}
+else
+{
+
+};
+if((v3 < d3) || (v1 < d1))
+{
+    answer = (answer + 1);
+    ans5 = 5;
+    v3 = (v3 + 1);
+    v1 = (v1 + 1);
+}
+else
+{
+
+};
+if((v9 < d9) || (v7 < d7))
+{
+    answer = (answer + 1);
+    ans6 = 6;
+    v9 = (v9 + 1);
+    v7 = (v7 + 1);
+}
+else
+{
+
+};
+if((v3 < d3) || (v4 < d4))
+{
+    answer = (answer + 1);
+    ans7 = 7;
+    v3 = (v3 + 1);
+    v4 = (v4 + 1);
+}
+else
+{
+
+};
+if((v7 < d7) || (v4 < d4))
+{
+    answer = (answer + 1);
+    ans8 = 8;
+    v7 = (v7 + 1);
+    v4 = (v4 + 1);
+}
+else
+{
+
+};
+if((v5 < d5) || (v8 < d8))
+{
+    answer = (answer + 1);
+    ans9 = 9;
+    v5 = (v5 + 1);
+    v8 = (v8 + 1);
+}
+else
+{
+
+};
+if((v6 < d6) || (v2 < d2))
+{
+    answer = (answer + 1);
+    ans10 = 10;
+    v6 = (v6 + 1);
+    v2 = (v2 + 1);
+}
+else
+{
+
+};
+p = 0;
+if((v1 == d1) || (v9 == d9))
+{
+    p = (p + 1);
+    L1 = ans1;
+}
+else
+{
+    v1 = (v1 - 1);
+    v9 = (v9 - 1);
+};
+if((v3 == d3) || (v7 == d7))
+{
+    p = (p + 1);
+    L2 = ans2;
+}
+else
+{
+    v3 = (v3 - 1);
+    v7 = (v7 - 1);
+};
+if((v4 == d4) || (v9 == d9))
+{
+    p = (p + 1);
+    L3 = ans3;
+}
+else
+{
+    v4 = (v4 - 1);
+    v9 = (v9 - 1);
+};
+if((v1 == d1) || (v10 == d10))
+{
+    p = (p + 1);
+    L4 = ans4;
+}
+else
+{
+    v1 = (v1 - 1);
+    v10 = (v10 - 1);
+};
+if((v3 == d3) || (v1 == d1))
+{
+    p = (p + 1);
+    L5 = ans5;
+}
+else
+{
+    v3 = (v3 - 1);
+    v1 = (v1 - 1);
+};
+if((v9 == d9) || (v7 == d7))
+{
+    p = (p + 1);
+    L6 = ans6;
+}
+else
+{
+    v9 = (v9 - 1);
+    v7 = (v7 - 1);
+};
+if((v3 == d3) || (v4 == d4))
+{
+    p = (p + 1);
+    L7 = ans7;
+}
+else
+{
+    v3 = (v3 - 1);
+    v4 = (v4 - 1);
+};
+if((v7 == d7) || (v4 == d4))
+{
+    p = (p + 1);
+    L8 = ans8;
+}
+else
+{
+    v7 = (v7 - 1);
+    v4 = (v4 - 1);
+};
+if((v5 == d5) || (v8 == d8))
+{
+    p = (p + 1);
+    L9 = ans9;
+}
+else
+{
+    v5 = (v5 - 1);
+    v8 = (v8 - 1);
+};
+if((v6 == d6) || (v2 == d2))
+{
+    p = (p + 1);
+    L10 = ans10;
+}
+else
+{
+    v6 = (v6 - 1);
+    v2 = (v2 - 1);
+};

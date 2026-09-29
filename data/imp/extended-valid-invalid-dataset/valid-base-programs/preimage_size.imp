@@ -1,0 +1,37 @@
+int a;
+int b;
+int ans;
+int c;
+int d;
+int e;
+int f;
+b = 0;
+c = 200;
+while(c >= d)
+{
+    e = ((c + d) / 2);
+    f = 5;
+    a = 0;
+    while(f <= e)
+    {
+        a = (a + (e / f));
+        f = (f * 5);
+    };
+    if(a == b)
+    {
+        ans = 5;
+        halt;
+    }
+    else
+    {
+
+    };
+    if(a < b)
+    {
+        d = (e + 1);
+    }
+    else
+    {
+        c = (e - 1);
+    };
+};

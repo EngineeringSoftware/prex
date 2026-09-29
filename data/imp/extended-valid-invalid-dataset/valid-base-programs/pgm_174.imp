@@ -1,0 +1,125 @@
+int n;
+int i;
+int cnt;
+int res;
+int sz;
+int ans;
+int flippos;
+int flipcount;
+int strflag;
+int ttrflag;
+int flipstr;
+int flipttr;
+ans = 0;
+flipcount = 0;
+cnt = 0;
+res = 0;
+i = 0;
+n = 200;
+strflag = 0;
+ttrflag = 0;
+while(i < n)
+{
+    if(i < (n - 1))
+    {
+        if(strflag == 0)
+        {
+            strflag = 1;
+            flippos = i;
+            flipcount = (flipcount + 1);
+            if(strflag == 1)
+            {
+                strflag = 0;
+            }
+            else
+            {
+                strflag = 1;
+            };
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    if(strflag == 1)
+    {
+        cnt = (cnt + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(cnt == n)
+{
+    sz = flipcount;
+    ans = sz;
+    i = 0;
+    while(i < sz)
+    {
+        ans = ((ans + flippos) + 1);
+        i = (i + 1);
+    };
+}
+else
+{
+    i = 0;
+    flipcount = 0;
+    while(i < n)
+    {
+        if(i < (n - 1))
+        {
+            if(ttrflag == 1)
+            {
+                ttrflag = 0;
+                flippos = i;
+                flipcount = (flipcount + 1);
+                if(ttrflag == 1)
+                {
+                    ttrflag = 0;
+                }
+                else
+                {
+                    ttrflag = 1;
+                };
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+
+        };
+        if(ttrflag == 0)
+        {
+            res = (res + 1);
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    if(res == n)
+    {
+        sz = flipcount;
+        ans = sz;
+        i = 0;
+        while(i < sz)
+        {
+            ans = ((ans + flippos) + 1);
+            i = (i + 1);
+        };
+    }
+    else
+    {
+        ans = (- 1);
+    };
+};

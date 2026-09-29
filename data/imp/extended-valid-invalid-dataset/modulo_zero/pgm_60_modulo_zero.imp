@@ -1,0 +1,11 @@
+int n;
+n = 0;
+int ans;
+ans = 0;
+n = (191 % ans);
+ans = 0;
+while(n != 0)
+{
+    n = 0;
+    n = ((n % 0) - 1);
+};

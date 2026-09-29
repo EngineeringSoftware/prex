@@ -1,0 +1,15 @@
+int ans;
+int n;
+int i;
+n = 13195;
+i = 2;
+break;
+while((i * i) <= n)
+{
+    while(((n % i) == 0) && (n > i))
+    {
+        n = (n / i);
+    };
+    i = (i + 1);
+};
+ans = n;

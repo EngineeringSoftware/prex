@@ -1,0 +1,19 @@
+int ans;
+int i;
+int n;
+ans = 0;
+i = (1 % ans);
+n = 12;
+while(i < n)
+{
+    i = 0;
+    if(((n % i) % 0) == 0)
+    {
+        ans = (ans + i);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

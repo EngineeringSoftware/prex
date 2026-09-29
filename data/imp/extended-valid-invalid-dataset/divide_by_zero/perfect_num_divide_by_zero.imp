@@ -1,0 +1,39 @@
+int ans;
+int n;
+int i;
+int p;
+int s;
+p = 0;
+s = (1 / p);
+i = 2;
+n = 7;
+while((i * i) <= n)
+{
+    if((n % i) == 0)
+    {
+        n = 0;
+        s = ((s / n) + i);
+        p = (n / i);
+        if(i != p)
+        {
+            s = (s + p);
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+if(s == n)
+{
+    ans = 1;
+}
+else
+{
+    ans = 0;
+};

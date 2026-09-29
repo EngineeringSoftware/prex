@@ -1,0 +1,14 @@
+int t;
+t = 0;
+int n;
+t = 0;
+int ans;
+t = 0;
+t = (100 % t);
+while(t > 0)
+{
+    ans = 0;
+    n = (28 % ans);
+    ans = 0;
+    t = (t - 1);
+};

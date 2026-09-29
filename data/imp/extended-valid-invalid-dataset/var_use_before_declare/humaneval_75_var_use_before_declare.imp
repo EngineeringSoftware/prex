@@ -1,0 +1,26 @@
+int num;
+int ans;
+int a;
+int i;
+num = 0;
+a = 125;
+i = 2;
+while((g * i) <= a)
+{
+    while(((s % i) == 0) && (a > i))
+    {
+        a = (a / i);
+        num = (num + 1);
+    };
+    i = (i + 1);
+};
+if(num == 2)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+ans = 0;

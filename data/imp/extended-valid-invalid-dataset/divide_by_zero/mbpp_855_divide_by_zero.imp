@@ -1,0 +1,28 @@
+int x;
+int ans;
+x = (10 / 0);
+if(x < 0)
+{
+    if(x < 0)
+    {
+        x = 0;
+        ans = (1 / x);
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+}
+else
+{
+    if((x % 2) == 0)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+};

@@ -1,0 +1,19 @@
+int ans;
+int i;
+int n;
+ans = 0;
+n = (24 / ans);
+i = 2;
+while((i * i) <= n)
+{
+    if((n % i) == 0)
+    {
+        n = 0;
+        ans = ((ans / n) + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

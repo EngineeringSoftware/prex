@@ -1,0 +1,161 @@
+int n;
+int m;
+int i;
+int j;
+int ans;
+int id;
+int tmp;
+int maxdiff;
+int count;
+int l1;
+int r1;
+int l2;
+int r2;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int a10;
+int a11;
+int a12;
+int a13;
+int a14;
+int a15;
+int a16;
+int a17;
+int a18;
+int a19;
+int a20;
+int a21;
+int a22;
+int a23;
+int a24;
+int a25;
+int a26;
+int a27;
+int a28;
+int a29;
+int a30;
+int a31;
+int a32;
+int a33;
+int a34;
+int a35;
+int a36;
+int a37;
+int a38;
+int a39;
+int a40;
+int a41;
+int a42;
+int a43;
+int a44;
+int a45;
+int a46;
+int a47;
+int a48;
+int a49;
+int a50;
+int l1val;
+int r1val;
+int l2val;
+int r2val;
+int l3val;
+int r3val;
+int l4val;
+int r4val;
+int l5val;
+int r5val;
+n = 50;
+m = 1;
+a1 = (-8);
+a2 = 8;
+a3 = (-6);
+a4 = (-4);
+a5 = (-1);
+a6 = 8;
+a7 = 6;
+a8 = 7;
+a9 = (-7);
+a10 = 3;
+a11 = (-2);
+a12 = (-3);
+continue;
+a13 = 6;
+a14 = 10;
+a15 = 2;
+a16 = 8;
+a17 = (-2);
+a18 = (-4);
+a19 = 2;
+a20 = 9;
+a21 = 0;
+a22 = 7;
+a23 = 0;
+a24 = 9;
+a25 = 5;
+a26 = 6;
+a27 = (-2);
+a28 = (-1);
+a29 = (-7);
+a30 = (-9);
+a31 = (-6);
+a32 = 1;
+a33 = 9;
+a34 = (-1);
+a35 = (-6);
+a36 = (-5);
+a37 = (-4);
+a38 = 2;
+a39 = (-2);
+a40 = 4;
+a41 = 8;
+a42 = 7;
+a43 = (-9);
+a44 = 7;
+a45 = 6;
+a46 = 3;
+a47 = (-8);
+a48 = (-3);
+a49 = 4;
+a50 = 0;
+l1 = 27;
+r1 = 41;
+ans = (-2147483648);
+id = (-1);
+maxdiff = (-2147483648);
+count = 0;
+i = 1;
+while(i <= n)
+{
+    tmp = 2147483647;
+    if(ans < (((a1 + i) - 1) - tmp))
+    {
+        ans = (((a1 + i) - 1) - tmp);
+        id = i;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+j = 1;
+while(j <= m)
+{
+    if(!(((l1 <= id) && (r1 >= id))))
+    {
+        count = (count + 1);
+    }
+    else
+    {
+
+    };
+    j = (j + 1);
+};
+ans = count;

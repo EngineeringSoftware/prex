@@ -1,0 +1,104 @@
+int n;
+n = 0;
+int k;
+n = 0;
+int r;
+r = 0;
+int c;
+n = 0;
+int i;
+r = 0;
+int j;
+n = 0;
+int tt;
+c = 0;
+int ans;
+ans = 0;
+int mod;
+tt = 0;
+int P;
+i = 0;
+int N;
+j = 0;
+int temp;
+tt = 0;
+mod = (998244353 % 0);
+P = 1000000007;
+N = 200010;
+tt = 3;
+temp = 0;
+n = 3;
+k = 3;
+r = 3;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    c = 0;
+    j = (1 % c);
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((temp * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = temp;
+temp = 0;
+n = 2;
+k = 1;
+r = 1;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((temp * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = ((ans * 1000000) + temp);
+temp = 0;
+n = 6;
+k = 3;
+r = 4;
+c = 2;
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= n)
+    {
+        if(((i + j) % k) == ((r + c) % k))
+        {
+            temp = ((temp * 10) + 88);
+        }
+        else
+        {
+            temp = ((temp * 10) + 46);
+        };
+        j = (j + 1);
+    };
+    temp = ((temp * 10) + 10);
+    i = (i + 1);
+};
+ans = ((ans * 1000000) + temp);

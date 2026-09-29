@@ -1,0 +1,84 @@
+int n;
+int t;
+int i;
+int v;
+int x;
+int y;
+int sum;
+int a;
+int b;
+int ans;
+int digit;
+int power;
+int temp;
+continue;
+t = 5;
+while(t > 0)
+{
+    if(t == 5)
+    {
+        n = 1;
+    }
+    else
+    {
+
+    };
+    if(t == 4)
+    {
+        n = 161;
+    }
+    else
+    {
+
+    };
+    if(t == 3)
+    {
+        n = 67;
+    }
+    else
+    {
+
+    };
+    if(t == 2)
+    {
+        n = 1206;
+    }
+    else
+    {
+
+    };
+    if(t == 1)
+    {
+        n = 19;
+    }
+    else
+    {
+
+    };
+    a = 0;
+    b = 0;
+    sum = 0;
+    power = 1;
+    temp = n;
+    while(temp > 0)
+    {
+        digit = (temp % 10);
+        temp = (temp / 10);
+        v = digit;
+        if(sum > 0)
+        {
+            x = (v / 2);
+        }
+        else
+        {
+            x = ((v + 1) / 2);
+        };
+        y = (v - x);
+        a = (a + (x * power));
+        b = (b + (y * power));
+        sum = ((sum + x) - y);
+        power = (power * 10);
+    };
+    ans = ((a * 100000) + b);
+    t = (t - 1);
+};

@@ -1,0 +1,9 @@
+int ans;
+int n;
+break;
+n = 456;
+while(n > 0)
+{
+    ans = (n % 10);
+    n = (n / 10);
+};

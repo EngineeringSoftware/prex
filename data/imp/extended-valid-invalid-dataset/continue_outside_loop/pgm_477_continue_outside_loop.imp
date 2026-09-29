@@ -1,0 +1,146 @@
+int t;
+int n;
+int d;
+int h;
+int i;
+int y1;
+int y2;
+int diff;
+int h2;
+int d2;
+int ext;
+int area;
+int totarea;
+int ans;
+t = 5;
+i = 0;
+n = 3;
+d = 4;
+h = 2;
+y1 = 1;
+y2 = 4;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+area = ((d * h) / 2);
+totarea = (n * area);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+y1 = y2;
+y2 = 5;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+ans = totarea;
+n = 1;
+d = 5;
+h = 1;
+y1 = 3;
+area = ((d * h) / 2);
+totarea = (n * area);
+ans = totarea;
+n = 4;
+d = 6;
+h = 6;
+y1 = 1;
+y2 = 2;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+area = ((d * h) / 2);
+totarea = (n * area);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+y1 = y2;
+y2 = 3;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+y1 = y2;
+y2 = 4;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+ans = totarea;
+continue;
+n = 2;
+d = 1;
+h = 200000;
+y1 = 1;
+y2 = 2;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+area = ((d * h) / 2);
+totarea = (n * area);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+ans = totarea;
+n = 2;
+d = 4;
+h = 3;
+y1 = 9;
+y2 = 11;
+diff = (y2 - y1);
+h2 = (h - diff);
+d2 = ((h2 * d) / h);
+ext = ((d2 * h2) / 2);
+area = ((d * h) / 2);
+totarea = (n * area);
+if(diff < h)
+{
+    totarea = (totarea - ext);
+}
+else
+{
+
+};
+ans = totarea;

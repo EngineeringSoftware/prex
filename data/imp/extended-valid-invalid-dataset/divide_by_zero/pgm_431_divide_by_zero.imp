@@ -1,0 +1,86 @@
+int n;
+int k;
+int t;
+int ans;
+ans = 0;
+t = (13 / ans);
+ans = 0;
+n = 12;
+k = 2;
+while(k <= n)
+{
+    t = 0;
+    k = ((k / t) + 1);
+};
+n = 19;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 29;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 39;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 4;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 5;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 6;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 7;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 8;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 9;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 10;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 11;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};
+n = 14;
+k = 2;
+while(k <= n)
+{
+    k = (k + 1);
+};

@@ -1,0 +1,1279 @@
+"""
+Functions for analyzing and processing experiment results.
+"""
+
+import json
+import os
+import tempfile
+import seutil as su
+from datasets import load_dataset
+from pathlib import Path
+
+from llm_interpreter.utils import subcommand, Category, detect_vector_list_switch
+from llm_interpreter.macros import Macros
+from llm_interpreter.experiments.prompts import PROMPT_STRATEGY
+from llm_interpreter.results.results_analysis import ResultsAnalyzer
+from llm_interpreter.results.results_viewer import ResultsViewer
+from llm_interpreter.experiments.args import ExperimentArgs
+from llm_interpreter.results.intp_functions import *  # noqa: F403
+from collections import defaultdict
+
+logger = su.log.get_logger(__name__, su.log.INFO)
+
+EVAL_MODELS = [
+    "Qwen-QwQ-32B",
+    "o3-mini",
+    "gpt-4o-mini",
+    "gpt-5-mini",
+    # "gpt-5.4-mini",
+    # "Qwen-Qwen3-Coder-30B-A3B-Instruct",
+    # "claude-sonnet-4-6",
+    # "gpt-5.4",
+    "gemini-2.5-pro",
+    "Qwen-Qwen2.5-Coder-3B-Instruct",
+    "Qwen-Qwen2.5-Coder-7B-Instruct",
+    "Qwen-Qwen2.5-Coder-14B-Instruct",
+    "Qwen-Qwen2.5-Coder-32B-Instruct",
+    "meta-llama-Llama-3.3-70B-Instruct",
+    "deepseek-ai-DeepSeek-R1-Distill-Llama-70B",
+    "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+    "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+    "mistralai-Ministral-3-3B-Instruct-2512-BF16",
+]
+
+QWEN_CODER_EVAL_MODELS = [
+    "Qwen-Qwen2.5-Coder-3B-Instruct",
+    "Qwen-Qwen2.5-Coder-7B-Instruct",
+    "Qwen-Qwen2.5-Coder-14B-Instruct",
+    "Qwen-Qwen2.5-Coder-32B-Instruct",
+]
+
+
+def _pcp_merged_results_line_count(path: Path) -> int:
+    if not path.is_file() or path.stat().st_size == 0:
+        return 0
+    return sum(1 for _ in path.open())
+
+
+def merge_pcp_sharded_results(
+    results_dir: Path,
+    seed: int,
+    total_shards: int,
+    expected_lines: int | None = None,
+) -> Path | None:
+    """Merge per-shard PCP result files into results-{seed}.jsonl if all shards exist."""
+    results_dir = Path(results_dir)
+    merged_path = results_dir / f"results-{seed}.jsonl"
+    shard_paths = [
+        results_dir / f"results-{seed}.shard{shard}-of-{total_shards}.jsonl"
+        for shard in range(total_shards)
+    ]
+    missing = [path for path in shard_paths if not path.exists()]
+    if missing:
+        logger.info(
+            "Shard merge pending in %s: missing %s/%s shard files",
+            results_dir,
+            len(missing),
+            total_shards,
+        )
+        return None
+
+    merged_records = []
+    for path in shard_paths:
+        merged_records.extend(su.io.load(path))
+    expected_count = (
+        expected_lines if expected_lines is not None else len(merged_records)
+    )
+    merged_count = _pcp_merged_results_line_count(merged_path)
+    if merged_count == expected_count:
+        return merged_path
+
+    if merged_path.exists():
+        logger.info(
+            "Removing stale merged results in %s (%s lines, expected %s)",
+            results_dir,
+            merged_count,
+            expected_count,
+        )
+        merged_path.unlink()
+
+    fd, tmp_name = tempfile.mkstemp(
+        suffix=".jsonl",
+        prefix=f"results-{seed}.",
+        dir=results_dir,
+    )
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    try:
+        su.io.dump(tmp_path, merged_records)
+        tmp_path.replace(merged_path)
+    finally:
+        if tmp_path.exists():
+            tmp_path.unlink(missing_ok=True)
+    logger.info(
+        "Merged %s shard files into %s (%s records)",
+        total_shards,
+        merged_path,
+        len(merged_records),
+    )
+    return merged_path
+
+
+@subcommand(category=Category.RESULT)
+def merge_pcp_qwen_sharded_results(
+    results_dir: Path,
+    seed: int = 42,
+    total_shards: int = 4,
+    expected_lines: int | None = None,
+):
+    """Merge sharded Qwen PCP result files for one model/strategy directory."""
+    merged_path = merge_pcp_sharded_results(
+        results_dir, seed, total_shards, expected_lines=expected_lines
+    )
+    if merged_path is None:
+        print(
+            f"Merge pending in {results_dir} "
+            f"(seed={seed}, total_shards={total_shards})"
+        )
+        return
+    print(f"Merged results written to {merged_path}")
+
+
+def _collect_pcp_results(
+    setup_name: str,
+    exp_name: str,
+    model_list: list,
+    merge_existing: bool = False,
+):
+    analyzer = ResultsAnalyzer(
+        task="pcp",
+        setup_name=setup_name,
+        exp_name=exp_name,
+        model_list=model_list,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT],
+        merge_existing=merge_existing,
+    )
+
+
+@subcommand(category=Category.RESULT)
+def result_ext_assgn_states_model_sos(
+    assignment_rule: str, model_output: str
+) -> list[dict]:
+    """Extracts the program states corresponding to variable assignments for programs
+    based on IMP SOS semantics as generated by LLMs.
+
+    LLM generated execution trace format:
+
+    <ans>[
+    {"state":{var1: val1, var2: val2}, "rules": ["Rule 1", "Rule 2", ...]},
+    ...
+    ]</ans>
+
+    """
+    model_output = (model_output.split("<ans>")[1]).split("</ans>")[0]
+    model_output = json.loads(model_output)
+    # We only compare the states when the assign rule was applied
+    # since, K-framework only prints the states when the statement performs
+    # an assignment or state-update.
+    assignment_states: list = []
+    for output in model_output:
+        if "rules" in output and assignment_rule in output["rules"]:
+            casted_output: dict = {
+                key: str(value) for key, value in output["state"].items()
+            }
+            assignment_states.append(casted_output)
+        # fi
+    # rof
+
+    return assignment_states
+
+
+@subcommand(category=Category.RESULT)
+def collect_cpp_codecontest_solutions():
+    """
+    Extract the C++ solutions from deepmind code contest dataset.
+    """
+    dataset = load_dataset("deepmind/code_contests", split="test")
+    cpp_subset = dataset.filter(lambda example: 2 in example["solutions"]["language"])
+
+    cpp_data = []
+    fields = ["name", "solutions", "public_tests", "private_tests"]
+    for example in cpp_subset:
+        extracted_data = {}
+        for field in fields:
+            if field == "solutions":
+                extracted_data[field] = example[field]["solution"][0]
+            else:
+                extracted_data[field] = example[field]
+        cpp_data.append(extracted_data)
+    #
+    su.io.dump(Macros.data_dir / "codecontest_cpp_data.jsonl", cpp_data)
+
+
+@subcommand(category=Category.RESULT)
+def filter_cpp_code_with_array():
+    """
+    Filter the C++ solutions to only include those that use arrays.
+    """
+    cpp_data = su.io.load(Macros.data_dir / "mbpp_c_data.jsonl")
+    filtered_cpp_data = []
+    for example in cpp_data:
+        full_cpp = example["prompt"] + example["canonical_solution"]
+        if not detect_vector_list_switch(full_cpp):
+            filtered_cpp_data.append(example)
+        # fi
+    # rof
+    logger.info(f"Size of mbpp data is {len(filtered_cpp_data)} after filtering.")
+    su.io.dump(Macros.data_dir / "filtered_mbpp_c_data.jsonl", filtered_cpp_data)
+
+
+@subcommand(category=Category.RESULT)
+def collect_pcp_uk_imp_sos_results():
+    """
+    Collect the models' results of the pcp IMP SOS task
+    """
+    analyzer = ResultsAnalyzer(
+        task="pcp",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_pcp_mk_imp_sos_results():
+    """
+    Collect the models' results of the pcp IMP SOS task
+    """
+    analyzer = ResultsAnalyzer(
+        task="pcp",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_pcp_uk_imp_k_results():
+    """
+    Collect the models' results of the pcp IMP K task
+    """
+    analyzer = ResultsAnalyzer(
+        task="pcp",
+        setup_name="uk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_pcp_mk_imp_k_results():
+    """
+    Collect the models' results of the pcp IMP K task
+    """
+    analyzer = ResultsAnalyzer(
+        task="pcp",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_pcp_qwen_coder_results():
+    """
+    Collect PCP metrics for Qwen2.5-Coder models only (3B/7B/14B/32B).
+    Does not reprocess gpt-4o-mini, DeepSeek, Llama, etc.
+    Merges into existing aggregated metrics/scores files without removing other models.
+    """
+    for setup_name, exp_name in [
+        ("uk", "IMP-SOS"),
+        ("mk", "IMP-SOS"),
+        ("uk", "IMP-K"),
+        ("mk", "IMP-K"),
+    ]:
+        logger.info(f"Collecting PCP results for Qwen2.5-Coder: {setup_name} {exp_name}")
+        _collect_pcp_results(
+            setup_name, exp_name, QWEN_CODER_EVAL_MODELS, merge_existing=True
+        )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_nk_imp_sos_results():
+    """
+    Collect the models' results of the op-nk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="nk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_sos_results():
+    """
+    Collect the models' results of the op-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_sos_results():
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_nk_imp_sos_synthetic_cpp_results(filter_dataset: Path = Macros.data_dir / "dataset" / "dataset-etp-uk-IMP-K-synthetic_cpp.jsonl"):
+    """
+    Collect the models' results of the op-nk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="nk",
+        exp_name="IMP-SOS",
+        dataset_name="synthetic_cpp",
+        filter_dataset=filter_dataset,
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_sos_synthetic_cpp_results(filter_dataset: Path = Macros.data_dir / "dataset" / "dataset-etp-uk-IMP-K-synthetic_cpp.jsonl"):
+    """
+    Collect the models' results of the op-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        dataset_name="synthetic_cpp",
+        filter_dataset=filter_dataset,
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_sos_synthetic_cpp_results(filter_dataset: Path = Macros.data_dir / "dataset" / "dataset-etp-uk-IMP-K-synthetic_cpp.jsonl"):
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        dataset_name="synthetic_cpp",
+        filter_dataset=filter_dataset,
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_nk_imp_sos_fuzzer_generated_results():
+    """
+    Collect the models' results of the op-nk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="nk",
+        exp_name="IMP-SOS",
+        dataset_name="fuzzer_generated",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_nk_imp_sos_fuzzer_generated_reduced_results():
+    """
+    Collect the models' results of the op-nk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="nk",
+        exp_name="IMP-SOS",
+        dataset_name="fuzzer_generated_reduced",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_sos_fuzzer_generated_results():
+    """
+    Collect the models' results of the op-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        dataset_name="fuzzer_generated",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_sos_fuzzer_generated_reduced_results():
+    """
+    Collect the models' results of the op-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        dataset_name="fuzzer_generated_reduced",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_sos_fuzzer_generated_results():
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        dataset_name="fuzzer_generated",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_k_results():
+    """
+    Collect the models' results of the op-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_k_results():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_k_results_unseen_gpt4o_1_token():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk-unseen-gpt4o-1-token",
+        exp_name="IMP-K",
+        model_list=["gpt-4o-mini"],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_sos_results_unseen_gpt4o_1_token():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk-unseen-gpt4o-1-token",
+        exp_name="IMP-SOS",
+        model_list=["gpt-4o-mini"],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_k_results_unseen_caucasian_albanian():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk-unseen-caucasian-albanian",
+        exp_name="IMP-K",
+        model_list=["gpt-4o-mini"],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_sos_results_unseen_caucasian_albanian():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk-unseen-caucasian-albanian",
+        exp_name="IMP-SOS",
+        model_list=["gpt-4o-mini"],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_k_synthetic_cpp_results(filter_dataset: Path = Macros.data_dir / "dataset" / "dataset-etp-uk-IMP-K-synthetic_cpp.jsonl"):
+    """
+    Collect the models' results of the op-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-K",
+        dataset_name="synthetic_cpp",
+        filter_dataset=filter_dataset,
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_k_synthetic_cpp_results(filter_dataset: Path = Macros.data_dir / "dataset" / "dataset-etp-uk-IMP-K-synthetic_cpp.jsonl"):
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-K",
+        dataset_name="synthetic_cpp",
+        filter_dataset=filter_dataset,
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_k_fuzzer_generated_results():
+    """
+    Collect the models' results of the op-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-K",
+        dataset_name="fuzzer_generated",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_uk_imp_k_fuzzer_generated_reduced_results():
+    """
+    Collect the models' results of the op-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="uk",
+        exp_name="IMP-K",
+        dataset_name="fuzzer_generated_reduced",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_op_mk_imp_k_fuzzer_generated_results():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name="mk",
+        exp_name="IMP-K",
+        dataset_name="fuzzer_generated",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_translate_mk_imp_sos_results():
+    """
+    Collect the models' results of the translate-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="translate",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=[
+            "gpt-4o-mini",
+            "qwen2.5-coder:32b",
+            "qwq:32b",
+            "qwq:32b-fp16",
+            "gemini-2.5-pro-preview-05-06",  # ADD
+            "qwen2.5-coder:14b",  # ADD
+            "qwen2.5-coder:14b-instruct-fp16",  # ADD
+            "qwen2.5-coder:32b-instruct-fp16",  # ADD
+        ],
+    )
+    analyzer.analyze_results(prompt_strategies=[PROMPT_STRATEGY.DA])
+
+
+@subcommand(category=Category.RESULT)
+def collect_srp_uk_imp_sos_results():
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="srp",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_srp_uk_imp_k_results():
+    """
+    Collect the models' results of the srp-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="srp",
+        setup_name="uk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_srp_mk_imp_sos_results():
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="srp",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_srp_mk_imp_k_results():
+    """
+    Collect the models' results of the srp-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="srp",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_etp_uk_imp_sos_results():
+    """
+    Collect the models' results of the op-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="uk", exp_name="IMP-SOS", model_list=EVAL_MODELS
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_etp_uk_imp_k_results():
+    """
+    Collect the models' results of the op-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="uk", exp_name="IMP-K", model_list=EVAL_MODELS
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_etp_mk_imp_sos_results():
+    """
+    Collect the models' results of the etp-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="etp",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_etp_mk_imp_k_results():
+    """
+    Collect the models' results of the etp-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="etp",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=EVAL_MODELS,
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA, PROMPT_STRATEGY.COT]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_nl2rule_uk_imp_sos_results():
+    """
+    Collect the models' results of the nl2rule-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="nl2rule",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        model_list=[
+            "gpt-4o-mini",
+            "gemini-2.5-pro",
+            "o3-mini",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_rule2nl_uk_imp_sos_results():
+    """
+    Collect the models' results of the rule2nl-uk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="rule2nl",
+        setup_name="uk",
+        exp_name="IMP-SOS",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_nl2rule_mk_imp_sos_results():
+    """
+    Collect the models' results of the nl2rule-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="nl2rule",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_rule2nl_mk_imp_sos_results():
+    """
+    Collect the models' results of the rule2nl-mk IMP SOS semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="rule2nl",
+        setup_name="mk",
+        exp_name="IMP-SOS",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_nl2rule_uk_imp_k_results():
+    """
+    Collect the models' results of the nl2rule-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="nl2rule",
+        setup_name="uk",
+        exp_name="IMP-K",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_rule2nl_uk_imp_k_results():
+    """
+    Collect the models' results of the rule2nl-uk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="rule2nl",
+        setup_name="uk",
+        exp_name="IMP-K",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_nl2rule_mk_imp_k_results():
+    """
+    Collect the models' results of the nl2rule-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="nl2rule",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_rule2nl_mk_imp_k_results():
+    """
+    Collect the models' results of the rule2nl-mk IMP K semantics.
+    """
+    analyzer = ResultsAnalyzer(
+        task="rule2nl",
+        setup_name="mk",
+        exp_name="IMP-K",
+        model_list=[
+            "gpt-4o-mini",
+            "o3-mini",
+            "gemini-2.5-pro",
+            "gpt-5-mini",
+            "gpt-5.4-mini",
+            "Qwen-QwQ-32B",
+            "Qwen-Qwen2.5-Coder-14B-Instruct",
+            "Qwen-Qwen2.5-Coder-32B-Instruct",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-14B",
+            "deepseek-ai-DeepSeek-R1-Distill-Qwen-32B",
+        ],
+    )
+    analyzer.analyze_results(
+        prompt_strategies=[PROMPT_STRATEGY.DA]
+    )
+
+
+@subcommand(category=Category.RESULT)
+def collect_all_results():
+    """
+    Collect all the results of the IMP SOS tasks for PLSemanticsBench paper.
+    """
+    logger.info("Collecting all results of the pcp uk task.")
+    collect_pcp_uk_imp_sos_results()
+    logger.info("Collecting all results of the pcp mk task.")
+    collect_pcp_mk_imp_sos_results()
+    logger.info("Collecting all results of the op nk task.")
+    collect_op_nk_imp_sos_results()
+    logger.info("Collecting all results of the op uk task.")
+    collect_op_uk_imp_sos_results()
+    logger.info("Collecting all results of the op mk task.")
+    collect_op_mk_imp_sos_results()
+    logger.info("Collecting all results of the srp uk task.")
+    collect_srp_uk_imp_sos_results()
+    logger.info("Collecting all results of the srp mk task.")
+    collect_srp_mk_imp_sos_results()
+    logger.info("Collecting all results of the etp uk task.")
+    collect_etp_uk_imp_sos_results()
+    logger.info("Collecting all results of the etp mk task.")
+    collect_etp_mk_imp_sos_results()
+
+
+@subcommand(category=Category.RESULT)
+def compute_pcp_significance_and_ci():
+    """
+    Pairwise significance tests and bootstrap 95% CIs for all PCP setups
+    (uk/mk × IMP-SOS/IMP-K). Requires scores-*.json from the collect_* steps.
+    """
+    for setup_name, exp_name in [
+        ("uk", "IMP-SOS"),
+        ("mk", "IMP-SOS"),
+        ("uk", "IMP-K"),
+        ("mk", "IMP-K"),
+    ]:
+        logger.info(f"Computing significance and bootstrap CI for pcp {setup_name} {exp_name}")
+        analyzer = ResultsAnalyzer(
+            task="pcp",
+            setup_name=setup_name,
+            exp_name=exp_name,
+            model_list=[],
+        )
+        analyzer.compute_significance_test()
+        analyzer.compute_bootstrap_confidence_interval()
+
+
+@subcommand(category=Category.RESULT)
+def compute_pcp_qwen_coder_significance_and_ci():
+    """
+    Significance tests and bootstrap CIs among Qwen2.5-Coder models only.
+    Writes to *-qwen-coder.json files so full-cohort outputs are untouched.
+    """
+    for setup_name, exp_name in [
+        ("uk", "IMP-SOS"),
+        ("mk", "IMP-SOS"),
+        ("uk", "IMP-K"),
+        ("mk", "IMP-K"),
+    ]:
+        logger.info(
+            f"Computing Qwen2.5-Coder significance/CI for pcp {setup_name} {exp_name}"
+        )
+        analyzer = ResultsAnalyzer(
+            task="pcp",
+            setup_name=setup_name,
+            exp_name=exp_name,
+            model_list=QWEN_CODER_EVAL_MODELS,
+        )
+        analyzer.compute_significance_test(output_suffix="-qwen-coder")
+        analyzer.compute_bootstrap_confidence_interval(output_suffix="-qwen-coder")
+
+
+@subcommand(category=Category.RESULT)
+def compute_significance_test():
+    """
+    Compute the significance test for the results of the IMP SOS task.
+    """
+    logger.info("Computing significance test for the pcp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="pcp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the pcp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="pcp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the op nk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="nk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the op uk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the op mk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the srp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="srp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the srp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="srp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the etp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+    logger.info("Computing significance test for the etp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_significance_test()
+
+
+@subcommand(category=Category.RESULT)
+def compute_significance_confidence_interval():
+    logger.info("Computing significance test for the pcp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="pcp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the pcp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="pcp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the op nk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="nk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the op uk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the op mk task.")
+    analyzer = ResultsAnalyzer(
+        task="op", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the srp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="srp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the srp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="srp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the etp uk task.")
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="uk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+    logger.info("Computing significance test for the etp mk task.")
+    analyzer = ResultsAnalyzer(
+        task="etp", setup_name="mk", exp_name="IMP-SOS", model_list=[]
+    )
+    analyzer.compute_bootstrap_confidence_interval()
+
+
+@subcommand(category=Category.RESULT)
+def print_a_minus_b_results(filter_dataset: Path, model_a: str, model_b: str, exp_a: str, exp_b: str, setup_a: str, setup_b: str, dataset_name: str,):    
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name=setup_a,
+        exp_name=exp_a,
+        dataset_name=dataset_name,
+        filter_dataset=filter_dataset,
+        model_list=[],
+    )
+    a_results = analyzer.raw_results_trace(model_a)
+    analyzer = ResultsAnalyzer(
+        task="op",
+        setup_name=setup_b,
+        exp_name=exp_b,
+        dataset_name=dataset_name,
+        filter_dataset=filter_dataset,
+        model_list=[],
+    )
+    b_results = analyzer.raw_results_trace(model_b)
+    a_minus_b: dict = defaultdict(int)
+    a_acc: float = 0.0
+    for a_result in a_results:
+        b_acc: float = 0.0
+        for b_result in b_results:
+            for a_pred, b_pred, a_true, a_src_filename in zip(a_result.pred_ans, b_result.pred_ans, a_result.true_ans, a_result.src_filename):
+                if a_pred == a_true and a_pred != b_pred:
+                    a_minus_b[a_src_filename]+=1
+                #fi
+            #rof
+            b_acc += (b_result.correct_cnt / b_result.normal_cnt)
+        #rof
+        a_acc += (a_result.correct_cnt / a_result.normal_cnt)
+    #rof
+    print(f"{a_acc / len(a_results)} {b_acc / len(b_results)}")
+    print(a_minus_b)
+#fed
+
+
+@subcommand(category=Category.RESULT)
+def print_results_to_markdown(model_name: str, task: str, setup: str = "mk"):
+    exp_args = ExperimentArgs(
+        task=task,
+        setup_name=setup,
+        expr_name="IMP-SOS",
+        model_name=model_name,
+        prompt_strategy=PROMPT_STRATEGY.DA,
+    )
+    results_viewer = ResultsViewer(exp_args)
+    results_viewer.write_results_to_file()
+
+
+@subcommand(category=Category.RESULT)
+def find_failure_examples(task: str, setup: str, model: str, sample_size: int = -1):
+    # model_list = ["Qwen-QwQ-32B", "o3-mini", "gemini-2.5-pro-preview-05-06"]
+    exp_args = ExperimentArgs(
+        task=task,
+        setup_name=setup,
+        expr_name="IMP-SOS",
+        model_name=model,
+        prompt_strategy=PROMPT_STRATEGY.DA,
+    )
+    results_viewer = ResultsViewer(exp_args)
+    results_viewer.find_failure_mode([model], task, sample_size)

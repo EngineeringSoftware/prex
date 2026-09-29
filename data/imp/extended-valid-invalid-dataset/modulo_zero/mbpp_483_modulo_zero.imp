@@ -1,0 +1,14 @@
+int ans;
+int x;
+int y;
+int i;
+x = 15;
+y = 1;
+i = 1;
+while(y < x)
+{
+    x = 0;
+    y = ((y * i) % x);
+    i = (i + 1);
+};
+ans = i;

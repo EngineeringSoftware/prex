@@ -1,0 +1,5 @@
+int ans;
+int n;
+n = 30;
+continue;
+ans = ((n * (n + 1)) / 2);

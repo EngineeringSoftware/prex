@@ -1,0 +1,9 @@
+int ans;
+int x;
+int y;
+y = 2;
+while(x < ((y * y) * y))
+{
+    ans = (ans + 1);
+    x = (x + 1);
+};

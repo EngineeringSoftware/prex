@@ -1,0 +1,494 @@
+from antlr4 import *
+import copy
+if "." in __name__:
+    from .{name}Visitor import {name}Visitor
+    from .{name}Parser import {name}Parser
+    from .{name}Lexer import {name}Lexer
+else:
+    from {name}Visitor import {name}Visitor
+    from {name}Parser import {name}Parser
+    from {name}Lexer import {name}Lexer
+#fi
+
+class {name}SOSRuleVisitor({name}Visitor):
+    RULE_MAP: dict = {{
+        "ID_LOOKUP"                     : "1",
+        "ID_LOOKUP_ERROR"               : "2",
+        "DECLARATION"                   : "3",
+        "ASSIGNMENT_REDUCE"             : "4",
+        "ASSIGNMENT"                    : "5",
+        "ASSIGNMENT_ERROR"              : "6",
+        "{PLUS_OP}_LEFT_REDUCE"         : "7",
+        "{PLUS_OP}_RIGHT_REDUCE"        : "8",
+        "{PLUS_OP}"                     : "9",
+        "{MINUS_OP}_LEFT_REDUCE"        : "10",
+        "{MINUS_OP}_RIGHT_REDUCE"       : "11",
+        "{MINUS_OP}"                    : "12",
+        "{MUL_OP}_LEFT_REDUCE"          : "13",
+        "{MUL_OP}_RIGHT_REDUCE"         : "14",
+        "{MUL_OP}"                      : "15",
+        "{DIV_OP}_LEFT_REDUCE"          : "16",
+        "{DIV_OP}_RIGHT_REDUCE"         : "17",
+        "{DIV_OP}"                      : "18",
+        "{DIV_OP}_BY_ZERO_ERROR"        : "19",
+        "{MOD_OP}_LEFT_REDUCE"          : "20",
+        "{MOD_OP}_RIGHT_REDUCE"         : "21",
+        "{MOD_OP}"                      : "22",
+        "{MOD_OP}_BY_ZERO_ERROR"        : "23",
+        "{MINUS_OP}_UNARY_REDUCE"       : "24",
+        "{MINUS_OP}_UNARY"              : "25",
+        "{PLUS_OP}_UNARY_REDUCE"        : "26",
+        "{PLUS_OP}_UNARY"               : "27",
+        "{LT_OP}_LEFT_REDUCE"           : "28",
+        "{LT_OP}_RIGHT_REDUCE"          : "29",
+        "{LT_OP}_True"                  : "30",
+        "{LT_OP}_False"                 : "31",
+        "{LTEQ_OP}_LEFT_REDUCE"         : "32",
+        "{LTEQ_OP}_RIGHT_REDUCE"        : "33",
+        "{LTEQ_OP}_True"                : "34",
+        "{LTEQ_OP}_False"               : "35",
+        "{GT_OP}_LEFT_REDUCE"           : "36",
+        "{GT_OP}_RIGHT_REDUCE"          : "37",
+        "{GT_OP}_True"                  : "38",
+        "{GT_OP}_False"                 : "39",
+        "{GTEQ_OP}_LEFT_REDUCE"         : "40",
+        "{GTEQ_OP}_RIGHT_REDUCE"        : "41",
+        "{GTEQ_OP}_True"                : "42",
+        "{GTEQ_OP}_False"               : "43",
+        "{EQ_OP}_LEFT_REDUCE"           : "44",
+        "{EQ_OP}_RIGHT_REDUCE"          : "45",
+        "{EQ_OP}_True"                  : "46",
+        "{EQ_OP}_False"                 : "47",
+        "{NEQ_OP}_LEFT_REDUCE"          : "48",
+        "{NEQ_OP}_RIGHT_REDUCE"         : "49",
+        "{NEQ_OP}_True"                 : "50",
+        "{NEQ_OP}_False"                : "51",
+        "{AND_OP}_LEFT_REDUCE"          : "52",
+        "{AND_OP}_RIGHT_REDUCE"         : "53",
+        "{AND_OP}_True"                 : "54",
+        "{AND_OP}_False"                : "55",
+        "{OR_OP}_LEFT_REDUCE"           : "56",
+        "{OR_OP}_RIGHT_REDUCE"          : "57",
+        "{OR_OP}_True"                  : "58",
+        "{OR_OP}_False"                 : "59",
+        "{NOT_OP}_REDUCE"               : "60",
+        "{NOT_OP}_True"                 : "61",
+        "{NOT_OP}_False"                : "62",
+        "STMT_LIST"                     : "63",
+        "IF_ELSE_PRED_REDUCE"           : "64",
+        "IF_ELSE_True"                  : "65",
+        "IF_ELSE_False"                 : "66",
+        "WHILE_Transform"               : "67",
+        "LOOP_PRED_REDUCE"              : "68",
+        "LOOP_False"                    : "69",
+        "LOOP_True"                     : "70",
+        "BREAK_PROPAGATE"               : "71",
+        "BREAK_LE_DECOMPOSE"            : "72",
+        "BREAK_OUTSIDE_LOOP"            : "73",
+        "CONTINUE_PROPAGATE"            : "74",
+        "CONTINUE_LE_DECOMPOSE"         : "75",
+        "CONTINUE_OUTSIDE_LOOP"         : "76",
+        "LE"                            : "77",
+        "HALT"                          : "78",
+    }}
+
+    class HaltExecution(Exception):
+        pass
+    #ssalc
+
+    class ErrorExecution(Exception):
+        pass
+    #ssalc
+
+    def __init__(self):
+        super().__init__()
+        self._rules = []
+        self._stores = []
+        self._store = {{}}
+        self._loop_depth = 0
+        self._if_depth = 0
+        self._max_loop_depth = -1
+        self._max_if_depth = -1
+        self._mark_rule_start = -1
+        self._mark_rule_end = -1
+        self._break_start = False
+        self._continue_start = False
+        self._is_break_continue_mark_stmt = False
+        self._is_while_if_else_mark_stmt = False
+    #fed
+
+    def get_rules_for_stmt(self, stmt: str, store: dict = {{}}, is_marked: bool = True):
+        self._store = copy.deepcopy(store)
+        self._max_loop_depth = -1
+        self._max_if_depth = -1
+        input_stream = InputStream(stmt)
+        lexer = {name}Lexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = {name}Parser(token_stream)
+        tree = parser.program()
+        if not is_marked:
+           self._start_mark()
+        else:
+           self._store['ble'] = 0
+        #fi
+        try:
+            self.visit(tree)
+        except {name}SOSRuleVisitor.HaltExecution as halt:
+            pass
+        except {name}SOSRuleVisitor.ErrorExecution as error:
+            pass
+        #yrt
+        if not is_marked:
+           self._end_mark()
+        #fi
+        [rules, states] = self.get_rule()
+        return (rules, states, self._max_loop_depth, self._max_if_depth)
+    #fed
+
+    def _start_mark(self):
+        self._mark_rule_start = len(self._rules)
+    #fed
+
+    def _end_mark(self):
+        if self._mark_rule_start >= 0 and self._mark_rule_end == -1:
+            self._mark_rule_end = len(self._rules)
+        #fi
+    #fed
+
+    def get_rule(self)->list:
+        if self._mark_rule_start < self._mark_rule_end:
+            return (self._rules[self._mark_rule_start: self._mark_rule_end], self._stores[self._mark_rule_start: self._mark_rule_end])
+        else:
+            return (self._rules, self._stores)
+        #fi
+    #fed
+
+    def _use_rule(self, rule_name: str)->str:
+        self._rules.append(f"Rule {{{name}SOSRuleVisitor.RULE_MAP[rule_name]}}")
+        self._stores.append(copy.deepcopy(self._store))
+    #fed
+
+    def _get_from_store(self, id: str):
+        if id in self._store:
+            self._use_rule("ID_LOOKUP")
+            return int(self._store[id])
+        else:
+            self._use_rule("ID_LOOKUP_ERROR")
+            self._end_mark()
+            raise {name}SOSRuleVisitor.ErrorExecution("ID_LOOKUP_ERROR")
+        #fi
+    #fed
+
+    def _set_in_store(self, id: str, value: int):
+        if id in self._store:
+            self._use_rule("ASSIGNMENT")
+            self._store[id] = int(value)
+        else:
+            self._use_rule("ASSIGNMENT_ERROR")
+            self._end_mark()
+            raise {name}SOSRuleVisitor.ErrorExecution("ASSIGNMENT_ERROR")
+        #fi
+    #fed
+
+    def visitStmt_list(self, ctx:{name}Parser.Stmt_listContext):
+        for stmt in ctx.stmt():
+            if self._break_start or self._continue_start:
+                if self._break_start:
+                    self._use_rule("BREAK_PROPAGATE")
+                else:
+                    self._use_rule("CONTINUE_PROPAGATE")
+                #fi
+            else:
+                self.visit(stmt)
+            #fi
+        #rof
+    #fed
+
+    def visitDeclStmt(self, ctx:{name}Parser.DeclStmtContext):
+        self._use_rule("DECLARATION")
+        self._store[ctx.ID().getText()] = 0
+    #fed
+
+    def visitAssignStmt(self, ctx:{name}Parser.AssignStmtContext):
+        rhs = ctx.aexp()
+        if self.does_aexp_needs_reduction(rhs):
+            self._use_rule("ASSIGNMENT_REDUCE")
+        #fi
+        rhs_term = self.visit(rhs)
+        lhs_id = ctx.ID().getText()
+        self._set_in_store(lhs_id, rhs_term)
+    #fed
+
+    def visitIfElseStmt(self, ctx:{name}Parser.IfElseStmtContext):
+        predicate = ctx.bexp()
+        self._if_depth += 1
+        self._max_if_depth = max(self._max_if_depth, self._if_depth)
+        if self.does_bexp_needs_reduction(predicate):
+            self._use_rule("IF_ELSE_PRED_REDUCE")
+        #fi
+        result = self.visit(predicate)
+        if result:
+            self._use_rule(f"IF_ELSE_True")
+            self.visit(ctx.stmt_list(0))
+        else:
+            self._use_rule(f"IF_ELSE_False")
+            self.visit(ctx.stmt_list(1))
+        #fi
+        self._if_depth -= 1
+    #fed
+
+    def visitWhileStmt(self, ctx:{name}Parser.WhileStmtContext):
+        while True:
+            predicate = ctx.bexp()
+            self._use_rule("WHILE_Transform")
+            if self.does_bexp_needs_reduction(predicate):
+                self._use_rule("LOOP_PRED_REDUCE")
+            #fi
+            result = self.visit(predicate)
+            if result:
+                self._use_rule(f"LOOP_True")
+                self._loop_depth += 1
+                self._max_loop_depth = max(self._max_loop_depth, self._loop_depth)
+                self.visit(ctx.stmt_list())
+                self._loop_depth -= 1
+                if self._break_start or self._continue_start:
+                    if self._break_start:
+                        self._use_rule("BREAK_LE_DECOMPOSE")
+                        self._break_start = False
+                        if self._is_break_continue_mark_stmt:
+                            self._end_mark()
+                        #fi
+                        break
+                    else:
+                        self._use_rule("CONTINUE_LE_DECOMPOSE")
+                        self._continue_start = False
+                    #fi
+                else:
+                    self._use_rule("LE")
+                #fi
+            else:
+                self._use_rule(f"LOOP_False")
+                break
+            #fi
+        #elihw
+    #fed
+
+    def visitHaltStmt(self, ctx:{name}Parser.HaltStmtContext):
+        self._use_rule("HALT")
+        if self._mark_rule_start >= 0:
+           self._end_mark()
+           raise {name}SOSRuleVisitor.HaltExecution("Halt configuration reached")
+        #fi
+    #fed
+
+    def visitContinueStmt(self, ctx:{name}Parser.ContinueStmtContext):
+        if self._loop_depth > 0:
+            self._continue_start = True
+        else:
+            self._end_mark()
+            raise {name}SOSRuleVisitor.ErrorExecution("CONTINUE_OUTSIDE_LOOP")
+        #fi
+    #fed
+
+    def visitBreakStmt(self, ctx:{name}Parser.BreakStmtContext):
+        if self._loop_depth > 0:
+            self._break_start = True
+        else:
+            self._end_mark()
+            raise {name}SOSRuleVisitor.ErrorExecution("BREAK_OUTSIDE_LOOP")
+        #fi
+    #fed
+
+    def visitMarkStmt(self, ctx:{name}Parser.MarkStmtContext):
+        self._start_mark()
+        if type(ctx.stmt()) == {name}Parser.WhileStmtContext or type(ctx.stmt()) == {name}Parser.IfElseStmtContext:
+            self._is_while_if_else_mark_stmt = True
+        #fi
+        self.visit(ctx.stmt())
+        self._is_while_if_else_mark_stmt = False
+        if not(self._break_start or self._continue_start):
+            self._end_mark()
+        else:
+            self._is_break_continue_mark_stmt = True
+        #fi
+    #fed
+
+    def _apply_aop(self, lhs_term: int, aop: str, rhs_term: int = None)->int:
+        match aop:
+              case "{PLUS_OP}":
+                  if rhs_term:
+                      return lhs_term + rhs_term
+                  else:
+                      return lhs_term
+                  #fi
+              case "{MINUS_OP}":
+                  if rhs_term:
+                      return lhs_term - rhs_term
+                  else:
+                      return -lhs_term
+                  #fi
+              case "{MUL_OP}":
+                  if rhs_term is None:
+                      raise NotImplementedError("Unary operations not supported for {MUL_OP}")
+                  #fi
+                  return lhs_term * rhs_term
+              case "{DIV_OP}":
+                  if rhs_term is None:
+                      raise NotImplementedError("Unary operations not supported for {DIV_OP}")
+                  #fi
+                  if rhs_term == 0:
+                      self._use_rule("{DIV_OP}_BY_ZERO_ERROR")
+                      self._end_mark()
+                      raise {name}SOSRuleVisitor.ErrorExecution("{DIV_OP}_BY_ZERO_ERROR")
+                  #fi
+                  sign: int = 1 if lhs_term >= 0 and rhs_term >= 0 else -1
+                  return int(sign * (abs(lhs_term) // abs(rhs_term)))
+              case "{MOD_OP}":
+                  if rhs_term is None:
+                      raise NotImplementedError("Unary operations not supported for {MOD_OP}")
+                  #fi
+                  if rhs_term == 0:
+                      self._use_rule("{MOD_OP}_BY_ZERO_ERROR")
+                      self._end_mark()
+                      raise {name}SOSRuleVisitor.ErrorExecution("{MOD_OP}_BY_ZERO_ERROR")
+                  #fi
+                  return int(lhs_term % rhs_term)
+        #hctam
+    #fed
+
+    def _apply_lop(self, lhs_term: bool, lop: str, rhs_term: bool = None)->bool:
+        match lop:
+              case "{AND_OP}":
+                  if rhs_term is None:
+                      raise NotImplementedError("Unary operations not supported for {AND_OP}")
+                  #fi
+                  return lhs_term and rhs_term
+              case "{OR_OP}":
+                  if rhs_term is None:
+                      raise NotImplementedError("Unary operations not supported for {OR_OP}")
+                  #fi
+                  return lhs_term or rhs_term
+              case "{NOT_OP}":
+                  return not lhs_term
+        #hctam
+    #fed
+
+    def _apply_rop(self, lhs_term: int, rop: str, rhs_term: int)->bool:
+        match rop:
+              case "{LT_OP}":
+                  return lhs_term < rhs_term
+              case "{LTEQ_OP}":
+                  return lhs_term <= rhs_term
+              case "{GT_OP}":
+                  return lhs_term > rhs_term
+              case "{GTEQ_OP}":
+                  return lhs_term >= rhs_term
+              case "{EQ_OP}":
+                  return lhs_term == rhs_term
+              case "{NEQ_OP}":
+                  return lhs_term != rhs_term
+        #hctam
+    #fed
+
+    def does_aexp_needs_reduction(self, aexp) -> bool:
+        return type(aexp) != {name}Parser.ALitContext
+    #fed
+
+    def visitAId(self, ctx:{name}Parser.AIdContext):
+        return self._get_from_store(ctx.ID().getText())
+    #fed
+
+    def visitALit(self, ctx:{name}Parser.ALitContext):
+        return int(ctx.LITERAL().getText())
+    #fed
+
+    def visitABinary(self, ctx:{name}Parser.ABinaryContext):
+        if len(ctx.aexp()) == 2:
+            lhs = ctx.aexp(0)
+            rhs = ctx.aexp(1)
+            aop = ctx.MATHOP().getText()
+
+            if self.does_aexp_needs_reduction(lhs):
+                self._use_rule(f"{{aop}}_LEFT_REDUCE")
+            #fi
+            lhs_term = self.visit(lhs)
+
+            if self.does_aexp_needs_reduction(rhs):
+                self._use_rule(f"{{aop}}_RIGHT_REDUCE")
+            #fi
+            rhs_term = self.visit(rhs)
+
+            result = self._apply_aop(lhs_term, aop, rhs_term)
+            self._use_rule(aop)
+            return result
+        else:
+            exp = ctx.aexp(0)
+            aop = ctx.MATHOP().getText()
+
+            if self.does_aexp_needs_reduction(exp):
+                self._use_rule(f"{{aop}}_UNARY_REDUCE")
+            #fi
+            term = self.visit(exp)
+
+            self._use_rule(f"{{aop}}_UNARY")
+            return self._apply_aop(term, aop)
+        #fi
+    #fed
+
+    def does_bexp_needs_reduction(self, bexp) -> bool:
+        return type(bexp) !=  {name}Parser.BLitContext
+    #fed
+
+    def visitBLit(self, ctx:{name}Parser.BLitContext):
+        return ctx.BOOL().getText() == 'true'
+    #fed
+
+    def visitBRel(self, ctx:{name}Parser.BRelContext):
+        lhs = ctx.aexp(0)
+        rhs = ctx.aexp(1)
+        rop = ctx.RELOP().getText()
+
+        if self.does_aexp_needs_reduction(lhs):
+            self._use_rule(f"{{rop}}_LEFT_REDUCE")
+        #fi
+        lhs_term = self.visit(lhs)
+
+        if self.does_aexp_needs_reduction(rhs):
+            self._use_rule(f"{{rop}}_RIGHT_REDUCE")
+        #fi
+        rhs_term = self.visit(rhs)
+        result: bool = self._apply_rop(lhs_term, rop, rhs_term)
+        self._use_rule(f"{{rop}}_{{str(result)}}")
+        return result
+    #fed
+
+    def visitBNot(self, ctx:{name}Parser.BNotContext):
+        exp = ctx.bexp()
+
+        if self.does_bexp_needs_reduction(exp):
+            self._use_rule("{NOT_OP}_REDUCE")
+        #fi
+        term = self.visit(exp)
+        result: bool = self._apply_lop(term, "{NOT_OP}")
+        self._use_rule(f"{NOT_OP}_{{str(result)}}")
+        return result
+    #fed
+
+    def visitBBin(self, ctx:{name}Parser.BBinContext):
+        lhs = ctx.bexp(0)
+        rhs = ctx.bexp(1)
+        lop = ctx.LOGICALOP().getText()
+
+        if self.does_bexp_needs_reduction(lhs):
+            self._use_rule(f"{{lop}}_LEFT_REDUCE")
+        #fi
+        lhs_term = self.visit(lhs)
+
+        if self.does_bexp_needs_reduction(rhs):
+            self._use_rule(f"{{lop}}_RIGHT_REDUCE")
+        #fi
+        rhs_term = self.visit(rhs)
+        result: bool = self._apply_lop(lhs_term, lop, rhs_term)
+        self._use_rule(f"{{lop}}_{{str(result)}}")
+        return result
+    #fed

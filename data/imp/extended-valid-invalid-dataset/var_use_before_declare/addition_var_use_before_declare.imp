@@ -1,0 +1,6 @@
+int a;
+int b;
+int ans;
+a = 3045;
+b = 1078;
+ans = (y + b);

@@ -1,0 +1,271 @@
+int Lj4PdHRW;
+Lj4PdHRW = 0;
+int KL2GvlyY;
+Lj4PdHRW = 0;
+int N;
+Lj4PdHRW = 0;
+int M;
+Lj4PdHRW = 0;
+int A1;
+A1 = 0;
+int A2;
+N = 0;
+int A3;
+KL2GvlyY = 0;
+int A4;
+A1 = 0;
+int B1;
+A4 = 0;
+int B2;
+A4 = 0;
+int B3;
+A3 = 0;
+int B4;
+N = 0;
+int C1;
+Lj4PdHRW = 0;
+int C2;
+N = 0;
+int C3;
+KL2GvlyY = 0;
+int C4;
+B2 = 0;
+int cnt1;
+B4 = 0;
+int cnt2;
+C4 = 0;
+int cnt3;
+KL2GvlyY = 0;
+int cnt4;
+A1 = 0;
+int cnt5;
+B1 = 0;
+int cnt6;
+A3 = 0;
+int cnt7;
+cnt7 = 0;
+int i;
+A4 = 0;
+int j;
+j = 0;
+int ans;
+C2 = 0;
+KL2GvlyY = (2 / 0);
+Lj4PdHRW = 0;
+while(Lj4PdHRW < KL2GvlyY)
+{
+    M = 0;
+    N = (7 / 0);
+    M = 4;
+    cnt1 = 0;
+    cnt2 = 0;
+    cnt3 = 0;
+    cnt4 = 0;
+    cnt5 = 0;
+    cnt6 = 0;
+    cnt7 = 0;
+    A1 = 0;
+    B1 = 1;
+    C1 = 2;
+    A2 = 2;
+    B2 = 3;
+    C2 = 4;
+    A3 = 4;
+    B3 = 4;
+    C3 = 5;
+    A4 = 5;
+    B4 = 3;
+    C4 = 3;
+    A1 = (A1 - 1);
+    B1 = (B1 - 1);
+    C1 = (C1 - 1);
+    A2 = (A2 - 1);
+    B2 = (B2 - 1);
+    C2 = (C2 - 1);
+    A3 = (A3 - 1);
+    B3 = (B3 - 1);
+    C3 = (C3 - 1);
+    A4 = (A4 - 1);
+    B4 = (B4 - 1);
+    C4 = (C4 - 1);
+    cnt2 = (cnt2 + 1);
+    cnt3 = (cnt3 + 1);
+    cnt4 = (cnt4 + 1);
+    cnt4 = (cnt4 + 1);
+    i = 0;
+    while(i < N)
+    {
+        if((i == 0) && (cnt1 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (cnt2 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (cnt3 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 3) && (cnt4 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 4) && (cnt5 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 5) && (cnt6 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 6) && (cnt7 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    j = 0;
+    while(j < N)
+    {
+        if(i != j)
+        {
+            ans = (i + 1);
+            ans = (j + 1);
+            ans = 10;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    Lj4PdHRW = (Lj4PdHRW + 1);
+    if(Lj4PdHRW >= KL2GvlyY)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+    N = 5;
+    M = 3;
+    cnt1 = 0;
+    cnt2 = 0;
+    cnt3 = 0;
+    cnt4 = 0;
+    cnt5 = 0;
+    cnt6 = 0;
+    cnt7 = 0;
+    A1 = 0;
+    B1 = 1;
+    C1 = 2;
+    A2 = 1;
+    B2 = 2;
+    C2 = 3;
+    A3 = 2;
+    B3 = 3;
+    C3 = 4;
+    A1 = (A1 - 1);
+    B1 = (B1 - 1);
+    C1 = (C1 - 1);
+    A2 = (A2 - 1);
+    B2 = (B2 - 1);
+    C2 = (C2 - 1);
+    A3 = (A3 - 1);
+    B3 = (B3 - 1);
+    C3 = (C3 - 1);
+    cnt2 = (cnt2 + 1);
+    cnt3 = (cnt3 + 1);
+    cnt4 = (cnt4 + 1);
+    i = 0;
+    while(i < N)
+    {
+        if((i == 0) && (cnt1 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (cnt2 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (cnt3 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 3) && (cnt4 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        if((i == 4) && (cnt5 == 0))
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    j = 0;
+    while(j < N)
+    {
+        if(i != j)
+        {
+            ans = (i + 1);
+            ans = (j + 1);
+            ans = 10;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    Lj4PdHRW = (Lj4PdHRW + 1);
+};

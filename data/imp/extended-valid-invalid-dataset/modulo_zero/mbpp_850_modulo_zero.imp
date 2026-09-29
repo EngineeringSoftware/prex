@@ -1,0 +1,23 @@
+int ans;
+int n1;
+int b;
+int a;
+int n2;
+int c;
+int n3;
+n2 = 0;
+a = (150 % n2);
+b = 30;
+c = 70;
+n1 = (b - a);
+n2 = (c - b);
+n3 = (c - a);
+if(((n1 * n2) * n3) <= (((a * a) + (b * b)) + (c * c)))
+{
+    c = 0;
+    ans = (1 % c);
+}
+else
+{
+
+};

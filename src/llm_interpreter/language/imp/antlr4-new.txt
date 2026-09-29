@@ -1,0 +1,35 @@
+grammar {name};
+
+program     : stmt_list;
+stmt_list   : (stmt ';')* ;
+stmt        : 'int' ID                                                          # DeclStmt
+            | ID '{ASSIGN_OP}' aexp                                             # AssignStmt
+            | '{IF}' bexp '{{' stmt_list '}}' '{ELSE}' '{{' stmt_list '}}'          # IfElseStmt
+            | '{WHILE}' bexp '{{' stmt_list '}}'                                  # WhileStmt
+            | '{HALT}'                                                          # HaltStmt
+            | '{CONTINUE}'                                                      # ContinueStmt
+            | '{BREAK}'                                                         # BreakStmt
+            ;
+
+aexp        : ID                                               # AId
+            | LITERAL                                          # ALit
+            | '(' aexp MATHOP aexp ')'                         # ABinary
+            | '(' '{PLUS_OP}' aexp ')'                         # APlus
+            | '(' '{MINUS_OP}' aexp ')'                        # AMinus
+            ;
+
+bexp        : '(' BOOL ')'                                     # BLit
+            | '(' aexp RELOP aexp ')'                          # BRel
+            | '(' '{NOT_OP}' bexp ')'                          # BNot
+            | '(' bexp LOGICALOP bexp ')'                      # BBin
+            ;
+
+BOOL        : 'true' | 'false' ;
+MATHOP      : '{PLUS_OP}' | '{MINUS_OP}' | '{MUL_OP}' | '{DIV_OP}' | '{MOD_OP}' ;
+RELOP       : '{LT_OP}' | '{LTEQ_OP}' | '{GT_OP}' | '{GTEQ_OP}' | '{EQ_OP}' | '{NEQ_OP}' ;
+LOGICALOP   : '{AND_OP}' | '{OR_OP}' ;
+ID          : LETTER (LETTER | DIGIT)* ;
+LITERAL     : DIGIT+ ;
+WS          : [ \t\r\n]+ -> skip ;
+fragment LETTER : [a-zA-Z] ;
+fragment DIGIT  : [0-9] ;

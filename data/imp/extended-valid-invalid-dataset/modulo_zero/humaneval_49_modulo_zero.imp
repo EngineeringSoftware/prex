@@ -1,0 +1,16 @@
+int ans;
+int n;
+int p;
+int i;
+i = 0;
+n = (3 % i);
+p = 11;
+ans = 1;
+i = 0;
+while(i < n)
+{
+    n = 0;
+    ans = ((ans * 2) % n);
+    ans = (ans % p);
+    i = (i + 1);
+};

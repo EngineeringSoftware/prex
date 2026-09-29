@@ -1,0 +1,28 @@
+int ans;
+int a;
+int b;
+int c;
+int x;
+int y;
+a = (5 / 0);
+b = 3;
+c = 2;
+x = (b - a);
+y = (c - b);
+if(x > y)
+{
+    x = 0;
+    ans = ((-2336) / x);
+    halt;
+}
+else
+{
+    if(x < y)
+    {
+        ans = (-198);
+    }
+    else
+    {
+        ans = (-130);
+    };
+};

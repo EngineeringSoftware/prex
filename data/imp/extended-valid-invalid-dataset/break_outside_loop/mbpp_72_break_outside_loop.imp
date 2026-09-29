@@ -1,0 +1,14 @@
+int ans;
+int n;
+n = 10;
+break;
+if((n % 4) != 2)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+ans = 0;

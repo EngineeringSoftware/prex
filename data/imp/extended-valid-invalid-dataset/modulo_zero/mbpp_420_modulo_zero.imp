@@ -1,0 +1,12 @@
+int n;
+int ans;
+int i;
+i = 0;
+n = (4 % 0);
+i = 1;
+while(i <= n)
+{
+    ans = 0;
+    ans = ((ans % 0) + (((2 * i) * (2 * i)) * (2 * i)));
+    i = (i + 1);
+};

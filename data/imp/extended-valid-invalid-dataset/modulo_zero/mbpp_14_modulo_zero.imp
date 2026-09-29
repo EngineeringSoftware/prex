@@ -1,0 +1,10 @@
+int ans;
+int l;
+int b;
+int h;
+b = 0;
+l = (10 % b);
+ans = 0;
+b = (8 % ans);
+h = 6;
+ans = (((l * b) * h) / 2);

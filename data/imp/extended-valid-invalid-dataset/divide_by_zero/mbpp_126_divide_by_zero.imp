@@ -1,0 +1,21 @@
+int i;
+int ans;
+int a;
+int b;
+a = 0;
+i = (1 / 0);
+a = 10;
+b = 15;
+while((i <= a) && (i <= b))
+{
+    a = 0;
+    if((((a % i) / a) == 0) && ((b % i) == 0))
+    {
+        ans = (ans + i);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

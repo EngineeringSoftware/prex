@@ -1,0 +1,6 @@
+int a;
+int b;
+int ans;
+a = (3045 / 0);
+b = 1078;
+ans = (a + b);

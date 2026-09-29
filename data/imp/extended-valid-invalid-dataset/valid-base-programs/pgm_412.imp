@@ -1,0 +1,44 @@
+int n;
+int k;
+int i;
+int a;
+int b;
+int ans;
+int t;
+int modresult;
+ans = 0;
+t = 1;
+n = 4;
+k = 0;
+while(t > 0)
+{
+    k = (k % 4);
+    if(k == 0)
+    {
+        ans = (- 1);
+    }
+    else
+    {
+        ans = 1;
+        i = 0;
+        while(i < n)
+        {
+            if(k != 2)
+            {
+                i = (i + 2);
+            }
+            else
+            {
+                if((i % 4) == 0)
+                {
+                    i = (i + 2);
+                }
+                else
+                {
+                    i = (i + 2);
+                };
+            };
+        };
+    };
+    t = (t - 1);
+};

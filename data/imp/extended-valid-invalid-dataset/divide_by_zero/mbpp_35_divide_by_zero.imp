@@ -1,0 +1,4 @@
+int ans;
+int n;
+n = (6 / 0);
+ans = (n * (n + 1));

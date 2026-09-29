@@ -1,0 +1,15 @@
+int n;
+int m;
+int num;
+int ans;
+continue;
+n = 0;
+m = 1;
+num = (-7);
+while(num != 0)
+{
+    n = (n + (m * (num % 7)));
+    num = (num / 7);
+    m = (m * 10);
+};
+ans = n;

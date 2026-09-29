@@ -1,0 +1,27 @@
+int x;
+int b;
+int ans;
+int c;
+int d;
+int e;
+x = 0;
+b = (1 / 0);
+c = 2;
+d = 6;
+e = 3;
+x = c;
+while(b < d)
+{
+    b = 0;
+    x = ((x * e) / b);
+    if(x < 0)
+    {
+        x = (x + 2);
+    }
+    else
+    {
+
+    };
+    b = (b + 1);
+};
+ans = x;

@@ -1,0 +1,233 @@
+int n;
+int m1;
+int m2;
+int i;
+int j;
+int u;
+int v;
+int ans;
+int maxNodes;
+int maxEdges;
+int dsu1f;
+int dsu1siz;
+int dsu2f;
+int dsu2siz;
+int edgeCount;
+int p1Count;
+int p2Count;
+int p1;
+int p2;
+maxNodes = 100;
+maxEdges = 100;
+n = 100;
+m1 = 9;
+m2 = 9;
+i = 0;
+while(i < maxNodes)
+{
+    dsu1f = l;
+    dsu1siz = 1;
+    i = (i + 1);
+};
+i = 0;
+while(i < maxNodes)
+{
+    dsu2f = i;
+    dsu2siz = 1;
+    i = (i + 1);
+};
+i = 0;
+while(i < m1)
+{
+    if(i == 0)
+    {
+        u = 75;
+        v = 16;
+    }
+    else
+    {
+
+    };
+    if(i == 1)
+    {
+        u = 9;
+        v = 55;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        u = 77;
+        v = 8;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        u = 37;
+        v = 1;
+    }
+    else
+    {
+
+    };
+    if(i == 4)
+    {
+        u = 76;
+        v = 36;
+    }
+    else
+    {
+
+    };
+    if(i == 5)
+    {
+        u = 1;
+        v = 18;
+    }
+    else
+    {
+
+    };
+    if(i == 6)
+    {
+        u = 91;
+        v = 79;
+    }
+    else
+    {
+
+    };
+    if(i == 7)
+    {
+        u = 44;
+        v = 75;
+    }
+    else
+    {
+
+    };
+    if(i == 8)
+    {
+        u = 46;
+        v = 81;
+    }
+    else
+    {
+
+    };
+    dsu1f = u;
+    dsu1f = v;
+    i = (i + 1);
+};
+i = 0;
+while(i < m2)
+{
+    if(i == 0)
+    {
+        u = 23;
+        v = 78;
+    }
+    else
+    {
+
+    };
+    if(i == 1)
+    {
+        u = 10;
+        v = 65;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        u = 53;
+        v = 32;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        u = 54;
+        v = 56;
+    }
+    else
+    {
+
+    };
+    if(i == 4)
+    {
+        u = 90;
+        v = 64;
+    }
+    else
+    {
+
+    };
+    if(i == 5)
+    {
+        u = 28;
+        v = 83;
+    }
+    else
+    {
+
+    };
+    if(i == 6)
+    {
+        u = 75;
+        v = 41;
+    }
+    else
+    {
+
+    };
+    if(i == 7)
+    {
+        u = 1;
+        v = 37;
+    }
+    else
+    {
+
+    };
+    if(i == 8)
+    {
+        u = 2;
+        v = 67;
+    }
+    else
+    {
+
+    };
+    dsu2f = u;
+    dsu2f = v;
+    i = (i + 1);
+};
+edgeCount = 0;
+p1Count = 0;
+p2Count = 0;
+i = 1;
+while(i < n)
+{
+    if((i != dsu1f) && (i != dsu2f))
+    {
+        edgeCount = (edgeCount + 1);
+        dsu1f = i;
+        dsu2f = i;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = edgeCount;

@@ -1,0 +1,18 @@
+int ans;
+int i;
+int n;
+break;
+n = 25;
+ans = 2;
+while(ans < n)
+{
+    if((n % ans) == 0)
+    {
+        break;
+    }
+    else
+    {
+
+    };
+    ans = (ans + 1);
+};

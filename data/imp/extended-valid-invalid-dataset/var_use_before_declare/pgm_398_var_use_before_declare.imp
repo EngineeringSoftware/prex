@@ -1,0 +1,294 @@
+int t;
+int n;
+int i;
+int j;
+int arr0;
+int arr1;
+int arr2;
+int arr3;
+int arr4;
+int arr5;
+int arr6;
+int arr7;
+int arr8;
+int arr9;
+int arr10;
+int arr11;
+int arr12;
+int arr13;
+int arr14;
+int arr15;
+int arr16;
+int arr17;
+int arr18;
+int arr19;
+int arr20;
+int arr21;
+int arr22;
+int arr23;
+int arr24;
+int arr25;
+int arr26;
+int arr27;
+int arr28;
+int arr29;
+int arr30;
+int arr31;
+int arr32;
+int arr33;
+int arr34;
+int arr35;
+int arr36;
+int arr37;
+int arr38;
+int arr39;
+int arr40;
+int arr41;
+int arr42;
+int arr43;
+int arr44;
+int arr45;
+int arr46;
+int arr47;
+int arr48;
+int arr49;
+int arr50;
+int arr51;
+int arr52;
+int arr53;
+int arr54;
+int arr55;
+int arr56;
+int arr57;
+int arr58;
+int arr59;
+int arr60;
+int arr61;
+int arr62;
+int arr63;
+int arr64;
+int arr65;
+int arr66;
+int arr67;
+int arr68;
+int arr69;
+int arr70;
+int arr71;
+int arr72;
+int arr73;
+int arr74;
+int arr75;
+int arr76;
+int arr77;
+int arr78;
+int arr79;
+int arr80;
+int arr81;
+int arr82;
+int arr83;
+int arr84;
+int arr85;
+int arr86;
+int arr87;
+int arr88;
+int arr89;
+int arr90;
+int arr91;
+int arr92;
+int arr93;
+int arr94;
+int arr95;
+int arr96;
+int arr97;
+int arr98;
+int arr99;
+int ans;
+t = 4;
+i = 0;
+while(i < t)
+{
+    n = b;
+    if(i == 0)
+    {
+        n = 4;
+    }
+    else
+    {
+
+    };
+    if(i == 1)
+    {
+        n = 5;
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        n = 6;
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        n = 3;
+    }
+    else
+    {
+
+    };
+    j = 0;
+    while(j < n)
+    {
+        if((i == 0) && (j == 0))
+        {
+            arr0 = 4;
+        }
+        else
+        {
+
+        };
+        if((i == 0) && (j == 1))
+        {
+            arr1 = 3;
+        }
+        else
+        {
+
+        };
+        if((i == 0) && (j == 2))
+        {
+            arr2 = 2;
+        }
+        else
+        {
+
+        };
+        if((i == 0) && (j == 3))
+        {
+            arr3 = 5;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (j == 0))
+        {
+            arr0 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (j == 1))
+        {
+            arr1 = 1;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (j == 2))
+        {
+            arr2 = 10;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (j == 3))
+        {
+            arr3 = 7;
+        }
+        else
+        {
+
+        };
+        if((i == 1) && (j == 4))
+        {
+            arr4 = 10;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 0))
+        {
+            arr0 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 1))
+        {
+            arr1 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 2))
+        {
+            arr2 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 3))
+        {
+            arr3 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 4))
+        {
+            arr4 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 2) && (j == 5))
+        {
+            arr5 = 6;
+        }
+        else
+        {
+
+        };
+        if((i == 3) && (j == 0))
+        {
+            arr0 = 100;
+        }
+        else
+        {
+
+        };
+        if((i == 3) && (j == 1))
+        {
+            arr1 = 100;
+        }
+        else
+        {
+
+        };
+        if((i == 3) && (j == 2))
+        {
+            arr2 = 0;
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    ans = arr0;
+    i = (i + 1);
+};

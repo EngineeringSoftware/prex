@@ -1,0 +1,30 @@
+int ans;
+int n;
+int i;
+continue;
+n = 3;
+if(n < 1)
+{
+    ans = 0;
+    halt;
+}
+else
+{
+
+};
+if(n == 1)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+ans = 18;
+i = 2;
+while(i < n)
+{
+    ans = (ans * 10);
+    i = (i + 1);
+};

@@ -1,0 +1,199 @@
+from antlr4 import *
+if "." in __name__:
+    from .{name}Visitor import {name}Visitor
+    from .{name}Parser import {name}Parser
+    from .{name}Lexer import {name}Lexer
+else:
+    from {name}Visitor import {name}Visitor
+    from {name}Parser import {name}Parser
+    from {name}Lexer import {name}Lexer
+#fi
+
+class {name}StmtCleanerVisitor({name}Visitor):
+
+    def __init__(self):
+        super().__init__
+        self._is_mark_stmt = False
+        self._is_break_continue_mark_stmt = False
+    #fed
+
+    class MarkStmt(Exception):
+        pass
+    #ssalc
+
+    def format_cleaned_stmt(self, stmt:str):
+        lines = stmt.split('\n')
+        indent = 0
+        for i, line in enumerate(lines):
+            if '}}' in line:
+                indent -= 4
+            #fi
+            lines[i] = f"{{' ' * indent}}{{line.strip()}}"
+            if '{{' in line:
+                indent += 4
+            #fi
+        #rof
+        return "\n".join(lines)
+    #fed
+
+    def clean_stmt(self, stmt: str):
+        input_stream = InputStream(stmt)
+        lexer = {name}Lexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = {name}Parser(token_stream)
+        tree = parser.program()
+        try:
+            self.visit(tree)
+        except {name}StmtCleanerVisitor.MarkStmt as mark:
+            if ":" in str(mark):
+                stmt = str(mark).split(":")[0]
+                stmt = self.format_cleaned_stmt(stmt)
+                return (stmt,stmt)
+            else:
+                return (self.format_cleaned_stmt(str(mark)),"ε")
+            #fi
+        #yrt
+        raise NotImplementedError("Program must contain a marked stmt")
+    #fed
+
+    def visitStmt_list(self, ctx:{name}Parser.Stmt_listContext):
+        stmts: list = []
+        for stmt in ctx.stmt():
+            stmts.append(self.visit(stmt))
+        #rof
+        return "\n".join(stmts)
+    #fed
+
+    def visitDeclStmt(self, ctx:{name}Parser.DeclStmtContext):
+        stmt =  f"int {{ctx.ID().getText()}};"
+        if self._is_mark_stmt:
+            raise {name}StmtCleanerVisitor.MarkStmt(f"@ {{stmt}}")
+        else:
+            return stmt
+        #fi
+    #fed
+
+    def visitAssignStmt(self, ctx:{name}Parser.AssignStmtContext):
+        rhs = self.visit(ctx.aexp())
+        lhs_id = ctx.ID().getText()
+        stmt = f"{{lhs_id}} {ASSIGN_OP} {{rhs}};"
+        if self._is_mark_stmt:
+            raise {name}StmtCleanerVisitor.MarkStmt(f"@ {{stmt}}")
+        else:
+            return stmt
+        #fi
+    #fed
+
+    def visitIfElseStmt(self, ctx:{name}Parser.IfElseStmtContext):
+        pred = self.visit(ctx.bexp())
+        if self._is_mark_stmt:
+            raise {name}StmtCleanerVisitor.MarkStmt(f"@ {IF} {{pred}}\n{{{{\n{HALT};\n}}}}\n{ELSE}\n{{{{\n{HALT};\n}}}};")
+        else:
+            if_body = self.visit(ctx.stmt_list(0))
+            found_in_if_body = self._is_break_continue_mark_stmt
+            else_body = self.visit(ctx.stmt_list(1))
+            if self._is_break_continue_mark_stmt:
+                found_in_if_body = "true" if found_in_if_body and self._is_break_continue_mark_stmt else "false"
+                return f"{IF} ({{found_in_if_body}})\n{{{{\n{{if_body}}\n}}}}\n{ELSE}\n{{{{\n{{else_body}}\n}}}};"
+            else:
+                return f"{IF} {{pred}}\n{{{{\n{{if_body}}\n}}}}\n{ELSE}\n{{{{\n{{else_body}}\n}}}};"
+            #fi
+        #fi
+    #fed
+
+    def visitWhileStmt(self, ctx:{name}Parser.WhileStmtContext):
+        pred = self.visit(ctx.bexp())
+        if self._is_mark_stmt:
+            raise {name}StmtCleanerVisitor.MarkStmt(f"@ {WHILE} {{pred}}\n{{{{\n{HALT};\n}}}};")
+        else:
+            found_before_body = self._is_break_continue_mark_stmt
+            body = self.visit(ctx.stmt_list())
+            if self._is_break_continue_mark_stmt and not found_before_body:
+                stmt = f"@ {WHILE} (ble {EQ_OP} 0)\n{{{{\nble {ASSIGN_OP} 1;\n{{body}}\n}}}};"
+                raise {name}StmtCleanerVisitor.MarkStmt(f"{{stmt}}:{{stmt}}")
+            else:
+                stmt = f"{WHILE} {{pred}}\n{{{{\n{{body}}\n}}}};"
+                return stmt
+            #fi
+        #fi
+    #fed
+
+    def visitHaltStmt(self, ctx:{name}Parser.HaltStmtContext):
+        stmt =  f"{HALT};"
+        if self._is_mark_stmt:
+            raise {name}StmtCleanerVisitor.MarkStmt(f"@ {{stmt}}")
+        else:
+            return stmt
+        #fi
+    #fed
+
+    def visitContinueStmt(self, ctx:{name}Parser.ContinueStmtContext):
+        stmt =  f"{CONTINUE};"
+        if self._is_break_continue_mark_stmt:
+            return f"{{stmt}}"
+        else:
+            return stmt
+        #fi
+    #fed
+
+    def visitBreakStmt(self, ctx:{name}Parser.BreakStmtContext):
+        stmt =  f"{BREAK};"
+        if self._is_break_continue_mark_stmt:
+            return f"{{stmt}}"
+        else:
+            return stmt
+        #fi
+    #fed
+
+    def visitMarkStmt(self, ctx:{name}Parser.MarkStmtContext):
+        if type(ctx.stmt()) == {name}Parser.BreakStmtContext or type(ctx.stmt()) == {name}Parser.ContinueStmtContext:
+            self._is_break_continue_mark_stmt = True
+        else:
+            self._is_mark_stmt = True
+        #fi
+        return self.visit(ctx.stmt())
+    #fed
+
+    def visitAId(self, ctx:{name}Parser.AIdContext):
+        return ctx.ID().getText()
+    #fed
+
+    def visitALit(self, ctx:{name}Parser.ALitContext):
+        return ctx.LITERAL().getText()
+    #fed
+
+    def visitABinary(self, ctx:{name}Parser.ABinaryContext):
+        if len(ctx.aexp()) == 2:
+            lhs = self.visit(ctx.aexp(0))
+            rhs = self.visit(ctx.aexp(1))
+            aop = ctx.MATHOP().getText()
+            return f"({{lhs}} {{aop}} {{rhs}})"
+        else:
+            exp = self.visit(ctx.aexp(0))
+            aop = ctx.MATHOP().getText()
+            return f"({{aop}} {{exp}})"
+        #fi
+    #fed
+
+    def visitBLit(self, ctx:{name}Parser.BLitContext):
+        return f"({{ctx.BOOL().getText()}})"
+    #fed
+
+    def visitBRel(self, ctx:{name}Parser.BRelContext):
+        lhs = self.visit(ctx.aexp(0))
+        rhs = self.visit(ctx.aexp(1))
+        rop = ctx.RELOP().getText()
+        return f"({{lhs}} {{rop}} {{rhs}})"
+    #fed
+
+    def visitBNot(self, ctx:{name}Parser.BNotContext):
+        exp = self.visit(ctx.bexp())
+        return f"({NOT_OP} {{exp}})"
+    #fed
+
+    def visitBBin(self, ctx:{name}Parser.BBinContext):
+        lhs = self.visit(ctx.bexp(0))
+        rhs = self.visit(ctx.bexp(1))
+        lop = ctx.LOGICALOP().getText()
+        return f"({{lhs}} {{lop}} {{rhs}})"
+    #fed

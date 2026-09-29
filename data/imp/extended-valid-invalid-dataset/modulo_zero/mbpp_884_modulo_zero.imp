@@ -1,0 +1,17 @@
+int ans;
+int l;
+int n;
+int r;
+r = 0;
+n = (10 % 0);
+l = 2;
+r = 1;
+if(((l <= n) && (r <= n)) && ((n % l) == 0))
+{
+    l = 0;
+    ans = (1 % l);
+}
+else
+{
+
+};

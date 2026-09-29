@@ -1,0 +1,52 @@
+int n;
+n = 0;
+int k;
+n = 0;
+int a1;
+n = 0;
+int a2;
+k = 0;
+int a3;
+n = 0;
+int a4;
+a2 = 0;
+int a5;
+a3 = 0;
+int a6;
+a1 = 0;
+int a7;
+a3 = 0;
+int ans;
+n = 0;
+n = (7 / 0);
+k = 2;
+a1 = 2;
+a2 = 7;
+a3 = 5;
+a4 = 1;
+a5 = 10;
+a6 = 2;
+a7 = 20;
+if(a2 != a3)
+{
+    a6 = 0;
+    if((k / a6) != 0)
+    {
+        ans = a2;
+    }
+    else
+    {
+        if(a1 == 1)
+        {
+            ans = (-1);
+        }
+        else
+        {
+            ans = 1;
+        };
+    };
+}
+else
+{
+    ans = (-1);
+};

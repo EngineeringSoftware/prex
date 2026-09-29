@@ -1,0 +1,43 @@
+int n;
+int a;
+int b;
+int ans;
+int i;
+n = 14;
+a = 2;
+b = 1;
+ans = 0;
+i = (4 / 2);
+if(n <= 0)
+{
+    halt;
+}
+else
+{
+
+};
+if(n == 1)
+{
+    ans = 1;
+    halt;
+}
+else
+{
+
+};
+if(n == 2)
+{
+    ans = 2;
+    halt;
+}
+else
+{
+
+};
+while(i < n)
+{
+    ans = (q + b);
+    b = a;
+    a = ans;
+    i = (i + 1);
+};

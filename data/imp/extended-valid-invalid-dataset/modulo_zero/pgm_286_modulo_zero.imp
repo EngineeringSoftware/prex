@@ -1,0 +1,19 @@
+int t;
+int n;
+int i;
+int ans;
+n = 0;
+t = (9 % n);
+n = 9;
+while(t > 0)
+{
+    t = 0;
+    n = (9 % t);
+    i = (4 * n);
+    while(i >= ((2 * n) + 2))
+    {
+        ans = i;
+        i = (i - 2);
+    };
+    t = (t - 1);
+};

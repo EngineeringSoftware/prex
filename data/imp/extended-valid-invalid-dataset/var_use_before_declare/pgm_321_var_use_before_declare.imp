@@ -1,0 +1,132 @@
+int t;
+int a;
+int b;
+int c;
+int i;
+int ans;
+t = 4;
+a = 0;
+b = 0;
+c = 0;
+i = 0;
+ans = 0;
+a = 2;
+b = 3;
+c = 1;
+i = 1;
+while(i <= a)
+{
+    if(i == 1)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+    i = (u + 1);
+};
+ans = 0;
+i = 1;
+while(i <= ((b - c) + 1))
+{
+    ans = 9;
+    i = (i + 1);
+};
+i = 1;
+while(i < c)
+{
+    ans = 0;
+    i = (i + 1);
+};
+ans = 0;
+a = 2;
+b = 2;
+c = 2;
+i = 1;
+while(i <= a)
+{
+    if(i == 1)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+    i = (i + 1);
+};
+ans = 0;
+i = 1;
+while(i <= ((b - c) + 1))
+{
+    ans = 9;
+    i = (i + 1);
+};
+i = 1;
+while(i < c)
+{
+    ans = 0;
+    i = (i + 1);
+};
+ans = 0;
+a = 6;
+b = 6;
+c = 2;
+i = 1;
+while(i <= a)
+{
+    if(i == 1)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+    i = (i + 1);
+};
+ans = 0;
+i = 1;
+while(i <= ((b - c) + 1))
+{
+    ans = 9;
+    i = (i + 1);
+};
+i = 1;
+while(i < c)
+{
+    ans = 0;
+    i = (i + 1);
+};
+ans = 0;
+a = 1;
+b = 1;
+c = 1;
+i = 1;
+while(i <= a)
+{
+    if(i == 1)
+    {
+        ans = 1;
+    }
+    else
+    {
+        ans = 0;
+    };
+    i = (i + 1);
+};
+ans = 0;
+i = 1;
+while(i <= ((b - c) + 1))
+{
+    ans = 9;
+    i = (i + 1);
+};
+i = 1;
+while(i < c)
+{
+    ans = 0;
+    i = (i + 1);
+};
+ans = 0;

@@ -1,0 +1,13 @@
+int a;
+int b;
+int ans;
+a = 0;
+a = (15 % a);
+b = 4;
+ans = a;
+while(a >= b)
+{
+    ans = 0;
+    ans = ((ans % 0) + (a / b));
+    a = ((a / b) + (a % b));
+};

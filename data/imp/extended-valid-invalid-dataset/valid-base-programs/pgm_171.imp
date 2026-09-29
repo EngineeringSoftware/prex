@@ -1,0 +1,140 @@
+int n;
+int i;
+int k;
+int x0;
+int x1;
+int x2;
+int x3;
+int x4;
+int x5;
+int x6;
+int x7;
+int x8;
+int x9;
+int y0;
+int y1;
+int y2;
+int y3;
+int y4;
+int y5;
+int y6;
+int y7;
+int y8;
+int y9;
+int sum;
+int dx;
+int dy;
+int dist;
+int ans;
+n = 10;
+k = 95;
+x0 = (- 20);
+y0 = (- 5);
+x1 = 2;
+y1 = (- 8);
+x2 = 14;
+y2 = 13;
+x3 = 10;
+y3 = 3;
+x4 = 17;
+y4 = 11;
+x5 = 13;
+y5 = (- 12);
+x6 = (- 6);
+y6 = 11;
+x7 = 14;
+y7 = (- 15);
+x8 = (- 13);
+y8 = 14;
+x9 = 19;
+y9 = 8;
+i = 0;
+sum = 0;
+while(i < 9)
+{
+    if(i == 0)
+    {
+        dx = (x1 - x0);
+        dy = (y1 - y0);
+    }
+    else
+    {
+
+    };
+    if(i == 1)
+    {
+        dx = (x2 - x1);
+        dy = (y2 - y1);
+    }
+    else
+    {
+
+    };
+    if(i == 2)
+    {
+        dx = (x3 - x2);
+        dy = (y3 - y2);
+    }
+    else
+    {
+
+    };
+    if(i == 3)
+    {
+        dx = (x4 - x3);
+        dy = (y4 - y3);
+    }
+    else
+    {
+
+    };
+    if(i == 4)
+    {
+        dx = (x5 - x4);
+        dy = (y5 - y4);
+    }
+    else
+    {
+
+    };
+    if(i == 5)
+    {
+        dx = (x6 - x5);
+        dy = (y6 - y5);
+    }
+    else
+    {
+
+    };
+    if(i == 6)
+    {
+        dx = (x7 - x6);
+        dy = (y7 - y6);
+    }
+    else
+    {
+
+    };
+    if(i == 7)
+    {
+        dx = (x8 - x7);
+        dy = (y8 - y7);
+    }
+    else
+    {
+
+    };
+    if(i == 8)
+    {
+        dx = (x9 - x8);
+        dy = (y9 - y8);
+    }
+    else
+    {
+
+    };
+    dist = ((dx * dx) + (dy * dy));
+    sum = (sum + dist);
+    i = (i + 1);
+};
+ans = ((k * sum) / 50);

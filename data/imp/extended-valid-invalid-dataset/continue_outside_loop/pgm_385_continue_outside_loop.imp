@@ -1,0 +1,45 @@
+int t;
+int n;
+int m;
+int sum;
+int pre0;
+int pre1;
+int ok;
+int ans;
+t = 1;
+n = 1;
+m = 1;
+continue;
+sum = 0;
+pre0 = 0;
+pre1 = 0;
+ok = 0;
+ans = 0;
+sum = 0;
+pre0 = 0;
+pre1 = 0;
+if(((sum * m) % n) != 0)
+{
+    ans = (-1);
+}
+else
+{
+    sum = ((sum * m) / n);
+    if((pre1 - pre0) == sum)
+    {
+        ok = 1;
+        ans = 1;
+    }
+    else
+    {
+        if(((pre1 + pre1) - pre1) == sum)
+        {
+            ok = 1;
+            ans = 1;
+        }
+        else
+        {
+            ans = 2;
+        };
+    };
+};

@@ -1,0 +1,32 @@
+int i;
+int ans;
+int l;
+int j;
+int k;
+int n;
+j = 0;
+n = (5 % j);
+k = 2;
+i = 0;
+while(i < n)
+{
+    j = (0 % 0);
+    while(j < n)
+    {
+        l = 0;
+        while(l < n)
+        {
+            if(((((i + k)) <= n) && (((j + k) <= n))) && ((l + k) <= n))
+            {
+                ans = (ans + 1);
+            }
+            else
+            {
+
+            };
+            l = (l + 1);
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};

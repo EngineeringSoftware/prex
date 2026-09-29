@@ -1,0 +1,23 @@
+int ans;
+int i;
+int n;
+ans = 0;
+n = (39 / ans);
+i = 2;
+while(i <= n)
+{
+    if((n % i) == 0)
+    {
+        n = 0;
+        ans = ((ans / n) + i);
+        while((n % i) == 0)
+        {
+            n = (n / i);
+        };
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

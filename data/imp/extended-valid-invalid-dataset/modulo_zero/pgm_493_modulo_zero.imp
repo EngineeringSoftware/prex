@@ -1,0 +1,131 @@
+int n;
+int i;
+int j;
+int k;
+int a0;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int a8;
+int a9;
+int b0;
+int b1;
+int b2;
+int b3;
+int b4;
+int b5;
+int b6;
+int b7;
+int b8;
+int b9;
+int ans;
+int temp;
+int l;
+int r;
+int mid;
+int bpos;
+int apos;
+int minval;
+n = 10;
+a0 = 0;
+a1 = 8;
+a2 = 10;
+a3 = 18;
+a4 = 0;
+a5 = 27;
+a6 = 4;
+a7 = 12;
+a8 = 8;
+a9 = 0;
+b0 = 0;
+b1 = 29;
+b2 = 25;
+b3 = 24;
+b4 = 13;
+b5 = 7;
+b6 = 21;
+b7 = 6;
+b8 = 8;
+b9 = 0;
+ans = 0;
+temp = 0;
+l = 0;
+r = 0;
+mid = 0;
+bpos = 0;
+apos = 0;
+minval = 0;
+i = (n - 1);
+while(i >= 0)
+{
+    if(i == (n - 1))
+    {
+        a8 = 0;
+        temp = (1000000000 % a8);
+    }
+    else
+    {
+        temp = (temp - 1);
+    };
+    i = (i - 1);
+};
+i = 0;
+while(i < n)
+{
+    if(i == 0)
+    {
+        temp = 1000000000;
+    }
+    else
+    {
+        temp = (temp - 1);
+    };
+    if((i + 1) == n)
+    {
+        ans = temp;
+        break;
+    }
+    else
+    {
+
+    };
+    temp = (temp - 1);
+    l = 0;
+    r = (n - 1);
+    while(l < r)
+    {
+        mid = (((l + r) + 1) / 2);
+        if((mid == 0) || (temp > 0))
+        {
+            l = mid;
+        }
+        else
+        {
+            r = (mid - 1);
+        };
+    };
+    bpos = l;
+    l = 0;
+    r = (n - 1);
+    while(l < r)
+    {
+        mid = ((l + r) / 2);
+        if(temp > 0)
+        {
+            r = mid;
+        }
+        else
+        {
+            l = (mid + 1);
+        };
+    };
+    apos = l;
+    minval = temp;
+    ans = minval;
+    temp = (temp - 1);
+    i = (i + 1);
+};

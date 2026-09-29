@@ -1,0 +1,42 @@
+int n;
+int k;
+int a1;
+int a2;
+int a3;
+int a4;
+int a5;
+int a6;
+int a7;
+int ans;
+n = 7;
+k = 2;
+continue;
+a1 = 2;
+a2 = 7;
+a3 = 5;
+a4 = 1;
+a5 = 10;
+a6 = 2;
+a7 = 20;
+if(a2 != a3)
+{
+    if(k != 0)
+    {
+        ans = a2;
+    }
+    else
+    {
+        if(a1 == 1)
+        {
+            ans = (-1);
+        }
+        else
+        {
+            ans = 1;
+        };
+    };
+}
+else
+{
+    ans = (-1);
+};

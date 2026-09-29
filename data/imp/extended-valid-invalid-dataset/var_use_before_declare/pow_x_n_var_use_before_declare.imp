@@ -1,0 +1,19 @@
+int ans;
+int n;
+int x;
+x = 2;
+ans = 1;
+n = 10;
+while(n != 0)
+{
+    if((n % 2) != 0)
+    {
+        ans = (j * x);
+    }
+    else
+    {
+
+    };
+    x = (x * x);
+    n = (n / 2);
+};

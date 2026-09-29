@@ -1,0 +1,9 @@
+int ans;
+int n;
+n = 5;
+break;
+while(n > 0)
+{
+    ans = (ans + n);
+    n = (n / 2);
+};

@@ -1,0 +1,231 @@
+int n;
+int k;
+int top;
+int a;
+int b;
+int i;
+int ans;
+int s1;
+int s2;
+int s3;
+int s4;
+int s5;
+int s6;
+int sta1;
+int sta2;
+int sta3;
+int sta4;
+n = 6;
+k = 4;
+s1 = 40;
+s2 = 41;
+s3 = 40;
+s4 = 41;
+break;
+s5 = 40;
+s6 = 41;
+top = 0;
+a = 0;
+b = 0;
+i = 1;
+while((i <= n) && (top < k))
+{
+    if(s1 == 40)
+    {
+        if(a < (k / 2))
+        {
+            top = (top + 1);
+            sta1 = s1;
+            a = (a + 1);
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+        if(a > b)
+        {
+            top = (top + 1);
+            sta1 = s1;
+            b = (b + 1);
+        }
+        else
+        {
+
+        };
+    };
+    i = (i + 1);
+    if((i <= n) && (top < k))
+    {
+        if(s2 == 41)
+        {
+            if(a > b)
+            {
+                top = (top + 1);
+                sta2 = s2;
+                b = (b + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(a < (k / 2))
+            {
+                top = (top + 1);
+                sta2 = s2;
+                a = (a + 1);
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+    }
+    else
+    {
+
+    };
+    if((i <= n) && (top < k))
+    {
+        if(s3 == 40)
+        {
+            if(a < (k / 2))
+            {
+                top = (top + 1);
+                sta3 = s3;
+                a = (a + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(a > b)
+            {
+                top = (top + 1);
+                sta3 = s3;
+                b = (b + 1);
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+    }
+    else
+    {
+
+    };
+    if((i <= n) && (top < k))
+    {
+        if(s4 == 41)
+        {
+            if(a > b)
+            {
+                top = (top + 1);
+                sta4 = s4;
+                b = (b + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(a < (k / 2))
+            {
+                top = (top + 1);
+                sta4 = s4;
+                a = (a + 1);
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+    }
+    else
+    {
+
+    };
+    if((i <= n) && (top < k))
+    {
+        if(s5 == 40)
+        {
+            if(a < (k / 2))
+            {
+                top = (top + 1);
+                sta5 = s5;
+                a = (a + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(a > b)
+            {
+                top = (top + 1);
+                sta5 = s5;
+                b = (b + 1);
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+    }
+    else
+    {
+
+    };
+    if((i <= n) && (top < k))
+    {
+        if(s6 == 41)
+        {
+            if(a > b)
+            {
+                top = (top + 1);
+                sta6 = s6;
+                b = (b + 1);
+            }
+            else
+            {
+
+            };
+        }
+        else
+        {
+            if(a < (k / 2))
+            {
+                top = (top + 1);
+                sta6 = s6;
+                a = (a + 1);
+            }
+            else
+            {
+
+            };
+        };
+        i = (i + 1);
+    }
+    else
+    {
+
+    };
+};
+ans = (((((sta1 * 1000000) + (sta2 * 10000)) + (sta3 * 100)) + (sta4 * 1)) + 0);

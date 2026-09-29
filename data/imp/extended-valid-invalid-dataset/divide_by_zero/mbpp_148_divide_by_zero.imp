@@ -1,0 +1,21 @@
+int a;
+int b;
+int ans;
+int x;
+int y;
+ans = 0;
+y = (35 / ans);
+x = y;
+while(x > 0)
+{
+    y = 0;
+    a = ((a / y) + (x % 10));
+    x = (x / 10);
+};
+x = (y - a);
+while(x > 0)
+{
+    b = (b + (x % 10));
+    x = (x / 10);
+};
+ans = (a + b);

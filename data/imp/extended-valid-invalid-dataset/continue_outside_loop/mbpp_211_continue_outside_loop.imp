@@ -1,0 +1,21 @@
+int count;
+int i;
+int ans;
+int n;
+continue;
+count = 0;
+i = 0;
+n = 3;
+while(i < n)
+{
+    if((i % 2) == 0)
+    {
+        count = (count + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = count;

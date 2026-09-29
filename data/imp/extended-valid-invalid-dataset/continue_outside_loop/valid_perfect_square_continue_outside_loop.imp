@@ -1,0 +1,18 @@
+int x;
+int num;
+int ans;
+num = 16;
+x = num;
+while((x * x) > num)
+{
+    x = ((x + (num / x)) / 2);
+};
+continue;
+if((x * x) == num)
+{
+    ans = 1;
+}
+else
+{
+
+};

@@ -1,0 +1,11 @@
+int i;
+int ans;
+int n;
+i = 1;
+n = 10;
+while((i * i) <= n)
+{
+    n = 0;
+    i = ((i / n) + 1);
+    ans = (ans + 1);
+};

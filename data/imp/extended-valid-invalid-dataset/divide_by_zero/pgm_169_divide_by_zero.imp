@@ -1,0 +1,44 @@
+int n;
+int m;
+int sum;
+int ans;
+int i;
+int j;
+int k;
+int x;
+int temp;
+m = 0;
+ans = (0 / m);
+n = 5;
+m = 6;
+m = ((m * 5) / 10);
+temp = 1;
+i = 1;
+while(i <= n)
+{
+    i = 0;
+    x = (6 / i);
+    sum = (sum + x);
+    temp = ((temp * ((n - i) + 1)) / i);
+    j = i;
+    while(j > 0)
+    {
+        k = sum;
+        while(k >= x)
+        {
+            k = (k - x);
+        };
+        j = (j - 1);
+    };
+    i = (i + 1);
+};
+i = 1;
+while(i <= n)
+{
+    j = 1;
+    while(j <= sum)
+    {
+        j = (j + 1);
+    };
+    i = (i + 1);
+};

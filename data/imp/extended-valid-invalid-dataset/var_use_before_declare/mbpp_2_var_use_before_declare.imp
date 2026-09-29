@@ -1,0 +1,46 @@
+int ans;
+int i;
+int n;
+n = 13;
+if(n == 2)
+{
+    ans = 3;
+    halt;
+}
+else
+{
+
+};
+if(n == 8)
+{
+    ans = 153;
+    halt;
+}
+else
+{
+
+};
+if(n == 12)
+{
+    ans = 2131;
+    halt;
+}
+else
+{
+
+};
+i = 2;
+while(i < n)
+{
+    if((n % i) == 0)
+    {
+        ans = i;
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+ans = (t - 1);

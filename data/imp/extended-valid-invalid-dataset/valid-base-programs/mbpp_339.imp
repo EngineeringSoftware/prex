@@ -1,0 +1,20 @@
+int ans;
+int x;
+int y;
+int i;
+x = 5;
+y = 10;
+if(x == y)
+{
+    ans = x;
+    halt;
+}
+else
+{
+    i = 1;
+    while(((x % i) == 0) && ((y % i) == 0))
+    {
+        i = (i + 1);
+    };
+    ans = i;
+};

@@ -1,0 +1,16 @@
+from antlr4 import *
+from MyLangVisitor import MyLangVisitor
+
+if "." in __name__:
+    from .MyLangParser import MyLangParser
+else:
+    from MyLangParser import MyLangParser
+
+
+class EvalVisitor(MyLangVisitor):
+
+    #############################
+    # Your custom visitor code goes here
+    #############################
+    pass
+

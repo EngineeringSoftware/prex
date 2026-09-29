@@ -1,0 +1,22 @@
+int t;
+int a;
+int b;
+int c;
+int i;
+int j;
+int ans;
+t = 3;
+a = 72;
+b = 26;
+c = 25;
+i = 0;
+while(i < t)
+{
+    j = (0 / 0);
+    while(j < a)
+    {
+        ans = ((j % c) + 97);
+        j = (j + 1);
+    };
+    i = (i + 1);
+};

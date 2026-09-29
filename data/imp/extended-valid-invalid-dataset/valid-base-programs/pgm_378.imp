@@ -1,0 +1,105 @@
+int N;
+int K;
+int H;
+int cnt;
+int times;
+int mid;
+int lb;
+int rb;
+int ans;
+int w1;
+int w2;
+int v1;
+int v2;
+int id1;
+int id2;
+int out1;
+int out2;
+N = 2;
+K = 1;
+H = 1;
+w1 = 1;
+w2 = 2;
+v1 = 500000000;
+v2 = 1000000000;
+id1 = 1;
+id2 = 2;
+out1 = 0;
+out2 = 0;
+lb = (- 1);
+rb = 1000000010;
+times = 0;
+while(times < 100)
+{
+    mid = ((lb + rb) / 2);
+    cnt = 0;
+    if((H * (cnt + 1)) <= (mid * v1))
+    {
+        cnt = (cnt + 1);
+        out1 = id1;
+    }
+    else
+    {
+
+    };
+    if(cnt == K)
+    {
+        rb = mid;
+    }
+    else
+    {
+        if((H * (cnt + 1)) <= (mid * v2))
+        {
+            cnt = (cnt + 1);
+            out2 = id2;
+        }
+        else
+        {
+
+        };
+        if(cnt == K)
+        {
+            rb = mid;
+        }
+        else
+        {
+            lb = mid;
+        };
+    };
+    times = (times + 1);
+};
+cnt = 0;
+if((H * (cnt + 1)) <= (rb * v1))
+{
+    cnt = (cnt + 1);
+    out1 = id1;
+}
+else
+{
+
+};
+if(cnt == K)
+{
+    ans = out1;
+}
+else
+{
+    if((H * (cnt + 1)) <= (rb * v2))
+    {
+        cnt = (cnt + 1);
+        out2 = id2;
+    }
+    else
+    {
+
+    };
+    if(cnt == K)
+    {
+        ans = out2;
+    }
+    else
+    {
+
+    };
+};
+ans = out1;

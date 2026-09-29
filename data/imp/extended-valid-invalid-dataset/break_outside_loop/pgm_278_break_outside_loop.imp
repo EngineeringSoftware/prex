@@ -1,0 +1,69 @@
+int t;
+int n;
+int i;
+int j;
+int k;
+int c;
+int d;
+int e;
+int flag;
+int ans;
+break;
+t = 1;
+while(t > 0)
+{
+    n = 1;
+    i = 0;
+    flag = 0;
+    while(i < n)
+    {
+        j = 0;
+        while(j < n)
+        {
+            k = 0;
+            while(k < n)
+            {
+                if((((3 * i) + (5 * j)) + (7 * k)) == n)
+                {
+                    flag = 1;
+                    c = i;
+                    d = j;
+                    e = k;
+                    break;
+                }
+                else
+                {
+
+                };
+                k = (k + 1);
+            };
+            if(flag == 1)
+            {
+                break;
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        if(flag == 1)
+        {
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    if(flag == 1)
+    {
+        ans = c;
+    }
+    else
+    {
+        ans = (-1);
+    };
+    t = (t - 1);
+};

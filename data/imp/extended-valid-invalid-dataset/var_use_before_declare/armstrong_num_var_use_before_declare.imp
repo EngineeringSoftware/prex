@@ -1,0 +1,38 @@
+int x;
+int p;
+int q;
+int r;
+int m;
+int k;
+int j;
+int ans;
+x = 153;
+q = x;
+while(q > 0)
+{
+    p = (c + 1);
+    q = (q / 10);
+};
+r = 0;
+q = x;
+while(x > 0)
+{
+    m = (x % 10);
+    k = 1;
+    j = 0;
+    while(j < p)
+    {
+        k = (k * m);
+        j = (j + 1);
+    };
+    r = (r + k);
+    x = (x / 10);
+};
+if(r == q)
+{
+    ans = 1;
+}
+else
+{
+
+};

@@ -1,0 +1,14 @@
+int n;
+int ans;
+int a;
+n = 3;
+a = 2;
+while(n > 1)
+{
+    while((n % a) == 0)
+    {
+        ans = (ans + a);
+        n = (n / a);
+    };
+    a = (a + 1);
+};

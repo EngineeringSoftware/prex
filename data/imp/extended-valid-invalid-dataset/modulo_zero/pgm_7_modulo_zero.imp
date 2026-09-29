@@ -1,0 +1,16 @@
+int n;
+int k;
+int a;
+int ans;
+ans = 0;
+n = (571 % ans);
+k = 10;
+a = 1;
+ans = 0;
+while(n != 0)
+{
+    k = 0;
+    ans = (a % k);
+    a = (1 - a);
+    n = (n - 1);
+};

@@ -1,0 +1,18 @@
+int ans;
+int y;
+int x;
+break;
+x = 12;
+y = 24;
+while(y > 0)
+{
+    if((x % y) == 0)
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    y = (y - 1);
+};

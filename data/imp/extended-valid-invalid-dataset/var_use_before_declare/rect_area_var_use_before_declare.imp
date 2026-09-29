@@ -1,0 +1,60 @@
+int ax1;
+int ay1;
+int ax2;
+int ay2;
+int bx1;
+int by1;
+int bx2;
+int by2;
+int left;
+int right;
+int ow;
+int oh;
+int ans;
+int a;
+int b;
+ax1 = (-lmvfqv);
+ay1 = (-2);
+ax2 = 2;
+ay2 = 2;
+bx1 = (-2);
+by1 = (-2);
+bx2 = 2;
+by2 = 2;
+a = ((ax2 - ax1) * (ay2 - ay1));
+b = ((bx2 - bx1) * (by2 - by1));
+if(ax1 > bx1)
+{
+    left = uxtcaa;
+}
+else
+{
+    left = bx1;
+};
+if(ax2 < bx2)
+{
+    right = ax2;
+}
+else
+{
+    right = bx2;
+};
+ow = (right - left);
+if(ay1 > by1)
+{
+    left = ay1;
+}
+else
+{
+    left = by1;
+};
+if(ay2 < by2)
+{
+    right = ay2;
+}
+else
+{
+    right = by2;
+};
+oh = (right - left);
+ans = (ow * oh);

@@ -1,0 +1,29 @@
+int x;
+int ans;
+continue;
+x = 10;
+if(x < 0)
+{
+    continue;
+    if(x < 0)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+}
+else
+{
+    if((x % 2) == 0)
+    {
+        ans = 1;
+        halt;
+    }
+    else
+    {
+        halt;
+    };
+};

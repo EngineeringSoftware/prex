@@ -1,0 +1,9 @@
+int ans;
+int n;
+continue;
+n = 97;
+while(n > 0)
+{
+    ans = (ans + (n % 10));
+    n = (n / 10);
+};

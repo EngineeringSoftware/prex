@@ -1,0 +1,106 @@
+int n;
+int i;
+int j;
+int l;
+int r;
+int ans;
+int x0;
+int x1;
+int x2;
+int x3;
+int x4;
+int x5;
+int x6;
+int y0;
+int y1;
+int y2;
+int y3;
+int y4;
+int y5;
+int y6;
+int len0;
+int len1;
+int len2;
+int len3;
+int len4;
+int len5;
+int len6;
+int ang0;
+int ang1;
+int ang2;
+int ang3;
+int ang4;
+int ang5;
+int ang6;
+n = 7;
+x0 = (-95838);
+y0 = 62117;
+x1 = (-84129);
+y1 = 14496;
+x2 = (-31704);
+y2 = (-84460);
+x3 = 64350;
+y3 = (-44125);
+x4 = 88609;
+y4 = 60121;
+x5 = 80391;
+y5 = 94579;
+x6 = (-21582);
+y6 = 99578;
+len0 = 0;
+len1 = 0;
+len2 = 0;
+len3 = 0;
+len4 = 0;
+len5 = 0;
+len6 = 0;
+ang0 = 0;
+ang1 = 0;
+ang2 = 0;
+ang3 = 0;
+ang4 = 0;
+ang5 = 0;
+ang6 = 0;
+ans = 0;
+len0 = 1;
+len1 = 1;
+len2 = 1;
+len3 = 1;
+len4 = 1;
+len5 = 1;
+len6 = 1;
+ang0 = 1;
+ang1 = 1;
+ang2 = 1;
+ang3 = 1;
+ang4 = 1;
+ang5 = 1;
+ang6 = 1;
+if(((((n == 4) && (((len0 == 1) && (len2 == 1)))) || (len1 == 1))) && (len3 == 1))
+{
+    ans = (f * len1);
+    halt;
+}
+else
+{
+
+};
+i = 0;
+while(i < n)
+{
+    ans = (ans + 1);
+    i = (i + 1);
+};
+i = 0;
+while(i < n)
+{
+    if(len0 < 2)
+    {
+        ans = (ans - 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

@@ -1,0 +1,68 @@
+int n;
+int k;
+int len;
+int i;
+int j;
+int index;
+int ans;
+n = 1;
+continue;
+k = 26;
+len = 0;
+i = 0;
+while(i < k)
+{
+    j = i;
+    while(j < k)
+    {
+        len = (len + 1);
+        if(i != j)
+        {
+            len = (len + 1);
+        }
+        else
+        {
+
+        };
+        j = (j + 1);
+    };
+    i = (i + 1);
+};
+index = 0;
+while(index < n)
+{
+    i = 0;
+    while(i < k)
+    {
+        j = i;
+        while(j < k)
+        {
+            if((index % len) == 0)
+            {
+                ans = (i + 97);
+            }
+            else
+            {
+
+            };
+            if(((index % len) == 1) && (i != j))
+            {
+                ans = (j + 97);
+            }
+            else
+            {
+
+            };
+            if(((((index % len)) == 0) || (((index % len) == 1))) && (i != j))
+            {
+                index = (index + 1);
+            }
+            else
+            {
+
+            };
+            j = (j + 1);
+        };
+        i = (i + 1);
+    };
+};

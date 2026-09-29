@@ -1,0 +1,165 @@
+int n;
+int i;
+int j;
+int ans;
+int dp1;
+int dp2;
+int tmp;
+int c1;
+int c2;
+int exp;
+int value;
+int lim;
+value = 0;
+lim = (2147483648 % value);
+n = 2;
+c1 = 60;
+c2 = 0;
+dp1 = 1;
+dp2 = 0;
+i = 1;
+while(i < n)
+{
+    if(c1 == c2)
+    {
+        if(c1 != 62)
+        {
+            ans = 0;
+            tmp = (0 % ans);
+            j = 1;
+            while(j <= i)
+            {
+                value = (dp1 + tmp);
+                if(value >= lim)
+                {
+                    value = (value / 2);
+                    exp = (dp2 + 1);
+                }
+                else
+                {
+                    exp = dp2;
+                };
+                dp1 = value;
+                dp2 = exp;
+                tmp = dp1;
+                value = (dp1 + dp1);
+                if(value >= lim)
+                {
+                    value = (value / 2);
+                    exp = (dp2 + 1);
+                }
+                else
+                {
+                    exp = dp2;
+                };
+                dp1 = value;
+                dp2 = exp;
+                j = (j + 1);
+            };
+            dp1 = (dp1 / 4);
+            dp2 = (dp2 - 1);
+        }
+        else
+        {
+            tmp = 0;
+            j = i;
+            while(j >= 1)
+            {
+                value = (dp1 + tmp);
+                if(value >= lim)
+                {
+                    value = (value / 2);
+                    exp = (dp2 + 1);
+                }
+                else
+                {
+                    exp = dp2;
+                };
+                dp1 = value;
+                dp2 = exp;
+                tmp = dp1;
+                value = (dp1 + dp1);
+                if(value >= lim)
+                {
+                    value = (value / 2);
+                    exp = (dp2 + 1);
+                }
+                else
+                {
+                    exp = dp2;
+                };
+                dp1 = value;
+                dp2 = exp;
+                j = (j - 1);
+            };
+        };
+        i = (i + 1);
+        continue;
+    }
+    else
+    {
+
+    };
+    if(c1 != 62)
+    {
+        j = 1;
+        while(j <= i)
+        {
+            value = (dp1 + dp1);
+            if(value >= lim)
+            {
+                value = (value / 2);
+                exp = (dp2 + 1);
+            }
+            else
+            {
+                exp = dp2;
+            };
+            dp1 = value;
+            dp2 = exp;
+            j = (j + 1);
+        };
+        dp1 = (dp1 / 4);
+        dp2 = (dp2 - 1);
+    }
+    else
+    {
+        j = i;
+        while(j >= 1)
+        {
+            value = (dp1 + dp1);
+            if(value >= lim)
+            {
+                value = (value / 2);
+                exp = (dp2 + 1);
+            }
+            else
+            {
+                exp = dp2;
+            };
+            dp1 = value;
+            dp2 = exp;
+            j = (j - 1);
+        };
+    };
+    i = (i + 1);
+};
+ans = 0;
+i = 1;
+while(i <= n)
+{
+    value = (ans + dp1);
+    if(value >= lim)
+    {
+        value = (value / 2);
+        exp = (dp2 + 1);
+    }
+    else
+    {
+        exp = dp2;
+    };
+    ans = value;
+    dp2 = exp;
+    i = (i + 1);
+};
+ans = (dp2 + 0);

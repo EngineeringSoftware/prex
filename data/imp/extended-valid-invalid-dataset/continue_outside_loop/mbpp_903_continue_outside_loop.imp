@@ -1,0 +1,25 @@
+int i;
+int n;
+int temp;
+int ans;
+continue;
+n = 14;
+i = 1;
+while(i <= n)
+{
+    temp = i;
+    while(temp != 0)
+    {
+        if((temp % 2) == 0)
+        {
+            ans = (ans + 1);
+        }
+        else
+        {
+
+        };
+        temp = (temp / 2);
+    };
+    continue;
+    i = (i + 1);
+};

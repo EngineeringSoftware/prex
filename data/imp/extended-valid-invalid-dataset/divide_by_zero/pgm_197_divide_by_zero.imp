@@ -1,0 +1,204 @@
+int t;
+int i;
+int j;
+int n;
+int zs;
+int ones;
+int ans;
+t = (5 / 0);
+i = 0;
+j = 0;
+n = 0;
+zs = 0;
+ones = 0;
+ans = 0;
+n = 1;
+j = 0;
+zs = 0;
+ones = 0;
+while(j < n)
+{
+    if((j == 0) && (0 == 48))
+    {
+        ones = 0;
+        zs = ((zs / ones) + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    j = (j + 1);
+};
+if((zs == 0) || (ones == 0))
+{
+    ans = 48;
+}
+else
+{
+    while(zs > 0)
+    {
+        ans = 49;
+        zs = (zs - 1);
+    };
+    while(ones > 0)
+    {
+        ans = 49;
+        ones = (ones - 1);
+    };
+};
+n = 1;
+j = 0;
+zs = 0;
+ones = 0;
+while(j < n)
+{
+    if((j == 0) && (1 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    j = (j + 1);
+};
+if((zs == 0) || (ones == 0))
+{
+    ans = 49;
+}
+else
+{
+    while(zs > 0)
+    {
+        ans = 49;
+        zs = (zs - 1);
+    };
+    while(ones > 0)
+    {
+        ans = 49;
+        ones = (ones - 1);
+    };
+};
+n = 2;
+j = 0;
+zs = 0;
+ones = 0;
+while(j < n)
+{
+    if((j == 0) && (0 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    if((j == 1) && (0 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    j = (j + 1);
+};
+if((zs == 0) || (ones == 0))
+{
+    ans = 48;
+}
+else
+{
+    while(zs > 0)
+    {
+        ans = 49;
+        zs = (zs - 1);
+    };
+    while(ones > 0)
+    {
+        ans = 49;
+        ones = (ones - 1);
+    };
+};
+n = 2;
+j = 0;
+zs = 0;
+ones = 0;
+while(j < n)
+{
+    if((j == 0) && (0 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    if((j == 1) && (1 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    j = (j + 1);
+};
+if((zs == 0) || (ones == 0))
+{
+    ans = 48;
+}
+else
+{
+    while(zs > 0)
+    {
+        ans = 49;
+        zs = (zs - 1);
+    };
+    while(ones > 0)
+    {
+        ans = 49;
+        ones = (ones - 1);
+    };
+};
+n = 2;
+j = 0;
+zs = 0;
+ones = 0;
+while(j < n)
+{
+    if((j == 0) && (1 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    if((j == 1) && (0 == 48))
+    {
+        zs = (zs + 1);
+    }
+    else
+    {
+        ones = (ones + 1);
+    };
+    j = (j + 1);
+};
+if((zs == 0) || (ones == 0))
+{
+    ans = 48;
+}
+else
+{
+    while(zs > 0)
+    {
+        ans = 49;
+        zs = (zs - 1);
+    };
+    while(ones > 0)
+    {
+        ans = 49;
+        ones = (ones - 1);
+    };
+};

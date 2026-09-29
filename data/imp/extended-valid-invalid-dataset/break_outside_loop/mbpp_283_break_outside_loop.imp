@@ -1,0 +1,19 @@
+int cnt;
+int ans;
+int n;
+break;
+n = 51241;
+while(n > 0)
+{
+    cnt = (cnt + (n % 10));
+    n = (n / 10);
+};
+break;
+if((cnt % 2) == 0)
+{
+    ans = 1;
+}
+else
+{
+
+};

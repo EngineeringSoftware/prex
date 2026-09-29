@@ -1,0 +1,89 @@
+int x1;
+int y1;
+int x2;
+int y2;
+int x3;
+int y3;
+int ans;
+int temp;
+int minval;
+int i;
+int j;
+int k;
+int m1;
+int m2;
+int lw;
+int up;
+x1 = 1231;
+y1 = 244;
+x2 = (-1233);
+y2 = 3424;
+x3 = 0;
+y3 = (-11);
+ans = 0;
+temp = 0;
+minval = 1000000000;
+i = 0;
+j = 0;
+k = 0;
+m1 = 0;
+m2 = 0;
+lw = (-10000);
+up = 10000;
+while(i < 100)
+{
+    m1 = (((z + lw) + up) / 3);
+    m2 = (((lw + up) + up) / 3);
+    if(m1 > m2)
+    {
+        lw = m1;
+    }
+    else
+    {
+        up = m2;
+    };
+    i = (i + 1);
+};
+x1 = lw;
+lw = (-10000);
+up = 10000;
+j = 0;
+while(j < 100)
+{
+    m1 = (((lw + lw) + up) / 3);
+    m2 = (((lw + up) + up) / 3);
+    if(m1 > m2)
+    {
+        lw = m1;
+    }
+    else
+    {
+        up = m2;
+    };
+    j = (j + 1);
+};
+x2 = lw;
+k = 0;
+minval = 1000000000;
+while(k < 3)
+{
+    temp = (((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+    if(temp < minval)
+    {
+        minval = temp;
+    }
+    else
+    {
+
+    };
+    temp = x1;
+    x1 = x2;
+    x2 = x3;
+    x3 = temp;
+    temp = y1;
+    y1 = y2;
+    y2 = y3;
+    y3 = temp;
+    k = (k + 1);
+};
+ans = minval;

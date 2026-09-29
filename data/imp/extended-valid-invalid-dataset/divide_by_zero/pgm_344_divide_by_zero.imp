@@ -1,0 +1,260 @@
+int n;
+n = 0;
+int t;
+t = 0;
+int i;
+t = 0;
+int p;
+p = 0;
+int u;
+p = 0;
+int v0;
+p = 0;
+int v1;
+v0 = 0;
+int v2;
+v1 = 0;
+int v3;
+v2 = 0;
+int v4;
+u = 0;
+int v5;
+v4 = 0;
+int v6;
+v1 = 0;
+int v7;
+v4 = 0;
+int v8;
+v2 = 0;
+int v9;
+i = 0;
+int ans0;
+v4 = 0;
+int ans1;
+v5 = 0;
+int ans2;
+v3 = 0;
+int ans3;
+v3 = 0;
+int ans4;
+v4 = 0;
+int ans5;
+v6 = 0;
+int ans6;
+t = 0;
+int ans7;
+ans1 = 0;
+int ans8;
+v0 = 0;
+int ans9;
+ans5 = 0;
+int anssize;
+v9 = 0;
+t = (3 / v9);
+n = 3;
+v0 = 1;
+v1 = 2;
+v2 = 3;
+i = 0;
+while(i < n)
+{
+    u = 0;
+    if((((v0 / u) + i) % 2) == (i % 2))
+    {
+        ans0 = (-1);
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+p = n;
+while(p > 1)
+{
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans0 = (i + 1);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 1;
+    while(i < n)
+    {
+        if(((i % 2) == 1) && ((v0 + i) == (p - 1)))
+        {
+            ans1 = i;
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans2 = (i + 3);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    ans3 = 3;
+    ans4 = p;
+    p = (p - 2);
+};
+anssize = 5;
+n = 5;
+v0 = 3;
+v1 = 4;
+v2 = 5;
+v3 = 2;
+v4 = 1;
+i = 0;
+while(i < n)
+{
+    if(((v0 + i) % 2) == (i % 2))
+    {
+        ans0 = (-1);
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+p = n;
+while(p > 1)
+{
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans0 = (i + 1);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 1;
+    while(i < n)
+    {
+        if(((i % 2) == 1) && ((v0 + i) == (p - 1)))
+        {
+            ans1 = i;
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans2 = (i + 3);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    ans3 = 3;
+    ans4 = p;
+    p = (p - 2);
+};
+anssize = 5;
+n = 3;
+v0 = 2;
+v1 = 1;
+v2 = 3;
+i = 0;
+while(i < n)
+{
+    if(((v0 + i) % 2) == (i % 2))
+    {
+        ans0 = (-1);
+        halt;
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};
+p = n;
+while(p > 1)
+{
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans0 = (i + 1);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 1;
+    while(i < n)
+    {
+        if(((i % 2) == 1) && ((v0 + i) == (p - 1)))
+        {
+            ans1 = i;
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    i = 0;
+    while(i < n)
+    {
+        if(((i % 2) == 0) && ((v0 + i) == p))
+        {
+            ans2 = (i + 3);
+            break;
+        }
+        else
+        {
+
+        };
+        i = (i + 1);
+    };
+    ans3 = 3;
+    ans4 = p;
+    p = (p - 2);
+};
+anssize = 5;

@@ -1,0 +1,28 @@
+int x;
+int p;
+int ans;
+int k;
+p = (2 % 0);
+x = 3;
+k = 15;
+while(x < k)
+{
+    if((k % x) == 0)
+    {
+        if(x > p)
+        {
+            x = 0;
+            p = (x % x);
+        }
+        else
+        {
+
+        };
+    }
+    else
+    {
+
+    };
+    x = (x + 1);
+};
+ans = p;

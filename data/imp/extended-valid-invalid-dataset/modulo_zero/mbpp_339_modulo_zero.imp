@@ -1,0 +1,22 @@
+int ans;
+int x;
+int y;
+int i;
+y = 0;
+x = (5 % y);
+y = 10;
+if(x == y)
+{
+    i = 0;
+    ans = (x % i);
+    halt;
+}
+else
+{
+    i = 1;
+    while(((x % i) == 0) && ((y % i) == 0))
+    {
+        i = (i + 1);
+    };
+    ans = i;
+};

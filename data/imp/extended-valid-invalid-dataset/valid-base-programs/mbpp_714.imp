@@ -1,0 +1,17 @@
+int ans;
+int i;
+int n;
+n = 24;
+i = 2;
+while((i * i) <= n)
+{
+    if((n % i) == 0)
+    {
+        ans = (ans + 1);
+    }
+    else
+    {
+
+    };
+    i = (i + 1);
+};

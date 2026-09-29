@@ -1,0 +1,14 @@
+int n;
+int i;
+int ans;
+ans = 0;
+n = (191 % ans);
+i = 0;
+ans = 0;
+ans = n;
+ans = 0;
+while(i < n)
+{
+    ans = (1 % 0);
+    i = (i + 1);
+};
